@@ -1,0 +1,10 @@
+name: MyWorld
+main: me.daddychurchill.MyWorld.MyWorld
+version: 0.10
+load: startup
+author: DaddyChurchill
+commands:
+  myworld:
+    description: Sends you to the MyWorld
+    usage: /myworld
+    

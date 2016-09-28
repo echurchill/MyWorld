@@ -1,0 +1,10 @@
+== **Conurbation** ==
+
+//(This should support the newer "taller" chunks but there might an issue or two)//
+
+===== //Version 0.10// ===== 
+,,//(sometimes there is a delay in getting the new version of the plugin through the approval process, if the above version isn't available check back in an hour or so)//,,
+ 
+=== Beta ===
+This is an Beta of the new plugin. 
+
