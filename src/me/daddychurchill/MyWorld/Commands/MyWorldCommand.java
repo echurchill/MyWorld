@@ -1,9 +1,9 @@
-package me.daddychurchill.MyWorld;
+package me.daddychurchill.MyWorld.Commands;
 
 
 import org.bukkit.entity.Player;
 
-import me.daddychurchill.MyWorld.Support.AbstractedCommand;
+import me.daddychurchill.MyWorld.MyWorld;
 
 public class MyWorldCommand extends AbstractedCommand {
 

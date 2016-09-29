@@ -10,7 +10,8 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.daddychurchill.MyWorld.Support.AbstractedCommand;
+import me.daddychurchill.MyWorld.Commands.AbstractedCommand;
+import me.daddychurchill.MyWorld.Commands.MyWorldCommand;
 
 public class MyWorld extends JavaPlugin{
 	

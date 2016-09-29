@@ -1,4 +1,4 @@
-package me.daddychurchill.MyWorld.Support;
+package me.daddychurchill.MyWorld.Commands;
 
 
 import org.bukkit.entity.Player;
