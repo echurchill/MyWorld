@@ -496,6 +496,7 @@ public final class RealMaterial extends AbstractedThings {
 	private static MaterialData define (Material material, TreeSpecies species) {
 		switch (material) {
 		case WOOD:
+		case SAPLING:
 			switch (species) {
 			case GENERIC:
 				return define(Material.WOOD, 0);

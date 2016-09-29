@@ -99,8 +99,15 @@ public class Generator extends ChunkGenerator {
 			// place to work
 			FinalizeBlocks finalizeBlocks = new FinalizeBlocks(this, random, source, chunkX, chunkZ);
 			
-			finalizeBlocks.setBlock(0, 63, 0, RealMaterial.WOOL_GRAY);
-			finalizeBlocks.setBlock(15, 63, 15, RealMaterial.WOOL_BLACK);
+			int x = 0;
+			while (x < 16) {
+				finalizeBlocks.setBlocks(x, 63, 63 + x + 1, 0, RealMaterial.PURPUR_PILLAR);
+				finalizeBlocks.setBlocks(x, 63, 63 + x + 1, x, RealMaterial.PURPUR_PILLAR);
+				x++;
+			}
+//			
+//			finalizeBlocks.setBlock(0, 63, 0, RealMaterial.WOOL_WHITE);
+//			finalizeBlocks.setBlock(15, 63, 15, RealMaterial.WOOL_BLACK);
 			
 	//		// figure out what everything looks like
 	//		generators.populate(realChunk, random, chunkX, chunkZ);

@@ -50,10 +50,15 @@ public class MyWorld extends JavaPlugin{
 	}
 	
 	private void addCommand(AbstractedCommand exec) {
+		reportMessage("MY0");
 		if (exec != null) {
+			reportMessage("MY1");
 			PluginCommand cmd = getCommand(exec.getKeyword());
+			reportMessage("MY2");
 			if (cmd != null) {
+				reportMessage("MY3");
 				cmd.setExecutor(exec);
+				reportMessage("MY4");
 				return;
 			}
 			reportMessage("!!!! Cannot create command for " + exec.getKeyword());

@@ -42,7 +42,9 @@ public class FinalizeBlocks extends AbstractedBlocks {
 			if (state != null) {
 				MaterialData current = state.getData();
 				if (current != null && !current.equals(data)) {
+					state.setType(data.getItemType());
 					state.setData(data);
+					state.update(true, true);
 				}
 			}
 		}
