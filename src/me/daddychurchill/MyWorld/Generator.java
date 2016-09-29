@@ -12,11 +12,12 @@ import org.bukkit.generator.ChunkGenerator;
 
 import me.daddychurchill.MyWorld.Support.FinalizeBlocks;
 import me.daddychurchill.MyWorld.Support.InitializeBlocks;
+import me.daddychurchill.MyWorld.Support.RealMaterial;
 
 public class Generator extends ChunkGenerator {
 
 	private MyWorld plugin;
-	public Config config;
+	private Config config;
 	private BlockCallback blockCallback;
 //	private Generator generators;
 	
@@ -32,6 +33,10 @@ public class Generator extends ChunkGenerator {
 		return Arrays.asList((BlockPopulator) blockCallback);
 	}
 
+	public Config getConfig() {
+		return config;
+	}
+	
 	public void reportMessage(String message) {
 		plugin.reportMessage(message);
 	}
@@ -58,6 +63,8 @@ public class Generator extends ChunkGenerator {
 			
 			// place to work
 			InitializeBlocks initialBlocks = new InitializeBlocks(this, this.createChunkData(world), biome, random, x, z);
+			
+			initialBlocks.setBlocks(0, 16, 0, 63, 0, 16, RealMaterial.DIRT);
 		
 //			// figure out what everything looks like
 //			PlatMap platmap = getPlatMap(x, z);
@@ -90,7 +97,10 @@ public class Generator extends ChunkGenerator {
 			int chunkZ = source.getZ();
 			
 			// place to work
-			FinalizeBlocks populationBlocks = new FinalizeBlocks(this, random, source, chunkX, chunkZ);
+			FinalizeBlocks finalizeBlocks = new FinalizeBlocks(this, random, source, chunkX, chunkZ);
+			
+			finalizeBlocks.setBlock(0, 63, 0, RealMaterial.WOOL_GRAY);
+			finalizeBlocks.setBlock(15, 63, 15, RealMaterial.WOOL_BLACK);
 			
 	//		// figure out what everything looks like
 	//		generators.populate(realChunk, random, chunkX, chunkZ);
@@ -99,7 +109,7 @@ public class Generator extends ChunkGenerator {
 		} 
 	}
 
-	private class BlockCallback extends BlockPopulator {
+	private static class BlockCallback extends BlockPopulator {
 
 		private Generator chunkGen;
 		

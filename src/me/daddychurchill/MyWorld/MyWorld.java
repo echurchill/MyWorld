@@ -50,12 +50,15 @@ public class MyWorld extends JavaPlugin{
 	}
 	
 	private void addCommand(AbstractedCommand exec) {
-		PluginCommand cmd = getCommand(exec.getKeyword());
-		if (cmd == null || exec == null) {
-			log.info("Cannot create command for " + exec.getKeyword());
-		} else {
-			cmd.setExecutor(exec);
-		}
+		if (exec != null) {
+			PluginCommand cmd = getCommand(exec.getKeyword());
+			if (cmd != null) {
+				cmd.setExecutor(exec);
+				return;
+			}
+			reportMessage("!!!! Cannot create command for " + exec.getKeyword());
+		} else
+			reportMessage("!!!! Cannot create command for NULL");
 	}
 	
     // prime world support (loosely based on ExpansiveTerrain)

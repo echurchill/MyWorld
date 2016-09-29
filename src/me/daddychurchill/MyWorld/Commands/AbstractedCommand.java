@@ -28,11 +28,10 @@ public abstract class AbstractedCommand implements CommandExecutor {
 				return doCommand(player, split);
 			} else {
 				sender.sendMessage("You do not have permission to use this command");
-				return false;
 			}
 		} else {
 			sender.sendMessage("This command is only usable by a player");
-			return false;
 		}
+		return false;
     }
 }

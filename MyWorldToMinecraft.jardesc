@@ -11,9 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
-        <file path="/MyWorld/myworld_description.txt"/>
-        <file path="/MyWorld/README"/>
-        <javaElement handleIdentifier="=MyWorld/src"/>
         <file path="/MyWorld/plugin.yml"/>
+        <file path="/MyWorld/myworld_description.txt"/>
+        <javaElement handleIdentifier="=MyWorld/src"/>
     </selectedElements>
 </jardesc>
