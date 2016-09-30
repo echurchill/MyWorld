@@ -13,10 +13,10 @@ public class FlatTerrainInitializer extends AbstractedInitializer {
 
 	@Override
 	public void renderHere(InitializeBlocks blocks) {
-		int y1 = blocks.getConfig().getStreetLevel();
+		int y1 = blocks.getGenerator().getConfig().getStreetLevel();
 		blocks.setBlocks(0, RealMaterial.BEDROCK);
-		blocks.setBlocks(1, y1, RealMaterial.DIRT);
-		blocks.setBlocks(y1, RealMaterial.GRASS);
+		blocks.setBlocks(1, y1 - 1, RealMaterial.DIRT);
+		blocks.setBlocks(y1 - 1, RealMaterial.GRASS);
 	}
 
 	@Override

@@ -20,6 +20,7 @@ public class CoreGenerator extends ChunkGenerator {
 
 	private MyWorld plugin;
 	private Config config;
+	private World world;
 	private BlockCallback blockCallback;
 	private List<AbstractedInitializer> initializers;
 	private List<AbstractedPopulator> populators;
@@ -36,8 +37,17 @@ public class CoreGenerator extends ChunkGenerator {
 	
 	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
+		this.world = world;
 		blockCallback = new BlockCallback(this);
 		return Arrays.asList((BlockPopulator) blockCallback);
+	}
+	
+	public MyWorld getPlugin() {
+		return plugin;
+	}
+
+	public World getWorld() {
+		return world;
 	}
 
 	public Config getConfig() {

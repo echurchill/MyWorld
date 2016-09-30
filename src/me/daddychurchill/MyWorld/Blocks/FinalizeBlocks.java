@@ -3,6 +3,8 @@ package me.daddychurchill.MyWorld.Blocks;
 import java.util.Random;
 
 import org.bukkit.Chunk;
+import org.bukkit.Location;
+import org.bukkit.TreeType;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -21,6 +23,16 @@ public class FinalizeBlocks extends AbstractedBlocks {
 		this.chunk = chunk;
 	}
 	
+	public void generateTree(int x, int y, int z, TreeType ...treeTypes) {
+		generateTree(x, y, z, treeTypes[random.nextInt(treeTypes.length)]);
+	}
+
+	public void generateTree(int x, int y, int z, TreeType treeType) {
+		Location at = getBlockWorldLocation(x, y, z);
+		
+		if (!getGenerator().getWorld().generateTree(at, treeType))
+			getGenerator().getPlugin().reportMessage("Failed to create tree at " + at);
+	}
 
 	@Override
 	public MaterialData getBlock(int x, int y, int z) {

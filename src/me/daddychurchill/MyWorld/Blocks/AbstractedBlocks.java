@@ -2,28 +2,30 @@ package me.daddychurchill.MyWorld.Blocks;
 
 import java.util.Random;
 
+import org.bukkit.Location;
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.Config;
 import me.daddychurchill.MyWorld.CoreGenerator;
 
 public abstract class AbstractedBlocks {
 
+	protected CoreGenerator generator;
 	protected int chunkX;
 	protected int chunkZ;
 	protected Random random;
-	protected Config config;
+	
+	public static int Width = 16;
 	
 	public AbstractedBlocks(CoreGenerator generator, Random random, int chunkX, int chunkZ) {
+		this.generator = generator;
 		this.chunkX = chunkX;
 		this.chunkZ = chunkZ;
 		this.random = random;
-		this.config = generator.getConfig();
 	}
 	
-	public Config getConfig() {
-		return config;
+	public CoreGenerator getGenerator() {
+		return generator;
 	}
 	
 	public int getChunkX() {
@@ -33,11 +35,15 @@ public abstract class AbstractedBlocks {
 	public int getChunkZ() {
 		return chunkZ;
 	}
-
+	
 	public Random getRandom() {
 		return random;
 	}
 
+	public Location getBlockWorldLocation(int x, int y, int z) {
+		return new Location(generator.getWorld(), chunkX * Width + x, y, chunkZ * Width + z);
+	}
+	
 	// simple 
 	public abstract MaterialData getBlock(int x, int y, int z);
 	public abstract void setBlock(int x, int y, int z, MaterialData data);
