@@ -1,4 +1,4 @@
-package me.daddychurchill.MyWorld.Support;
+package me.daddychurchill.MyWorld.Blocks;
 
 import java.util.Random;
 
@@ -8,14 +8,14 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.Generator;
+import me.daddychurchill.MyWorld.CoreGenerator;
 
 // should be called final blocks
 public class FinalizeBlocks extends AbstractedBlocks {
 	
 	protected Chunk chunk;
 
-	public FinalizeBlocks(Generator generator, Random random, Chunk chunk, int chunkX, int chunkZ) {
+	public FinalizeBlocks(CoreGenerator generator, Random random, Chunk chunk, int chunkX, int chunkZ) {
 		super(generator, random, chunkX, chunkZ);
 		
 		this.chunk = chunk;

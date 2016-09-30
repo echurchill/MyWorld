@@ -1,6 +1,7 @@
 package me.daddychurchill.MyWorld;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -10,21 +11,27 @@ import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 
-import me.daddychurchill.MyWorld.Support.FinalizeBlocks;
-import me.daddychurchill.MyWorld.Support.InitializeBlocks;
-import me.daddychurchill.MyWorld.Support.RealMaterial;
+import me.daddychurchill.MyWorld.Blocks.FinalizeBlocks;
+import me.daddychurchill.MyWorld.Blocks.InitializeBlocks;
+import me.daddychurchill.MyWorld.Generators.AbstractedInitializer;
+import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
 
-public class Generator extends ChunkGenerator {
+public class CoreGenerator extends ChunkGenerator {
 
 	private MyWorld plugin;
 	private Config config;
 	private BlockCallback blockCallback;
-//	private Generator generators;
+	private List<AbstractedInitializer> initializers;
+	private List<AbstractedPopulator> populators;
 	
-	public Generator(MyWorld plugin, Config config){
+	public CoreGenerator(MyWorld plugin, Config config){
 		super();
+		initializers = new ArrayList<AbstractedInitializer>();
+		populators = new ArrayList<AbstractedPopulator>();
+		
 		this.plugin = plugin;
 		this.config = config;
+		this.config.getWorldMaker().initializeGenerator(this);
 	}
 	
 	@Override
@@ -52,31 +59,30 @@ public class Generator extends ChunkGenerator {
 	public void reportException(String message, Exception e) {
 		plugin.reportException(message, e);
 	}
+	
+	public void addInitializer(AbstractedInitializer initializer) {
+		initializers.add(initializer);
+	}
+
+	public void addPopulator(AbstractedPopulator populator) {
+		populators.add(populator);
+	}
 
 	@Override
 	public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid biome) {
 		try {
 
-//			// who makes what?
-//			if (generators == null)
-//				generators = new Generator(world, config);
-			
 			// place to work
-			InitializeBlocks initialBlocks = new InitializeBlocks(this, this.createChunkData(world), biome, random, x, z);
+			InitializeBlocks blocks = new InitializeBlocks(this, this.createChunkData(world), biome, random, x, z);
 			
-			initialBlocks.setBlocks(0, 16, 0, 63, 0, 16, RealMaterial.DIRT);
+			// see who wants to initialize it?
+			for (AbstractedInitializer generator : initializers) {
+				if (generator.isHere(blocks))
+					generator.renderHere(blocks);
+			}
 		
-//			// figure out what everything looks like
-//			PlatMap platmap = getPlatMap(x, z);
-//			if (platmap != null) {
-//				//CityWorld.reportMessage("generate X,Z = " + chunkX + "," + chunkZ);
-//				platmap.generateChunk(initialBlocks, biome);
-//			}
-// OR
-//			// figure out what everything looks like
-//			generators.generate(byteChunk, random, chunkX, chunkZ);
-			
-			return initialBlocks.chunkData;
+			// all done!
+			return blocks.getRawData();
 			
 		} catch (Exception e) {
 			reportException("Generator FAILED", e);
@@ -88,29 +94,19 @@ public class Generator extends ChunkGenerator {
 		try {
 
 		
-	//		// who makes what?
-	//		if (generators == null)
-	//			generators = new Generator(world, config);
-			
 			// where are we?
 			int chunkX = source.getX();
 			int chunkZ = source.getZ();
 			
 			// place to work
-			FinalizeBlocks finalizeBlocks = new FinalizeBlocks(this, random, source, chunkX, chunkZ);
+			FinalizeBlocks blocks = new FinalizeBlocks(this, random, source, chunkX, chunkZ);
 			
-			int x = 0;
-			while (x < 16) {
-				finalizeBlocks.setBlocks(x, 63, 63 + x + 1, 0, RealMaterial.PURPUR_PILLAR);
-				finalizeBlocks.setBlocks(x, 63, 63 + x + 1, x, RealMaterial.PURPUR_PILLAR);
-				x++;
+			// see who wants to populate it?
+			for (AbstractedPopulator generator : populators) {
+				if (generator.isHere(blocks))
+					generator.renderHere(blocks);
 			}
-//			
-//			finalizeBlocks.setBlock(0, 63, 0, RealMaterial.WOOL_WHITE);
-//			finalizeBlocks.setBlock(15, 63, 15, RealMaterial.WOOL_BLACK);
-			
-	//		// figure out what everything looks like
-	//		generators.populate(realChunk, random, chunkX, chunkZ);
+		
 		} catch (Exception e) {
 			reportException("Populator FAILED", e);
 		} 
@@ -118,9 +114,9 @@ public class Generator extends ChunkGenerator {
 
 	private static class BlockCallback extends BlockPopulator {
 
-		private Generator chunkGen;
+		private CoreGenerator chunkGen;
 		
-		public BlockCallback(Generator chunkGen){
+		public BlockCallback(CoreGenerator chunkGen){
 			this.chunkGen = chunkGen;
 		}
 		

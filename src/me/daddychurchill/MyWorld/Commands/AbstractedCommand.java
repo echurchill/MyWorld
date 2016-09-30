@@ -17,7 +17,6 @@ public abstract class AbstractedCommand implements CommandExecutor {
     
     public AbstractedCommand(MyWorld plugin)
     {
-		plugin.reportMessage("AC1");
         this.plugin = plugin;
     }
 

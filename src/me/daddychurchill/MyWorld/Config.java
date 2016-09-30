@@ -2,10 +2,14 @@ package me.daddychurchill.MyWorld;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
+import me.daddychurchill.MyWorld.Worlds.AbstractedWorld;
+import me.daddychurchill.MyWorld.Worlds.TreesOnlyWorld;
+
 public class Config {
 	private MyWorld plugin;
 	private String worldname;
 	private String worldstyle;
+	private AbstractedWorld worldMaker;
 	
 	private int streetLevel;
 	private int seabedLevel;
@@ -19,6 +23,7 @@ public class Config {
 		this.plugin = plugin;
 		this.worldname = name;
 		this.worldstyle = style;
+		this.worldMaker = getWorldFor(style);
 		
 		// remember the globals
 		int globalStreetLevel = defaultStreetLevel;
@@ -40,7 +45,7 @@ public class Config {
 		streetLevel = getWorldInt(config, "StreetLevel", globalStreetLevel);
 		seabedLevel = getWorldInt(config, "SeabedLevel", globalSeabedLevel);
 	}
-
+	
 	private int getWorldInt(FileConfiguration config, String option, int global) {
 		int result = global;
 		String path = worldname + "." + option;
@@ -65,6 +70,14 @@ public class Config {
 //		return result;
 //	}
 	
+	private static AbstractedWorld getWorldFor(String style) {
+		return new TreesOnlyWorld();
+	}
+	
+	public AbstractedWorld getWorldMaker() {
+		return worldMaker;
+	}
+
 	public MyWorld getPlugin() {
 		return plugin;
 	}

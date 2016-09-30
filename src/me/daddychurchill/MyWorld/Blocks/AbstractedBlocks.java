@@ -1,22 +1,29 @@
-package me.daddychurchill.MyWorld.Support;
+package me.daddychurchill.MyWorld.Blocks;
 
 import java.util.Random;
 
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.Generator;
+import me.daddychurchill.MyWorld.Config;
+import me.daddychurchill.MyWorld.CoreGenerator;
 
 public abstract class AbstractedBlocks {
 
 	protected int chunkX;
 	protected int chunkZ;
 	protected Random random;
+	protected Config config;
 	
-	public AbstractedBlocks(Generator generator, Random random, int chunkX, int chunkZ) {
+	public AbstractedBlocks(CoreGenerator generator, Random random, int chunkX, int chunkZ) {
 		this.chunkX = chunkX;
 		this.chunkZ = chunkZ;
 		this.random = random;
+		this.config = generator.getConfig();
+	}
+	
+	public Config getConfig() {
+		return config;
 	}
 	
 	public int getChunkX() {
@@ -57,4 +64,9 @@ public abstract class AbstractedBlocks {
 	// biome support
 	public abstract Biome getBiome(int x, int z);
 	public abstract void setBiome(int x, int z, Biome biome);
+	public void setBiome(Biome biome) {
+		for (int x = 0; x < 16; x++)
+			for (int z = 0; z < 16; z++)
+				setBiome(x, z, biome);
+	}
 }

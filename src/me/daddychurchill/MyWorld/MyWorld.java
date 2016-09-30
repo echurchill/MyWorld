@@ -27,7 +27,9 @@ public class MyWorld extends JavaPlugin{
 	}
 	
 	private ChunkGenerator getChunkGenerator(String name, String style) {
-		return new Generator(this, new Config(this, name, style));
+		CoreGenerator generator = new CoreGenerator(this, new Config(this, name, style));
+
+		return generator;
 	}
 
 	@Override
