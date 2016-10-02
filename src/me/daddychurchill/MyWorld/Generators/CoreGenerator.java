@@ -1,4 +1,4 @@
-package me.daddychurchill.MyWorld;
+package me.daddychurchill.MyWorld.Generators;
 
 
 import java.util.ArrayList;
@@ -11,10 +11,11 @@ import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 
+import me.daddychurchill.MyWorld.Config;
+import me.daddychurchill.MyWorld.MyWorld;
 import me.daddychurchill.MyWorld.Blocks.FinalizeBlocks;
 import me.daddychurchill.MyWorld.Blocks.InitializeBlocks;
-import me.daddychurchill.MyWorld.Generators.AbstractedInitializer;
-import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.MyWorld.Support.Odds;
 
 public class CoreGenerator extends ChunkGenerator {
 
@@ -83,7 +84,7 @@ public class CoreGenerator extends ChunkGenerator {
 		try {
 
 			// place to work
-			InitializeBlocks blocks = new InitializeBlocks(this, this.createChunkData(world), biome, random, x, z);
+			InitializeBlocks blocks = new InitializeBlocks(this, this.createChunkData(world), biome, new Odds(random), x, z);
 			
 			// see who wants to initialize it?
 			for (AbstractedInitializer generator : initializers) {
@@ -109,7 +110,7 @@ public class CoreGenerator extends ChunkGenerator {
 			int chunkZ = source.getZ();
 			
 			// place to work
-			FinalizeBlocks blocks = new FinalizeBlocks(this, random, source, chunkX, chunkZ);
+			FinalizeBlocks blocks = new FinalizeBlocks(this, new Odds(random), source, chunkX, chunkZ);
 			
 			// see who wants to populate it?
 			for (AbstractedPopulator generator : populators) {

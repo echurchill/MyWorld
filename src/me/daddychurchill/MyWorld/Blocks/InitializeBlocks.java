@@ -1,22 +1,21 @@
 package me.daddychurchill.MyWorld.Blocks;
 
-import java.util.Random;
-
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.ChunkGenerator.BiomeGrid;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.CoreGenerator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
+import me.daddychurchill.MyWorld.Support.Odds;
 
 public class InitializeBlocks extends AbstractedBlocks {
 
 	public ChunkData chunkData;
 	protected BiomeGrid biomeData;
 	
-	public InitializeBlocks(CoreGenerator generator, ChunkData chunk, BiomeGrid biome, Random random, int chunkX, int chunkZ) {
-		super(generator, random, chunkX, chunkZ);
+	public InitializeBlocks(CoreGenerator generator, ChunkData chunk, BiomeGrid biome, Odds odds, int chunkX, int chunkZ) {
+		super(generator, odds, chunkX, chunkZ);
 		
 		this.chunkData = chunk;
 		this.biomeData = biome;

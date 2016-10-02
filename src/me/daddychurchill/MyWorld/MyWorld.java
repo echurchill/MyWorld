@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.daddychurchill.MyWorld.Commands.AbstractedCommand;
 import me.daddychurchill.MyWorld.Commands.MyWorldCommand;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 
 public class MyWorld extends JavaPlugin{
 	

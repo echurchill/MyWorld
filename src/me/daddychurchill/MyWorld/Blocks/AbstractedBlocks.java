@@ -1,27 +1,26 @@
 package me.daddychurchill.MyWorld.Blocks;
 
-import java.util.Random;
-
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.CoreGenerator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
+import me.daddychurchill.MyWorld.Support.Odds;
 
 public abstract class AbstractedBlocks {
 
 	protected CoreGenerator generator;
 	protected int chunkX;
 	protected int chunkZ;
-	protected Random random;
+	protected Odds odds;
 	
 	public static int Width = 16;
 	
-	public AbstractedBlocks(CoreGenerator generator, Random random, int chunkX, int chunkZ) {
+	public AbstractedBlocks(CoreGenerator generator, Odds odds, int chunkX, int chunkZ) {
 		this.generator = generator;
 		this.chunkX = chunkX;
 		this.chunkZ = chunkZ;
-		this.random = random;
+		this.odds = odds;
 	}
 	
 	public CoreGenerator getGenerator() {
@@ -36,8 +35,8 @@ public abstract class AbstractedBlocks {
 		return chunkZ;
 	}
 	
-	public Random getRandom() {
-		return random;
+	public Odds getOdds() {
+		return odds;
 	}
 
 	public Location getBlockWorldLocation(int x, int y, int z) {
@@ -69,15 +68,14 @@ public abstract class AbstractedBlocks {
 	}
 
 	// walls
-	public void setWallBlocks(int x1, int x2, int y, int z1, int z2, MaterialData data) {
-		setWallBlocks(x1, x2, y, y + 1, z1, z2, data);
+	public void setWalls(int x1, int x2, int y, int z1, int z2, MaterialData data) {
+		setWalls(x1, x2, y, y + 1, z1, z2, data);
 	}
-	public void setWallBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
+	public void setWalls(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
 		setBlocks(x1, x2, y1, y2, z1, z1 + 1, data);
 		setBlocks(x1, x2, y1, y2, z2 - 1, z2, data);
 		setBlocks(x1, x1 + 1, y1, y2, z1 + 1, z2 - 1, data);
 		setBlocks(x2 - 1, x2, y1, y2, z1 + 1, z2 - 1, data);
-
 	}
 	
 	// biome support

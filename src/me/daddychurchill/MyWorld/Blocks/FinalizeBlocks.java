@@ -1,7 +1,5 @@
 package me.daddychurchill.MyWorld.Blocks;
 
-import java.util.Random;
-
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.TreeType;
@@ -10,21 +8,22 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.CoreGenerator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
+import me.daddychurchill.MyWorld.Support.Odds;
 
 // should be called final blocks
 public class FinalizeBlocks extends AbstractedBlocks {
 	
 	protected Chunk chunk;
 
-	public FinalizeBlocks(CoreGenerator generator, Random random, Chunk chunk, int chunkX, int chunkZ) {
-		super(generator, random, chunkX, chunkZ);
+	public FinalizeBlocks(CoreGenerator generator, Odds odds, Chunk chunk, int chunkX, int chunkZ) {
+		super(generator, odds, chunkX, chunkZ);
 		
 		this.chunk = chunk;
 	}
 	
 	public void generateTree(int x, int y, int z, TreeType ...treeTypes) {
-		generateTree(x, y, z, treeTypes[random.nextInt(treeTypes.length)]);
+		generateTree(x, y, z, treeTypes[odds.nextInt(treeTypes.length)]);
 	}
 
 	public void generateTree(int x, int y, int z, TreeType treeType) {

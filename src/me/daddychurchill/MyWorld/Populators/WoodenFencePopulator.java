@@ -14,7 +14,7 @@ public class WoodenFencePopulator extends AbstractedPopulator {
 	@Override
 	public void renderHere(FinalizeBlocks blocks) {
 		int y1 = blocks.getGenerator().getConfig().getStreetLevel();
-		blocks.setWallBlocks(1, 14, y1, 1, 14, RealMaterial.FENCE);
+		blocks.setWalls(1, 14, y1, 1, 14, RealMaterial.FENCE);
 	}
 
 	@Override

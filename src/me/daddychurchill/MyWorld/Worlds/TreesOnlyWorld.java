@@ -1,6 +1,6 @@
 package me.daddychurchill.MyWorld.Worlds;
 
-import me.daddychurchill.MyWorld.CoreGenerator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 import me.daddychurchill.MyWorld.Initializers.FlatTerrainInitializer;
 import me.daddychurchill.MyWorld.Populators.BushPopulator;
 import me.daddychurchill.MyWorld.Populators.SingleTreePopulator;

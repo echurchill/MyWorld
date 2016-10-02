@@ -1,6 +1,6 @@
 package me.daddychurchill.MyWorld.Worlds;
 
-import me.daddychurchill.MyWorld.CoreGenerator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 
 public abstract class AbstractedWorld {
 
