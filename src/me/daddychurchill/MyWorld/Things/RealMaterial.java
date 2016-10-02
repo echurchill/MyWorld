@@ -1,4 +1,4 @@
-package me.daddychurchill.MyWorld.Blocks;
+package me.daddychurchill.MyWorld.Things;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;

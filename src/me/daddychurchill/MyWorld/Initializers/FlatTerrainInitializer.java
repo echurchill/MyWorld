@@ -2,8 +2,8 @@ package me.daddychurchill.MyWorld.Initializers;
 
 import me.daddychurchill.MyWorld.Blocks.AbstractedBlocks;
 import me.daddychurchill.MyWorld.Blocks.InitializeBlocks;
-import me.daddychurchill.MyWorld.Blocks.RealMaterial;
 import me.daddychurchill.MyWorld.Generators.AbstractedInitializer;
+import me.daddychurchill.MyWorld.Things.RealMaterial;
 
 public class FlatTerrainInitializer extends AbstractedInitializer {
 

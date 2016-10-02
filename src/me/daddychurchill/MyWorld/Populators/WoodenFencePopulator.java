@@ -2,8 +2,8 @@ package me.daddychurchill.MyWorld.Populators;
 
 import me.daddychurchill.MyWorld.Blocks.AbstractedBlocks;
 import me.daddychurchill.MyWorld.Blocks.FinalizeBlocks;
-import me.daddychurchill.MyWorld.Blocks.RealMaterial;
 import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.MyWorld.Things.RealMaterial;
 
 public class WoodenFencePopulator extends AbstractedPopulator {
 
