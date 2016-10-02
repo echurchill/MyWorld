@@ -2,6 +2,7 @@ package me.daddychurchill.MyWorld.Blocks;
 
 import java.util.Random;
 
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.ChunkGenerator.BiomeGrid;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
@@ -38,6 +39,11 @@ public class InitializeBlocks extends AbstractedBlocks {
 	@Override
 	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
 		chunkData.setRegion(x1, y1, z1, x2, y2, z2, data);
+	}
+
+	@Override
+	public boolean isEmpty(int x, int y, int z) {
+		return chunkData.getType(x, y, z) == Material.AIR;
 	}
 
 	@Override

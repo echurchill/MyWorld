@@ -74,6 +74,15 @@ public class FinalizeBlocks extends AbstractedBlocks {
 	}
 	
 	@Override
+	public boolean isEmpty(int x, int y, int z) {
+		Block block = chunk.getBlock(x, y, z);
+		if (block != null) {
+			return block.isEmpty();
+		}
+		return true;
+	}
+	
+	@Override
 	public Biome getBiome(int x, int z) {
 		Block block = chunk.getBlock(x, 0, z);
 		if (block != null) {

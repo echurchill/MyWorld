@@ -76,6 +76,7 @@ public final class RealMaterial extends AbstractedThings {
 	public final static MaterialData LOG_ACACIA = define(Material.LOG, TreeSpecies.ACACIA);
 	public final static MaterialData LOG_DARK_OAK = define(Material.LOG, TreeSpecies.DARK_OAK);
 
+	@Deprecated // Use LEAVES_OAK instead
 	public final static MaterialData LEAVES = define(Material.LEAVES);
 	public final static MaterialData LEAVES_OAK = define(Material.LEAVES, TreeSpecies.GENERIC);
 	public final static MaterialData LEAVES_REDWOOD = define(Material.LEAVES, TreeSpecies.REDWOOD);
@@ -237,7 +238,16 @@ public final class RealMaterial extends AbstractedThings {
 	public final static MaterialData CLAY = define(Material.CLAY);
 	public final static MaterialData SUGAR_CANE_BLOCK = define(Material.SUGAR_CANE_BLOCK, 0); //TODO: wrong name; data variant
 	public final static MaterialData JUKEBOX = define(Material.JUKEBOX, 0); //TODO: data variant
+
+	//@Deprecated // Use FENCE_OAK instead
 	public final static MaterialData FENCE = define(Material.FENCE);
+//	public final static MaterialData FENCE_OAK = define(Material.FENCE, TreeSpecies.GENERIC);
+//	public final static MaterialData FENCE_REDWOOD = define(Material.FENCE, TreeSpecies.REDWOOD);
+//	public final static MaterialData FENCE_BIRCH = define(Material.FENCE, TreeSpecies.BIRCH);
+//	public final static MaterialData FENCE_JUNGLE = define(Material.FENCE, TreeSpecies.JUNGLE);
+//	public final static MaterialData FENCE_ACACIA = define(Material.FENCE, TreeSpecies.ACACIA);
+//	public final static MaterialData FENCE_DARK_OAK = define(Material.FENCE, TreeSpecies.DARK_OAK);
+
 	public final static MaterialData PUMPKIN = define(Material.PUMPKIN, 0); //TODO: data variant
 	public final static MaterialData NETHERRACK = define(Material.NETHERRACK);
 	public final static MaterialData SOUL_SAND = define(Material.SOUL_SAND, 0); //TODO: data variant
@@ -497,19 +507,20 @@ public final class RealMaterial extends AbstractedThings {
 		switch (material) {
 		case WOOD:
 		case SAPLING:
+		case FENCE:
 			switch (species) {
 			case GENERIC:
-				return define(Material.WOOD, 0);
+				return define(material, 0);
 			case REDWOOD:
-				return define(Material.WOOD, 1);
+				return define(material, 1);
 			case BIRCH:
-				return define(Material.WOOD, 2);
+				return define(material, 2);
 			case JUNGLE:
-				return define(Material.WOOD, 3);
+				return define(material, 3);
 			case ACACIA:
-				return define(Material.WOOD, 4);
+				return define(material, 4);
 			case DARK_OAK:
-				return define(Material.WOOD, 5);
+				return define(material, 5);
 			default:
 				return null;
 			}

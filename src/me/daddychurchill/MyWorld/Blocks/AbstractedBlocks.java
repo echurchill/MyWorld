@@ -48,6 +48,7 @@ public abstract class AbstractedBlocks {
 	public abstract MaterialData getBlock(int x, int y, int z);
 	public abstract void setBlock(int x, int y, int z, MaterialData data);
 	public abstract void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data);
+	public abstract boolean isEmpty(int x, int y, int z);
 	
 	// layers
 	public void setBlocks(int y, MaterialData data) {
@@ -67,6 +68,18 @@ public abstract class AbstractedBlocks {
 		setBlocks(x1, x2, y, y + 1, z1, z2, data);
 	}
 
+	// walls
+	public void setWallBlocks(int x1, int x2, int y, int z1, int z2, MaterialData data) {
+		setWallBlocks(x1, x2, y, y + 1, z1, z2, data);
+	}
+	public void setWallBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
+		setBlocks(x1, x2, y1, y2, z1, z1 + 1, data);
+		setBlocks(x1, x2, y1, y2, z2 - 1, z2, data);
+		setBlocks(x1, x1 + 1, y1, y2, z1 + 1, z2 - 1, data);
+		setBlocks(x2 - 1, x2, y1, y2, z1 + 1, z2 - 1, data);
+
+	}
+	
 	// biome support
 	public abstract Biome getBiome(int x, int z);
 	public abstract void setBiome(int x, int z, Biome biome);

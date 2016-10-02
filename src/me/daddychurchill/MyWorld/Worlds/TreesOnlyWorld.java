@@ -2,7 +2,9 @@ package me.daddychurchill.MyWorld.Worlds;
 
 import me.daddychurchill.MyWorld.CoreGenerator;
 import me.daddychurchill.MyWorld.Initializers.FlatTerrainInitializer;
+import me.daddychurchill.MyWorld.Populators.BushPopulator;
 import me.daddychurchill.MyWorld.Populators.SingleTreePopulator;
+import me.daddychurchill.MyWorld.Populators.WoodenFencePopulator;
 
 public class TreesOnlyWorld extends AbstractedWorld {
 
@@ -16,6 +18,8 @@ public class TreesOnlyWorld extends AbstractedWorld {
 		generator.addInitializer(new FlatTerrainInitializer());
 		
 		generator.addPopulator(new SingleTreePopulator());
+		generator.addPopulator(new WoodenFencePopulator());
+		generator.addPopulator(new BushPopulator());
 	}
 
 }

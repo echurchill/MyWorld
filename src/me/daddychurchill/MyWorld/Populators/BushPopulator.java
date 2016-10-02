@@ -1,29 +1,29 @@
 package me.daddychurchill.MyWorld.Populators;
-
-import org.bukkit.TreeType;
-
 import me.daddychurchill.MyWorld.Blocks.AbstractedBlocks;
 import me.daddychurchill.MyWorld.Blocks.FinalizeBlocks;
+import me.daddychurchill.MyWorld.Blocks.RealMaterial;
 import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
 
-public class SingleTreePopulator extends AbstractedPopulator {
+public class BushPopulator extends AbstractedPopulator {
 
-	public SingleTreePopulator() {
+	public BushPopulator() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void renderHere(FinalizeBlocks blocks) {
 		int y1 = blocks.getGenerator().getConfig().getStreetLevel();
-		blocks.generateTree(7, y1, 7, TreeType.TREE, TreeType.BIG_TREE, 
-									  TreeType.BIRCH, TreeType.TALL_BIRCH, 
-									  TreeType.DARK_OAK,
-									  TreeType.REDWOOD, TreeType.TALL_REDWOOD, TreeType.MEGA_REDWOOD);
+		for (int x = 0; x < 16; x++) {
+			for (int z = 0; z < 16; z++) {
+				if (blocks.getRandom().nextInt(4) == 0 && blocks.isEmpty(x, y1, z))
+					blocks.setBlock(x, y1, z, RealMaterial.TALL_GRASS);
+			}
+		}
 	}
 
 	@Override
 	public boolean isHere(AbstractedBlocks blocks) {
-		return (blocks.getChunkX() % 3 == 0 || blocks.getChunkZ() % 3 == 0);
+		return blocks.getRandom().nextBoolean();
 	}
 
 }
