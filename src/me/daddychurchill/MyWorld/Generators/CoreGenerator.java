@@ -13,8 +13,8 @@ import org.bukkit.generator.ChunkGenerator;
 
 import me.daddychurchill.MyWorld.Config;
 import me.daddychurchill.MyWorld.MyWorld;
-import me.daddychurchill.MyWorld.Blocks.FinalizeBlocks;
-import me.daddychurchill.MyWorld.Blocks.InitializeBlocks;
+import me.daddychurchill.MyWorld.Blocks.FinalizeChunk;
+import me.daddychurchill.MyWorld.Blocks.InitializeChunk;
 import me.daddychurchill.MyWorld.Support.Odds;
 
 public class CoreGenerator extends ChunkGenerator {
@@ -84,16 +84,16 @@ public class CoreGenerator extends ChunkGenerator {
 		try {
 
 			// place to work
-			InitializeBlocks blocks = new InitializeBlocks(this, this.createChunkData(world), biome, new Odds(random), x, z);
+			InitializeChunk chunk = new InitializeChunk(this, this.createChunkData(world), biome, new Odds(random), x, z);
 			
 			// see who wants to initialize it?
 			for (AbstractedInitializer generator : initializers) {
-				if (generator.isHere(blocks))
-					generator.renderHere(blocks);
+				if (generator.isHere(chunk))
+					generator.renderHere(chunk);
 			}
 		
 			// all done!
-			return blocks.getRawData();
+			return chunk.getRawData();
 			
 		} catch (Exception e) {
 			reportException("Generator FAILED", e);
@@ -110,12 +110,12 @@ public class CoreGenerator extends ChunkGenerator {
 			int chunkZ = source.getZ();
 			
 			// place to work
-			FinalizeBlocks blocks = new FinalizeBlocks(this, new Odds(random), source, chunkX, chunkZ);
+			FinalizeChunk chunk = new FinalizeChunk(this, new Odds(random), source, chunkX, chunkZ);
 			
 			// see who wants to populate it?
 			for (AbstractedPopulator generator : populators) {
-				if (generator.isHere(blocks))
-					generator.renderHere(blocks);
+				if (generator.isHere(chunk))
+					generator.renderHere(chunk);
 			}
 		
 		} catch (Exception e) {

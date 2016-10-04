@@ -1,7 +1,7 @@
 package me.daddychurchill.MyWorld.Initializers;
 
-import me.daddychurchill.MyWorld.Blocks.AbstractedBlocks;
-import me.daddychurchill.MyWorld.Blocks.InitializeBlocks;
+import me.daddychurchill.MyWorld.Blocks.AbstractedChunk;
+import me.daddychurchill.MyWorld.Blocks.InitializeChunk;
 import me.daddychurchill.MyWorld.Generators.AbstractedInitializer;
 import me.daddychurchill.MyWorld.Things.RealMaterial;
 
@@ -12,7 +12,7 @@ public class FlatTerrainInitializer extends AbstractedInitializer {
 	}
 
 	@Override
-	public void renderHere(InitializeBlocks blocks) {
+	public void renderHere(InitializeChunk blocks) {
 		int y1 = blocks.getGenerator().getConfig().getStreetLevel();
 		blocks.setBlocks(0, RealMaterial.BEDROCK);
 		blocks.setBlocks(1, y1 - 1, RealMaterial.DIRT);
@@ -20,7 +20,7 @@ public class FlatTerrainInitializer extends AbstractedInitializer {
 	}
 
 	@Override
-	public boolean isHere(AbstractedBlocks blocks) {
+	public boolean isHere(AbstractedChunk chunk) {
 		return true;
 	}
 

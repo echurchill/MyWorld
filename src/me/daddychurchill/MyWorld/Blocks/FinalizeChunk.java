@@ -12,14 +12,14 @@ import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 import me.daddychurchill.MyWorld.Support.Odds;
 
 // should be called final blocks
-public class FinalizeBlocks extends AbstractedBlocks {
+public class FinalizeChunk extends AbstractedChunk {
 	
-	protected Chunk chunk;
+	private Chunk bukkitChunk;
 
-	public FinalizeBlocks(CoreGenerator generator, Odds odds, Chunk chunk, int chunkX, int chunkZ) {
+	public FinalizeChunk(CoreGenerator generator, Odds odds, Chunk bukkitChunk, int chunkX, int chunkZ) {
 		super(generator, odds, chunkX, chunkZ);
 		
-		this.chunk = chunk;
+		this.bukkitChunk = bukkitChunk;
 	}
 	
 	public void generateTree(int x, int y, int z, TreeType ...treeTypes) {
@@ -35,7 +35,7 @@ public class FinalizeBlocks extends AbstractedBlocks {
 
 	@Override
 	public MaterialData getBlock(int x, int y, int z) {
-		Block block = chunk.getBlock(x, y, z);
+		Block block = bukkitChunk.getBlock(x, y, z);
 		if (block != null) {
 			BlockState state = block.getState();
 			if (state != null) {
@@ -47,7 +47,7 @@ public class FinalizeBlocks extends AbstractedBlocks {
 
 	@Override
 	public void setBlock(int x, int y, int z, MaterialData data) {
-		Block block = chunk.getBlock(x, y, z);
+		Block block = bukkitChunk.getBlock(x, y, z);
 		if (block != null) {
 			BlockState state = block.getState();
 			if (state != null) {
@@ -74,7 +74,7 @@ public class FinalizeBlocks extends AbstractedBlocks {
 	
 	@Override
 	public boolean isEmpty(int x, int y, int z) {
-		Block block = chunk.getBlock(x, y, z);
+		Block block = bukkitChunk.getBlock(x, y, z);
 		if (block != null) {
 			return block.isEmpty();
 		}
@@ -83,7 +83,7 @@ public class FinalizeBlocks extends AbstractedBlocks {
 	
 	@Override
 	public Biome getBiome(int x, int z) {
-		Block block = chunk.getBlock(x, 0, z);
+		Block block = bukkitChunk.getBlock(x, 0, z);
 		if (block != null) {
 			return block.getBiome();
 		} 
@@ -92,7 +92,7 @@ public class FinalizeBlocks extends AbstractedBlocks {
 
 	@Override
 	public void setBiome(int x, int z, Biome biome) {
-		Block block = chunk.getBlock(x, 0, z);
+		Block block = bukkitChunk.getBlock(x, 0, z);
 		if (block != null) {
 			block.setBiome(biome);
 		}

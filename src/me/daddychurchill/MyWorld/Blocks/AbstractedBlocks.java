@@ -1,6 +1,5 @@
 package me.daddychurchill.MyWorld.Blocks;
 
-import org.bukkit.Location;
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
@@ -10,16 +9,10 @@ import me.daddychurchill.MyWorld.Support.Odds;
 public abstract class AbstractedBlocks {
 
 	protected CoreGenerator generator;
-	protected int chunkX;
-	protected int chunkZ;
 	protected Odds odds;
 	
-	public static int Width = 16;
-	
-	public AbstractedBlocks(CoreGenerator generator, Odds odds, int chunkX, int chunkZ) {
+	public AbstractedBlocks(CoreGenerator generator, Odds odds) {
 		this.generator = generator;
-		this.chunkX = chunkX;
-		this.chunkZ = chunkZ;
 		this.odds = odds;
 	}
 	
@@ -27,22 +20,10 @@ public abstract class AbstractedBlocks {
 		return generator;
 	}
 	
-	public int getChunkX() {
-		return chunkX;
-	}
-
-	public int getChunkZ() {
-		return chunkZ;
-	}
-	
 	public Odds getOdds() {
 		return odds;
 	}
 
-	public Location getBlockWorldLocation(int x, int y, int z) {
-		return new Location(generator.getWorld(), chunkX * Width + x, y, chunkZ * Width + z);
-	}
-	
 	// simple 
 	public abstract MaterialData getBlock(int x, int y, int z);
 	public abstract void setBlock(int x, int y, int z, MaterialData data);
@@ -50,12 +31,8 @@ public abstract class AbstractedBlocks {
 	public abstract boolean isEmpty(int x, int y, int z);
 	
 	// layers
-	public void setBlocks(int y, MaterialData data) {
-		setBlocks(0, 16, y, y + 1, 0, 16, data);
-	}
-	public void setBlocks(int y1, int y2, MaterialData data) {
-		setBlocks(0, 16, y1, y2, 0, 16, data);
-	}
+	public abstract void setBlocks(int y, MaterialData data);
+	public abstract void setBlocks(int y1, int y2, MaterialData data);
 	
 	// columns 
 	public void setBlocks(int x, int y1, int y2, int z, MaterialData data) {
@@ -81,9 +58,5 @@ public abstract class AbstractedBlocks {
 	// biome support
 	public abstract Biome getBiome(int x, int z);
 	public abstract void setBiome(int x, int z, Biome biome);
-	public void setBiome(Biome biome) {
-		for (int x = 0; x < 16; x++)
-			for (int z = 0; z < 16; z++)
-				setBiome(x, z, biome);
-	}
+	public abstract void setBiome(Biome biome);
 }

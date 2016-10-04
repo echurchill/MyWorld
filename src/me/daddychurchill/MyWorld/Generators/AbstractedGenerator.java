@@ -1,6 +1,6 @@
 package me.daddychurchill.MyWorld.Generators;
 
-import me.daddychurchill.MyWorld.Blocks.AbstractedBlocks;
+import me.daddychurchill.MyWorld.Blocks.AbstractedChunk;
 
 public abstract class AbstractedGenerator {
 
@@ -8,5 +8,5 @@ public abstract class AbstractedGenerator {
 		// TODO Auto-generated constructor stub
 	}
 
-	public abstract boolean isHere(AbstractedBlocks blocks);
+	public abstract boolean isHere(AbstractedChunk chunk);
 }

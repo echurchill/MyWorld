@@ -1,6 +1,6 @@
 package me.daddychurchill.MyWorld.Generators;
 
-import me.daddychurchill.MyWorld.Blocks.FinalizeBlocks;
+import me.daddychurchill.MyWorld.Blocks.FinalizeChunk;
 
 public abstract class AbstractedPopulator extends AbstractedGenerator {
 
@@ -8,5 +8,5 @@ public abstract class AbstractedPopulator extends AbstractedGenerator {
 		// TODO Auto-generated constructor stub
 	}
 
-	public abstract void renderHere(FinalizeBlocks blocks);
+	public abstract void renderHere(FinalizeChunk chunk);
 }
