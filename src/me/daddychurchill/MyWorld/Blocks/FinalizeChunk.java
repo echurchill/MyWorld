@@ -23,7 +23,7 @@ public class FinalizeChunk extends AbstractedChunk {
 	}
 	
 	public void generateTree(int x, int y, int z, TreeType ...treeTypes) {
-		generateTree(x, y, z, treeTypes[odds.nextInt(treeTypes.length)]);
+		generateTree(x, y, z, treeTypes[getOdds().nextInt(treeTypes.length)]);
 	}
 
 	public void generateTree(int x, int y, int z, TreeType treeType) {

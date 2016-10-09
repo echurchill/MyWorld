@@ -12,14 +12,21 @@ public abstract class AbstractedChunk extends AbstractedBlocks {
 	public final static int Width = 16;
 	public final static int Height = 256;
 	
-	protected int chunkX;
-	protected int chunkZ;
+	private Odds odds;
+	private int chunkX;
+	private int chunkZ;
 
 	public AbstractedChunk(CoreGenerator generator, Odds odds, int chunkX, int chunkZ) {
-		super(generator, odds);
+		super(generator);
 
+		this.odds = odds;
 		this.chunkX = chunkX;
 		this.chunkZ = chunkZ;
+	}
+
+	@Override
+	public Odds getOdds() {
+		return odds;
 	}
 
 	public int getChunkX() {
@@ -30,8 +37,28 @@ public abstract class AbstractedChunk extends AbstractedBlocks {
 		return chunkZ;
 	}
 	
+	@Override
+	public int getSizeX() {
+		return Width;
+	}
+	
+	@Override
+	public int getSizeY() {
+		return Height;
+	}
+	
+	@Override
+	public int getSizeZ() {
+		return Width;
+	}
+	
+	@Override
+	public int getGroundY() {
+		return getGenerator().getConfig().getStreetLevel();
+	}
+	
 	public Location getBlockWorldLocation(int x, int y, int z) {
-		return new Location(generator.getWorld(), chunkX * Width + x, y, chunkZ * Width + z);
+		return new Location(getGenerator().getWorld(), chunkX * Width + x, y, chunkZ * Width + z);
 	}
 	
 	@Override

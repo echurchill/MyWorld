@@ -50,6 +50,12 @@ public class Odds {
 		return random;
 	}
 	
+	public Random setRandom(Random random) {
+		Random oldRandom = this.random;
+		this.random = random;
+		return oldRandom;
+	}
+	
 	public boolean playOdds(double chances) {
 		return random.nextDouble() < chances;
 	}
@@ -85,5 +91,13 @@ public class Odds {
 
 	public int nextInt(int bound) {
 		return random.nextInt(bound);
+	}
+
+	public int nextBetween(int min, int max) {
+		return random.nextInt(max - min) + min;
+	}
+
+	public int nextPast(int start, int range) {
+		return random.nextInt(range) + start;
 	}
 }

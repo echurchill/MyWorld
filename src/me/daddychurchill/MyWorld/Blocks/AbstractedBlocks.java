@@ -8,22 +8,23 @@ import me.daddychurchill.MyWorld.Support.Odds;
 
 public abstract class AbstractedBlocks {
 
-	protected CoreGenerator generator;
-	protected Odds odds;
+	private CoreGenerator generator;
 	
-	public AbstractedBlocks(CoreGenerator generator, Odds odds) {
+	public AbstractedBlocks(CoreGenerator generator) {
 		this.generator = generator;
-		this.odds = odds;
 	}
 	
+	public abstract Odds getOdds();
+	public abstract int getSizeX();
+	public abstract int getSizeY();
+	public abstract int getSizeZ();
+	public abstract int getGroundY();
+
 	public CoreGenerator getGenerator() {
 		return generator;
 	}
 	
-	public Odds getOdds() {
-		return odds;
-	}
-
+	
 	// simple 
 	public abstract MaterialData getBlock(int x, int y, int z);
 	public abstract void setBlock(int x, int y, int z, MaterialData data);

@@ -4,8 +4,8 @@ import me.daddychurchill.MyWorld.Blocks.InitializeChunk;
 
 public abstract class AbstractedInitializer extends AbstractedGenerator {
 
-	public AbstractedInitializer() {
-		// TODO Auto-generated constructor stub
+	public AbstractedInitializer(CoreGenerator generator) {
+		super(generator);
 	}
 
 	public abstract void renderHere(InitializeChunk chunk);

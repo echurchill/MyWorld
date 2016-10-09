@@ -3,12 +3,13 @@ package me.daddychurchill.MyWorld.Populators;
 import me.daddychurchill.MyWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.MyWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 import me.daddychurchill.MyWorld.Things.RealMaterial;
 
 public class WoodenFencePopulator extends AbstractedPopulator {
 
-	public WoodenFencePopulator() {
-		// TODO Auto-generated constructor stub
+	public WoodenFencePopulator(CoreGenerator generator) {
+		super(generator);
 	}
 
 	@Override

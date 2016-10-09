@@ -5,11 +5,13 @@ import org.bukkit.TreeType;
 import me.daddychurchill.MyWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.MyWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 
 public class SingleTreePopulator extends AbstractedPopulator {
 
-	public SingleTreePopulator() {
-		// TODO Auto-generated constructor stub
+	public SingleTreePopulator(CoreGenerator generator) {
+		super(generator);
+		
 	}
 
 	@Override

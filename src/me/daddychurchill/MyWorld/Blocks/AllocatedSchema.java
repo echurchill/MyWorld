@@ -1,11 +1,9 @@
 package me.daddychurchill.MyWorld.Blocks;
 
-import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
 import me.daddychurchill.MyWorld.Generators.CoreGenerator;
-import me.daddychurchill.MyWorld.Support.Odds;
 
 public abstract class AllocatedSchema extends AbstractedSchema {
 
@@ -14,8 +12,8 @@ public abstract class AllocatedSchema extends AbstractedSchema {
 	private int sizeZ;
 	private MaterialData[][][] arrayOfData;
 
-	public AllocatedSchema(CoreGenerator generator, Odds odds, int sizeX, int sizeY, int sizeZ) {
-		super(generator, odds);
+	public AllocatedSchema(CoreGenerator generator, int sizeX, int sizeY, int sizeZ) {
+		super(generator);
 
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
@@ -24,7 +22,8 @@ public abstract class AllocatedSchema extends AbstractedSchema {
 		for (int x = 0; x < sizeX; x++)
 			for (int y = 0; y < sizeY; y++)
 				for (int z = 0; z < sizeZ; z++)
-					arrayOfData[x][y][z] = new MaterialData(Material.AIR);
+					arrayOfData[x][y][z] = null;
+		
 	}
 	
 	@Override

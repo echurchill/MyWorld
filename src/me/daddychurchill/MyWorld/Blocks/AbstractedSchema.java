@@ -5,12 +5,17 @@ import me.daddychurchill.MyWorld.Support.Odds;
 
 public abstract class AbstractedSchema extends AbstractedBlocks {
 	
-	public AbstractedSchema(CoreGenerator generator, Odds odds) {
-		super(generator, odds);
+	private Odds odds;
+	
+	public AbstractedSchema(CoreGenerator generator) {
+		super(generator);
+		
+		odds = new Odds();
 	}
 	
-	public abstract int getSizeX();
-	public abstract int getSizeY();
-	public abstract int getSizeZ();
-	public abstract int getGroundY();
+	@Override
+	public Odds getOdds() {
+		return odds;
+	}
+	
 }

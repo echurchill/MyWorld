@@ -1,16 +1,14 @@
-package me.daddychurchill.MyWorld.Schemas;
+package me.daddychurchill.MyWorld.Blocks;
 
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.MyWorld.Blocks.AbstractedSchema;
 import me.daddychurchill.MyWorld.Generators.CoreGenerator;
-import me.daddychurchill.MyWorld.Support.Odds;
 
 public class MinecraftSchema extends AbstractedSchema {
 
-	public MinecraftSchema(CoreGenerator generator, Odds odds, String URI) {
-		super(generator, odds);
+	public MinecraftSchema(CoreGenerator generator, String URI) {
+		super(generator);
 		assert(false); //TODO: I need to actually implement this!
 	}
 
@@ -57,6 +55,12 @@ public class MinecraftSchema extends AbstractedSchema {
 	}
 
 	@Override
+	public boolean isEmpty(int x, int y, int z) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public void setBlocks(int y, MaterialData data) {
 		// TODO Auto-generated method stub
 		
@@ -66,12 +70,6 @@ public class MinecraftSchema extends AbstractedSchema {
 	public void setBlocks(int y1, int y2, MaterialData data) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public boolean isEmpty(int x, int y, int z) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -91,4 +89,5 @@ public class MinecraftSchema extends AbstractedSchema {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

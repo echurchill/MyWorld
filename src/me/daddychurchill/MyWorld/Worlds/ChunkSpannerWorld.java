@@ -11,7 +11,7 @@ public class ChunkSpannerWorld extends AbstractedWorld {
 
 	@Override
 	public void initializeGenerator(CoreGenerator generator) {
-		generator.addInitializer(new FlatTerrainInitializer());
+		generator.addInitializer(new FlatTerrainInitializer(generator));
 		
 //		generator.addPopulator(new SingleTreePopulator());
 //		generator.addPopulator(new WoodenFencePopulator());

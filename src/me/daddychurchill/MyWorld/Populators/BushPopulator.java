@@ -2,13 +2,14 @@ package me.daddychurchill.MyWorld.Populators;
 import me.daddychurchill.MyWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.MyWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.MyWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 import me.daddychurchill.MyWorld.Support.Odds;
 import me.daddychurchill.MyWorld.Things.RealMaterial;
 
 public class BushPopulator extends AbstractedPopulator {
 
-	public BushPopulator() {
-		// TODO Auto-generated constructor stub
+	public BushPopulator(CoreGenerator generator) {
+		super(generator);
 	}
 
 	@Override

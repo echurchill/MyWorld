@@ -3,12 +3,13 @@ package me.daddychurchill.MyWorld.Initializers;
 import me.daddychurchill.MyWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.MyWorld.Blocks.InitializeChunk;
 import me.daddychurchill.MyWorld.Generators.AbstractedInitializer;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 import me.daddychurchill.MyWorld.Things.RealMaterial;
 
 public class FlatTerrainInitializer extends AbstractedInitializer {
 
-	public FlatTerrainInitializer() {
-		// TODO Auto-generated constructor stub
+	public FlatTerrainInitializer(CoreGenerator generator) {
+		super(generator);
 	}
 
 	@Override
