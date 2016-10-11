@@ -3,7 +3,9 @@ package me.daddychurchill.MyWorld.Generators;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.bukkit.Chunk;
@@ -16,29 +18,42 @@ import me.daddychurchill.MyWorld.MyWorld;
 import me.daddychurchill.MyWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.MyWorld.Blocks.InitializeChunk;
 import me.daddychurchill.MyWorld.Support.Odds;
+import me.daddychurchill.MyWorld.Worlds.AbstractedWorld;
+import me.daddychurchill.MyWorld.Worlds.NaturalWorld;
+import me.daddychurchill.MyWorld.Worlds.TreesOnlyWorld;
 
 public class CoreGenerator extends ChunkGenerator {
 
 	private MyWorld plugin;
+	private String worldname;
+	private String worldstyle;
+	private AbstractedWorld worldmaker;
 	private Config config;
 	private World world;
 	private BlockCallback blockCallback;
 	private List<AbstractedInitializer> initializers;
 	private List<AbstractedPopulator> populators;
-	
-	public CoreGenerator(MyWorld plugin, Config config){
+
+	public CoreGenerator(MyWorld plugin, String name, String style){
 		super();
 		initializers = new ArrayList<AbstractedInitializer>();
 		populators = new ArrayList<AbstractedPopulator>();
 		
 		this.plugin = plugin;
-		this.config = config;
-		this.config.getWorldMaker().initializeGenerator(this);
+		this.config = new Config(this);
+		this.worldname = name;
+		this.worldstyle = style;
+
+		addDefaultWorldType("Nature", new NaturalWorld());
+		addWorldType("TreesOnly", new TreesOnlyWorld());
 	}
 	
 	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
 		this.world = world;
+		worldmaker = findWorldType(worldstyle);
+		worldmaker.initializeGenerator(this);
+
 		blockCallback = new BlockCallback(this);
 		return Arrays.asList((BlockPopulator) blockCallback);
 	}
@@ -51,6 +66,18 @@ public class CoreGenerator extends ChunkGenerator {
 		return world;
 	}
 
+	public AbstractedWorld getWorldMaker() {
+		return worldmaker;
+	}
+
+	public String getWorldname() {
+		return worldname;
+	}
+
+	public String getWorldstyle() {
+		return worldstyle;
+	}
+	
 	public Config getConfig() {
 		return config;
 	}
@@ -135,5 +162,30 @@ public class CoreGenerator extends ChunkGenerator {
 		public void populate(World world, Random random, Chunk source) {
 			chunkGen.populate(world, random, source);
 		}
+	}
+
+	private Map<String, AbstractedWorld> worldTypes;
+	private AbstractedWorld defaultWorld;
+	
+	private void addDefaultWorldType(String id, AbstractedWorld worldType) {
+		addWorldType(id, worldType);
+		defaultWorld = worldType;
+	}
+	
+	private void addWorldType(String id, AbstractedWorld worldType) {
+		if (worldTypes == null) {
+			worldTypes = new HashMap<String, AbstractedWorld>();
+			defaultWorld = worldType;
+		}
+		worldTypes.put(id, worldType);
+	}
+	
+	private AbstractedWorld findWorldType(String id) {
+		AbstractedWorld worldType = null;
+		if (worldTypes != null)
+			worldType = worldTypes.get(id);
+		if (worldType == null)
+			worldType = defaultWorld;
+		return worldType;
 	}
 }

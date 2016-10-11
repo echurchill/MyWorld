@@ -2,40 +2,33 @@ package me.daddychurchill.MyWorld;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import me.daddychurchill.MyWorld.Worlds.AbstractedWorld;
-import me.daddychurchill.MyWorld.Worlds.TreesOnlyWorld;
+import me.daddychurchill.MyWorld.Generators.CoreGenerator;
 
 public class Config {
-	private MyWorld plugin;
-	private String worldname;
-	private String worldstyle;
-	private AbstractedWorld worldMaker;
+	private CoreGenerator generator;
 	
 	private int streetLevel;
 	private int seabedLevel;
 	
 	public final static int defaultStreetLevel = 64;
-	public final static int defaultSeabedLevel = 63;
+	public final static int defaultSeabedLevel = 32;
 	
-	public Config(MyWorld plugin, String name, String style) {
+	public Config(CoreGenerator generator) {
 		super();
 		
-		this.plugin = plugin;
-		this.worldname = name;
-		this.worldstyle = style;
-		this.worldMaker = getWorldFor(style);
+		this.generator = generator;
 		
 		// remember the globals
 		int globalStreetLevel = defaultStreetLevel;
 		int globalSeabedLevel = defaultSeabedLevel;
 		
 		// global read yet?
-		FileConfiguration config = plugin.getConfig();
+		FileConfiguration config = generator.getPlugin().getConfig();
 		config.options().header("MyWorld Global Options");
 		config.addDefault("Global.StreetLevel", defaultStreetLevel);
 		config.addDefault("Global.SeabedLevel", defaultSeabedLevel);
 		config.options().copyDefaults(true);
-		plugin.saveConfig();
+		generator.getPlugin().saveConfig();
 		
 		// now read out the bits for real
 		globalStreetLevel = config.getInt("Global.StreetLevel");
@@ -48,7 +41,7 @@ public class Config {
 	
 	private int getWorldInt(FileConfiguration config, String option, int global) {
 		int result = global;
-		String path = worldname + "." + option;
+		String path = generator.getWorldname() + "." + option;
 		if (config.isSet(path))
 			result = config.getInt(path);
 		return result;
@@ -69,26 +62,6 @@ public class Config {
 //			result = config.getBoolean(path);
 //		return result;
 //	}
-	
-	private static AbstractedWorld getWorldFor(String style) {
-		return new TreesOnlyWorld();
-	}
-	
-	public AbstractedWorld getWorldMaker() {
-		return worldMaker;
-	}
-
-	public MyWorld getPlugin() {
-		return plugin;
-	}
-	
-	public String getWorldname() {
-		return worldname;
-	}
-
-	public String getWorldstyle() {
-		return worldstyle;
-	}
 	
 	public int getStreetLevel() {
 		return streetLevel;

@@ -21,5 +21,4 @@ public class TreesOnlyWorld extends AbstractedWorld {
 		generator.addPopulator(new WoodenFencePopulator(generator));
 		generator.addPopulator(new BushPopulator(generator));
 	}
-
 }

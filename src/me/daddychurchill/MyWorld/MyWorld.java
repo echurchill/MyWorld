@@ -28,7 +28,7 @@ public class MyWorld extends JavaPlugin{
 	}
 	
 	private ChunkGenerator getChunkGenerator(String name, String style) {
-		CoreGenerator generator = new CoreGenerator(this, new Config(this, name, style));
+		CoreGenerator generator = new CoreGenerator(this, name, style);
 
 		return generator;
 	}
@@ -53,15 +53,10 @@ public class MyWorld extends JavaPlugin{
 	}
 	
 	private void addCommand(AbstractedCommand exec) {
-		reportMessage("MY0");
 		if (exec != null) {
-			reportMessage("MY1");
 			PluginCommand cmd = getCommand(exec.getKeyword());
-			reportMessage("MY2");
 			if (cmd != null) {
-				reportMessage("MY3");
 				cmd.setExecutor(exec);
-				reportMessage("MY4");
 				return;
 			}
 			reportMessage("!!!! Cannot create command for " + exec.getKeyword());

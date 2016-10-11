@@ -85,6 +85,10 @@ public class Odds {
 		return items[random.nextInt(items.length)];
 	}
 	
+	public boolean nextBoolean() {
+		return random.nextBoolean();
+	}
+
 	public int nextInt() {
 		return random.nextInt();
 	}
@@ -99,5 +103,9 @@ public class Odds {
 
 	public int nextPast(int start, int range) {
 		return random.nextInt(range) + start;
+	}
+	
+	public double nextBetween(double min, double max) {
+		return min + random.nextDouble() * (max - min);
 	}
 }

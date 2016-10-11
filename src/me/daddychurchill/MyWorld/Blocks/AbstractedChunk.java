@@ -37,6 +37,14 @@ public abstract class AbstractedChunk extends AbstractedBlocks {
 		return chunkZ;
 	}
 	
+	public int getBlockWorldX(int x) {
+		return chunkX * 16 + x;
+	}
+
+	public int getBlockWorldZ(int z) {
+		return chunkZ * 16 + z;
+	}
+
 	@Override
 	public int getSizeX() {
 		return Width;
