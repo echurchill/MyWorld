@@ -24,7 +24,7 @@ public class Config {
 		
 		// global read yet?
 		FileConfiguration config = generator.getPlugin().getConfig();
-		config.options().header("MyWorld Global Options");
+		config.options().header("XWorld Global Options");
 		config.addDefault("Global.StreetLevel", defaultStreetLevel);
 		config.addDefault("Global.SeabedLevel", defaultSeabedLevel);
 		config.options().copyDefaults(true);

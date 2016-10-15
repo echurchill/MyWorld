@@ -4,7 +4,7 @@ version: 0.10
 load: startup
 author: DaddyChurchill
 commands:
-  myworld:
+  xworld:
     description: Sends you to the XWorld
     usage: /xworld
     

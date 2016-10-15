@@ -11,12 +11,12 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.daddychurchill.XWorld.Commands.AbstractedCommand;
-import me.daddychurchill.XWorld.Commands.MyWorldCommand;
+import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
 public class XWorld extends JavaPlugin{
 	
-	public static final Logger log = Logger.getLogger("Minecraft.MyWorld");
+	public static final Logger log = Logger.getLogger("Minecraft.XWorld");
    	
     public XWorld() {
 		super();
@@ -46,7 +46,7 @@ public class XWorld extends JavaPlugin{
 	public void onEnable() {
 		
 		// figure out permissions and associated commands
-		addCommand(new MyWorldCommand(this));
+		addCommand(new XWorldCommand(this));
 
 		// configFile can be retrieved via getConfig()
 		//reportMessage("Enabled" );
@@ -65,9 +65,9 @@ public class XWorld extends JavaPlugin{
 	}
 	
     // prime world support (loosely based on ExpansiveTerrain)
-	public final static String worldPrime_Name = "MyWorld";
+	public final static String worldPrime_Name = "XWorld";
 	private World worldPrime = null;
-	public World getMyWorld() {
+	public World getXWorld() {
 		
 		// created yet?
 		if (worldPrime == null) {
