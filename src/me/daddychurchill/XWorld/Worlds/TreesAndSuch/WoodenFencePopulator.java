@@ -1,15 +1,12 @@
-package me.daddychurchill.XWorld.Populators;
+package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
-import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
-import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class WoodenFencePopulator extends AbstractedPopulator {
+public class WoodenFencePopulator implements AbstractedPopulator {
 
-	public WoodenFencePopulator(CoreGenerator generator) {
-		super(generator);
+	public WoodenFencePopulator() {
 	}
 
 	@Override
@@ -19,7 +16,7 @@ public class WoodenFencePopulator extends AbstractedPopulator {
 	}
 
 	@Override
-	public boolean isHere(AbstractedChunk chunk) {
+	public boolean isHere(FinalizeChunk chunk) {
 		return (chunk.getChunkX() % 5 == 0 || chunk.getChunkZ() % 5 == 0);
 
 	}

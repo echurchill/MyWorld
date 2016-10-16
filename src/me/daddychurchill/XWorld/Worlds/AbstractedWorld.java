@@ -1,12 +1,10 @@
 package me.daddychurchill.XWorld.Worlds;
 
-import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
+import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 
 public abstract class AbstractedWorld {
 
-	public AbstractedWorld() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public abstract void initializeGenerator(CoreGenerator generator);
+	public abstract void renderHere(InitializeChunk chunk);
+	public abstract void renderHere(FinalizeChunk chunk);
 }

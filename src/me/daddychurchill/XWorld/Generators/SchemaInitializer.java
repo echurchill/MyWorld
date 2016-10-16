@@ -1,20 +1,11 @@
 package me.daddychurchill.XWorld.Generators;
 
 import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
-import me.daddychurchill.XWorld.Blocks.InitializeChunk;
+import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 
-public abstract class SchemaInitializer extends AbstractedInitializer {
+public interface SchemaInitializer {
 
-	public SchemaInitializer(CoreGenerator generator) {
-		super(generator);
-	}
-
-	@Override
-	public void renderHere(InitializeChunk chunk) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	protected abstract AbstractedSchema getSchema(CoreGenerator generator);
+	public boolean isHere(FinalizeChunk chunk);
+	public AbstractedSchema getSchema(CoreGenerator generator);
 
 }

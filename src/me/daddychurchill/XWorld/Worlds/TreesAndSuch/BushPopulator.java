@@ -1,15 +1,12 @@
-package me.daddychurchill.XWorld.Populators;
-import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
+package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
-import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class BushPopulator extends AbstractedPopulator {
+public class BushPopulator implements AbstractedPopulator {
 
-	public BushPopulator(CoreGenerator generator) {
-		super(generator);
+	public BushPopulator() {
 	}
 
 	@Override
@@ -24,7 +21,7 @@ public class BushPopulator extends AbstractedPopulator {
 	}
 
 	@Override
-	public boolean isHere(AbstractedChunk chunk) {
+	public boolean isHere(FinalizeChunk chunk) {
 		return chunk.getOdds().playOdds(Odds.oddsEnormouslyLikely);
 	}
 

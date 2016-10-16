@@ -1,18 +1,17 @@
-package me.daddychurchill.XWorld.Initializers;
+package me.daddychurchill.XWorld.Worlds.SimpleNature;
 
 import org.bukkit.TreeType;
 import org.bukkit.material.MaterialData;
 import org.bukkit.util.noise.NoiseGenerator;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
 
-import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractedInitializer;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class NaturalInitializer extends AbstractedInitializer {
+public class NaturalInitializer implements AbstractedInitializer {
 
 	protected int specialBlockOdds; // 1/n chance that there is minerals on this level
 	protected int specialsPerLayer; // number of minerals per layer
@@ -57,7 +56,6 @@ public class NaturalInitializer extends AbstractedInitializer {
 	private SimplexOctaveGenerator noiseGenerator;
 	
 	public NaturalInitializer(CoreGenerator generator) {
-		super(generator);
 		long worldSeed = generator.getWorld().getSeed(); 
 		odds = new Odds(worldSeed);
 
@@ -133,7 +131,7 @@ public class NaturalInitializer extends AbstractedInitializer {
 	}
 
 	@Override
-	public boolean isHere(AbstractedChunk chunk) {
+	public boolean isHere(InitializeChunk chunk) {
 		return true;
 	}
 

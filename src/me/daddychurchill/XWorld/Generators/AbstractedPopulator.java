@@ -2,12 +2,8 @@ package me.daddychurchill.XWorld.Generators;
 
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 
-public abstract class AbstractedPopulator extends AbstractedGenerator {
+public interface AbstractedPopulator {
 
-	public AbstractedPopulator(CoreGenerator generator) {
-		super(generator);
-		
-	}
-
+	public boolean isHere(FinalizeChunk chunk);
 	public abstract void renderHere(FinalizeChunk chunk);
 }

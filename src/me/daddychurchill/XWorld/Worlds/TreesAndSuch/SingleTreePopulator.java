@@ -1,17 +1,13 @@
-package me.daddychurchill.XWorld.Populators;
+package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
 import org.bukkit.TreeType;
 
-import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
-import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
-public class SingleTreePopulator extends AbstractedPopulator {
+public class SingleTreePopulator implements AbstractedPopulator {
 
-	public SingleTreePopulator(CoreGenerator generator) {
-		super(generator);
-		
+	public SingleTreePopulator() {
 	}
 
 	@Override
@@ -24,7 +20,7 @@ public class SingleTreePopulator extends AbstractedPopulator {
 	}
 
 	@Override
-	public boolean isHere(AbstractedChunk chunk) {
+	public boolean isHere(FinalizeChunk chunk) {
 		return (chunk.getChunkX() % 3 == 0 || chunk.getChunkZ() % 3 == 0);
 	}
 

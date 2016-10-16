@@ -1,7 +1,6 @@
 package me.daddychurchill.XWorld.Generators;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +18,10 @@ import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Worlds.AbstractedWorld;
-import me.daddychurchill.XWorld.Worlds.NaturalWorld;
-import me.daddychurchill.XWorld.Worlds.TreesOnlyWorld;
+import me.daddychurchill.XWorld.Worlds.WorldFactory;
+import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
+import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
+import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
 
 public class CoreGenerator extends ChunkGenerator {
 
@@ -31,28 +32,24 @@ public class CoreGenerator extends ChunkGenerator {
 	private Config config;
 	private World world;
 	private BlockCallback blockCallback;
-	private List<AbstractedInitializer> initializers;
-	private List<AbstractedPopulator> populators;
 
 	public CoreGenerator(XWorld plugin, String name, String style){
 		super();
-		initializers = new ArrayList<AbstractedInitializer>();
-		populators = new ArrayList<AbstractedPopulator>();
 		
 		this.plugin = plugin;
 		this.config = new Config(this);
 		this.worldname = name;
 		this.worldstyle = style;
 
-		addDefaultWorldType("Nature", new NaturalWorld());
-		addWorldType("TreesOnly", new TreesOnlyWorld());
+		addDefaultWorldType(new SimpleNatureFactory());
+		addWorldType(new TreesAndSuchFactory());
+		addWorldType(new BigTreeFactory());
 	}
 	
 	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
 		this.world = world;
 		worldmaker = findWorldType(worldstyle);
-		worldmaker.initializeGenerator(this);
 
 		blockCallback = new BlockCallback(this);
 		return Arrays.asList((BlockPopulator) blockCallback);
@@ -98,14 +95,6 @@ public class CoreGenerator extends ChunkGenerator {
 		plugin.reportException(message, e);
 	}
 	
-	public void addInitializer(AbstractedInitializer initializer) {
-		initializers.add(initializer);
-	}
-
-	public void addPopulator(AbstractedPopulator populator) {
-		populators.add(populator);
-	}
-
 	@Override
 	public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid biome) {
 		try {
@@ -113,11 +102,8 @@ public class CoreGenerator extends ChunkGenerator {
 			// place to work
 			InitializeChunk chunk = new InitializeChunk(this, this.createChunkData(world), biome, new Odds(random), x, z);
 			
-			// see who wants to initialize it?
-			for (AbstractedInitializer generator : initializers) {
-				if (generator.isHere(chunk))
-					generator.renderHere(chunk);
-			}
+			// let the world maker do its thing
+			worldmaker.renderHere(chunk);
 		
 			// all done!
 			return chunk.getRawData();
@@ -139,11 +125,8 @@ public class CoreGenerator extends ChunkGenerator {
 			// place to work
 			FinalizeChunk chunk = new FinalizeChunk(this, new Odds(random), source, chunkX, chunkZ);
 			
-			// see who wants to populate it?
-			for (AbstractedPopulator generator : populators) {
-				if (generator.isHere(chunk))
-					generator.renderHere(chunk);
-			}
+			// let the world maker do its thing
+			worldmaker.renderHere(chunk);
 		
 		} catch (Exception e) {
 			reportException("Populator FAILED", e);
@@ -164,28 +147,34 @@ public class CoreGenerator extends ChunkGenerator {
 		}
 	}
 
-	private Map<String, AbstractedWorld> worldTypes;
-	private AbstractedWorld defaultWorld;
+	private Map<String, WorldFactory> worldFactories;
+	private WorldFactory defaultWorld;
 	
-	private void addDefaultWorldType(String id, AbstractedWorld worldType) {
-		addWorldType(id, worldType);
-		defaultWorld = worldType;
+	private void addDefaultWorldType(WorldFactory factory) {
+		addWorldType(factory);
+		defaultWorld = factory;
 	}
 	
-	private void addWorldType(String id, AbstractedWorld worldType) {
-		if (worldTypes == null) {
-			worldTypes = new HashMap<String, AbstractedWorld>();
-			defaultWorld = worldType;
+	private void addWorldType(WorldFactory factory) {
+		if (worldFactories == null) {
+			worldFactories = new HashMap<String, WorldFactory>();
+			defaultWorld = factory;
 		}
-		worldTypes.put(id, worldType);
+		
+		// this style shouldn't be already here!
+		assert(!worldFactories.containsKey(factory.getStyle()));
+		worldFactories.put(factory.getStyle(), factory);
 	}
 	
 	private AbstractedWorld findWorldType(String id) {
-		AbstractedWorld worldType = null;
-		if (worldTypes != null)
-			worldType = worldTypes.get(id);
-		if (worldType == null)
-			worldType = defaultWorld;
-		return worldType;
+		WorldFactory worldFactory = null;
+		if (worldFactories != null)
+			worldFactory = worldFactories.get(id);
+		if (worldFactory == null)
+			worldFactory = defaultWorld;
+		
+		// better have found something!
+		assert(worldFactory != null);
+		return worldFactory.getWorld(this);
 	}
 }

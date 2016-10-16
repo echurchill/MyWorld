@@ -2,11 +2,8 @@ package me.daddychurchill.XWorld.Generators;
 
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 
-public abstract class AbstractedInitializer extends AbstractedGenerator {
+public interface AbstractedInitializer {
 
-	public AbstractedInitializer(CoreGenerator generator) {
-		super(generator);
-	}
-
-	public abstract void renderHere(InitializeChunk chunk);
+	public boolean isHere(InitializeChunk chunk);
+	public void renderHere(InitializeChunk chunk);
 }
