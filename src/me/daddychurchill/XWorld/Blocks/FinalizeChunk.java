@@ -10,6 +10,7 @@ import org.bukkit.material.MaterialData;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
+import me.daddychurchill.XWorld.Things.RealMaterial;
 
 // should be called final blocks
 public class FinalizeChunk extends AbstractedChunk {
@@ -27,8 +28,10 @@ public class FinalizeChunk extends AbstractedChunk {
 	}
 
 	public void generateTree(int x, int y, int z, TreeType treeType) {
+		setBlock(x, y, z, RealMaterial.AIR);
 		Location at = getBlockWorldLocation(x, y, z);
 		
+//		getGenerator().getWorld().generateTree(at, treeType);
 		if (!getGenerator().getWorld().generateTree(at, treeType))
 			getGenerator().getPlugin().reportMessage("Failed to create tree at " + at);
 	}

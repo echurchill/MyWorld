@@ -3,7 +3,7 @@ package me.daddychurchill.XWorld.Things;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
-public final class RealItem extends AbstractedThings {
+public final class RealItem extends AbstractThings {
 
 	public final static MaterialData IRON_SPADE = define(Material.IRON_SPADE);
 	public final static MaterialData IRON_PICKAXE = define(Material.IRON_PICKAXE);

@@ -3,14 +3,11 @@ package me.daddychurchill.XWorld;
 
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.daddychurchill.XWorld.Commands.AbstractedCommand;
+import me.daddychurchill.XWorld.Commands.AbstractCommand;
 import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
@@ -22,17 +19,15 @@ public class XWorld extends JavaPlugin{
 		super();
 	}
 
-	@Override
+	public CoreGenerator getCoreGenerator(String name, String style){
+		return CoreGenerator.getCoreGeneratorFor(this, name, style);
+	}
+    
+    @Override
 	public ChunkGenerator getDefaultWorldGenerator(String name, String style){
-		return getChunkGenerator(name, style);
+    	return getCoreGenerator(name, style);
 	}
 	
-	private ChunkGenerator getChunkGenerator(String name, String style) {
-		CoreGenerator generator = new CoreGenerator(this, name, style);
-
-		return generator;
-	}
-
 	@Override
 	public void onDisable() {
 		// remember for the next time
@@ -52,7 +47,7 @@ public class XWorld extends JavaPlugin{
 		//reportMessage("Enabled" );
 	}
 	
-	private void addCommand(AbstractedCommand exec) {
+	private void addCommand(AbstractCommand exec) {
 		if (exec != null) {
 			PluginCommand cmd = getCommand(exec.getKeyword());
 			if (cmd != null) {
@@ -62,28 +57,6 @@ public class XWorld extends JavaPlugin{
 			reportMessage("!!!! Cannot create command for " + exec.getKeyword());
 		} else
 			reportMessage("!!!! Cannot create command for NULL");
-	}
-	
-    // prime world support (loosely based on ExpansiveTerrain)
-	public final static String worldPrime_Name = "XWorld";
-	private World worldPrime = null;
-	public World getXWorld() {
-		
-		// created yet?
-		if (worldPrime == null) {
-			
-			// built yet?
-			worldPrime = Bukkit.getServer().getWorld(worldPrime_Name);
-			if (worldPrime == null) {
-				
-				// if neither then create/build it!
-				WorldCreator creator = new WorldCreator(worldPrime_Name);
-				creator.environment(World.Environment.NORMAL);
-				creator.generator(getChunkGenerator(worldPrime_Name, ""));
-				worldPrime = Bukkit.getServer().createWorld(creator);
-			}
-		}
-		return worldPrime;
 	}
 	
 	public String getPluginName() {

@@ -7,6 +7,6 @@ public class SimpleNatureWorld extends ChunkedWorld {
 	
 	public SimpleNatureWorld(CoreGenerator generator) {
 		
-		initializers.add(new NaturalInitializer(generator));
+		initializers.add(new SimpleNaturalInitializer(generator));
 	}
 }

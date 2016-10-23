@@ -9,5 +9,5 @@ public abstract class WorldFactory {
 	}
 	
 	public abstract String getStyle();
-	public abstract AbstractedWorld getWorld(CoreGenerator generator);
+	public abstract AbstractWorld getWorld(CoreGenerator generator);
 }

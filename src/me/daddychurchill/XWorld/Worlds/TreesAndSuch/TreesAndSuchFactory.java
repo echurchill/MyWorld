@@ -1,7 +1,7 @@
 package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
-import me.daddychurchill.XWorld.Worlds.AbstractedWorld;
+import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 import me.daddychurchill.XWorld.Worlds.WorldFactory;
 
 public class TreesAndSuchFactory extends WorldFactory {
@@ -16,7 +16,7 @@ public class TreesAndSuchFactory extends WorldFactory {
 	}
 
 	@Override
-	public AbstractedWorld getWorld(CoreGenerator generator) {
+	public AbstractWorld getWorld(CoreGenerator generator) {
 		return new TreesAndSuchWorld(generator);
 	}
 

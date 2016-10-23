@@ -3,9 +3,9 @@ package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 import org.bukkit.TreeType;
 
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
-import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.XWorld.Generators.AbstractPopulator;
 
-public class SingleTreePopulator implements AbstractedPopulator {
+public class SingleTreePopulator extends AbstractPopulator {
 
 	public SingleTreePopulator() {
 	}

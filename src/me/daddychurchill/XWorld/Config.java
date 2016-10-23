@@ -41,7 +41,7 @@ public class Config {
 	
 	private int getWorldInt(FileConfiguration config, String option, int global) {
 		int result = global;
-		String path = generator.getWorldname() + "." + option;
+		String path = generator.getName() + "." + option;
 		if (config.isSet(path))
 			result = config.getInt(path);
 		return result;

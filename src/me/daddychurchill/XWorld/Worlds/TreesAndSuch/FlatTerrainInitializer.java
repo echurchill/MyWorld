@@ -1,10 +1,10 @@
 package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
-import me.daddychurchill.XWorld.Generators.AbstractedInitializer;
+import me.daddychurchill.XWorld.Generators.AbstractInitializer;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class FlatTerrainInitializer implements AbstractedInitializer {
+public class FlatTerrainInitializer extends AbstractInitializer {
 
 	public FlatTerrainInitializer() {
 

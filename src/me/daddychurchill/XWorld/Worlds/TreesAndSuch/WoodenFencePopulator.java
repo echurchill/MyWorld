@@ -1,10 +1,10 @@
 package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
-import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.XWorld.Generators.AbstractPopulator;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class WoodenFencePopulator implements AbstractedPopulator {
+public class WoodenFencePopulator extends AbstractPopulator {
 
 	public WoodenFencePopulator() {
 	}

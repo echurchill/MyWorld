@@ -4,9 +4,9 @@ import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
-public abstract class AbstractedThings {
+public abstract class AbstractThings {
 
-	public AbstractedThings() {
+	public AbstractThings() {
 		// nothing to do
 	}
 

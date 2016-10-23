@@ -17,7 +17,7 @@ import me.daddychurchill.XWorld.XWorld;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Support.Odds;
-import me.daddychurchill.XWorld.Worlds.AbstractedWorld;
+import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 import me.daddychurchill.XWorld.Worlds.WorldFactory;
 import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
 import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
@@ -25,74 +25,93 @@ import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
 
 public class CoreGenerator extends ChunkGenerator {
 
-	private XWorld plugin;
-	private String worldname;
-	private String worldstyle;
-	private AbstractedWorld worldmaker;
-	private Config config;
-	private World world;
+	// all the registered world factories
+	private static Map<String, WorldFactory> worldFactories = new HashMap<String, WorldFactory>();
+	private static WorldFactory defaultFactory = null;
+	
+	// what can we make?
+	static {
+		addWorldType(new TreesAndSuchFactory());
+		addWorldType(new SimpleNatureFactory());
+		addWorldType(new BigTreeFactory());
+	}
+	
+	private XWorld worldPlugin;
+	private String worldName;
+	private String worldStyle;
+	private AbstractWorld worldMaker;
+	private Config worldConfig;
+	private World worldMinecraft;
 	private BlockCallback blockCallback;
 
 	public CoreGenerator(XWorld plugin, String name, String style){
 		super();
 		
-		this.plugin = plugin;
-		this.config = new Config(this);
-		this.worldname = name;
-		this.worldstyle = style;
-
-		addDefaultWorldType(new SimpleNatureFactory());
-		addWorldType(new TreesAndSuchFactory());
-		addWorldType(new BigTreeFactory());
+		worldPlugin = plugin;
+		worldConfig = new Config(this);
+		worldName = name;
+		worldStyle = style;
+	}
+	
+	public static CoreGenerator getCoreGeneratorFor(XWorld plugin, String name, String style) {
+		return new CoreGenerator(plugin, name, style);
 	}
 	
 	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
-		this.world = world;
-		worldmaker = findWorldType(worldstyle);
+		worldMinecraft = world;
+		
+		WorldFactory factory = findWorldFactory(worldStyle);
+		assert(factory != null);
 
-		blockCallback = new BlockCallback(this);
+		worldMaker = factory.getWorld(this);
+		worldStyle = factory.getStyle(); // reset this to what it ends up as
+		
+//		worldPlugin.reportMessage("Style = " + worldStyle);
+//		worldPlugin.reportMessage("Maker = " + worldMaker.toString());
+
+		this.blockCallback = new BlockCallback(this);
 		return Arrays.asList((BlockPopulator) blockCallback);
 	}
 	
 	public XWorld getPlugin() {
-		return plugin;
+		return worldPlugin;
 	}
 
 	public World getWorld() {
-		return world;
+		return worldMinecraft;
 	}
 
-	public AbstractedWorld getWorldMaker() {
-		return worldmaker;
+	public AbstractWorld getWorldMaker() {
+		return worldMaker;
 	}
 
-	public String getWorldname() {
-		return worldname;
+	public String getName() {
+		return worldName;
 	}
 
-	public String getWorldstyle() {
-		return worldstyle;
+	public String getStyle() {
+		return worldStyle;
 	}
 	
 	public Config getConfig() {
-		return config;
+		return worldConfig;
 	}
 	
 	public void reportMessage(String message) {
-		plugin.reportMessage(message);
+		worldPlugin.reportMessage(message);
 	}
 
 	public void reportMessage(String message1, String message2) {
-		plugin.reportMessage(message1, message2);
+		worldPlugin.reportMessage(message1, message2);
 	}
 	
 	public void reportFormatted(String format, Object ... objects) {
-		plugin.reportMessage(String.format(format, objects));
+		worldPlugin.reportMessage(String.format(format, objects));
 	}
 
 	public void reportException(String message, Exception e) {
-		plugin.reportException(message, e);
+		worldPlugin.reportException(message, e);
 	}
 	
 	@Override
@@ -103,7 +122,7 @@ public class CoreGenerator extends ChunkGenerator {
 			InitializeChunk chunk = new InitializeChunk(this, this.createChunkData(world), biome, new Odds(random), x, z);
 			
 			// let the world maker do its thing
-			worldmaker.renderHere(chunk);
+			worldMaker.renderHere(chunk);
 		
 			// all done!
 			return chunk.getRawData();
@@ -126,7 +145,7 @@ public class CoreGenerator extends ChunkGenerator {
 			FinalizeChunk chunk = new FinalizeChunk(this, new Odds(random), source, chunkX, chunkZ);
 			
 			// let the world maker do its thing
-			worldmaker.renderHere(chunk);
+			worldMaker.renderHere(chunk);
 		
 		} catch (Exception e) {
 			reportException("Populator FAILED", e);
@@ -147,34 +166,38 @@ public class CoreGenerator extends ChunkGenerator {
 		}
 	}
 
-	private Map<String, WorldFactory> worldFactories;
-	private WorldFactory defaultWorld;
+//	private static void addDefaultWorldType(WorldFactory factory) {
+//		addWorldType(factory);
+//		defaultFactory = factory;
+//	}
 	
-	private void addDefaultWorldType(WorldFactory factory) {
-		addWorldType(factory);
-		defaultWorld = factory;
-	}
-	
-	private void addWorldType(WorldFactory factory) {
-		if (worldFactories == null) {
-			worldFactories = new HashMap<String, WorldFactory>();
-			defaultWorld = factory;
-		}
+	private static void addWorldType(WorldFactory factory) {
+		if (defaultFactory == null)
+			defaultFactory = factory;
 		
 		// this style shouldn't be already here!
-		assert(!worldFactories.containsKey(factory.getStyle()));
-		worldFactories.put(factory.getStyle(), factory);
+		String style = factory.getStyle().toUpperCase();
+		assert(!worldFactories.containsKey(style));
+		worldFactories.put(style, factory);
 	}
 	
-	private AbstractedWorld findWorldType(String id) {
+	public static boolean supportsWorldType(String id) {
+		return worldFactories.containsKey(id.toUpperCase());
+	}
+	
+	public static String getDefaultWorldType() {
+		return defaultFactory.getStyle();
+	}
+	
+	private WorldFactory findWorldFactory(String id) {
 		WorldFactory worldFactory = null;
 		if (worldFactories != null)
-			worldFactory = worldFactories.get(id);
+			worldFactory = worldFactories.get(id.toUpperCase());
 		if (worldFactory == null)
-			worldFactory = defaultWorld;
+			worldFactory = defaultFactory;
 		
 		// better have found something!
-		assert(worldFactory != null);
-		return worldFactory.getWorld(this);
+		return worldFactory;
 	}
+	
 }

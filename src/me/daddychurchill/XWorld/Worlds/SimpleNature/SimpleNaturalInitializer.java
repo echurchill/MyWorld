@@ -1,37 +1,36 @@
 package me.daddychurchill.XWorld.Worlds.SimpleNature;
 
-import org.bukkit.TreeType;
 import org.bukkit.material.MaterialData;
 import org.bukkit.util.noise.NoiseGenerator;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
 
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
-import me.daddychurchill.XWorld.Generators.AbstractedInitializer;
+import me.daddychurchill.XWorld.Generators.AbstractInitializer;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class NaturalInitializer implements AbstractedInitializer {
+public class SimpleNaturalInitializer extends AbstractInitializer {
 
-	protected int specialBlockOdds; // 1/n chance that there is minerals on this level
-	protected int specialsPerLayer; // number of minerals per layer
+	//protected int specialBlockOdds; // 1/n chance that there is minerals on this level
+	//protected int specialsPerLayer; // number of minerals per layer
 	protected int seabedLevel; // how thick is the bottom bit
 	protected int middleThickness; // how thick is the middle bit
 	protected int seaLevel; // how thick is the water bit
-	protected int flowerOdds = 6; // 1/n chance that there is a flower on the grass, if there isn't a tree else make some tall grass
-	protected TreeType treeType;
-	protected int treesPerChunk;
+	//protected int flowerOdds = 6; // 1/n chance that there is a flower on the grass, if there isn't a tree else make some tall grass
+	//protected TreeType treeType;
+	//protected int treesPerChunk;
 	
 	protected MaterialData materialBottom; // what is the stone made of?
 	protected MaterialData materialMiddle; // what is dirt made of?
 	protected MaterialData materialTop; // what is grass made of?
 	protected MaterialData materialLiquidBase; // what is sand made of?
 	protected MaterialData materialLiquid; // what is the liquid made of?
-	protected MaterialData materialBlades; // what is a blade of grass made of?
-	protected MaterialData materialFlower; // what is a flower made of?
+	//protected MaterialData materialBlades; // what is a blade of grass made of?
+	//protected MaterialData materialFlower; // what is a flower made of?
 	
-	protected MaterialData materialMineral; // for later use in the populator
-	protected MaterialData materialFertile;
+	//protected MaterialData materialMineral; // for later use in the populator
+	//protected MaterialData materialFertile;
 //	protected int airId; 
 	
 	protected int shapeOctives = 3;
@@ -55,17 +54,17 @@ public class NaturalInitializer implements AbstractedInitializer {
 	private SimplexOctaveGenerator shiftGenerator;
 	private SimplexOctaveGenerator noiseGenerator;
 	
-	public NaturalInitializer(CoreGenerator generator) {
+	public SimpleNaturalInitializer(CoreGenerator generator) {
 		long worldSeed = generator.getWorld().getSeed(); 
 		odds = new Odds(worldSeed);
 
-		specialBlockOdds = odds.nextInt(3) + 1;
-		specialsPerLayer = odds.nextInt(20) + 10;
+		//specialBlockOdds = odds.nextInt(3) + 1;
+		//specialsPerLayer = odds.nextInt(20) + 10;
 		seaLevel = generator.getConfig().getStreetLevel();
 		seabedLevel = generator.getConfig().getSeabedLevel();
 		middleThickness = odds.nextBetween(3, 7);
-		treeType = odds.nextBoolean() ? TreeType.BIRCH : TreeType.TREE;
-		treesPerChunk = 2;
+		//treeType = odds.nextBoolean() ? TreeType.BIRCH : TreeType.TREE;
+		//treesPerChunk = 2;
 		
 		shapeXFactor = odds.nextBetween(0.75, 1.25);
 		shapeZFactor = odds.nextBetween(0.75, 1.25);
@@ -93,11 +92,11 @@ public class NaturalInitializer implements AbstractedInitializer {
 		materialTop = RealMaterial.GRASS;
 		materialLiquidBase = RealMaterial.SAND;
 		materialLiquid = RealMaterial.WATER_STATIONARY;
-		materialBlades = RealMaterial.TALL_GRASS;
-		materialFlower = odds.nextBoolean() ? RealMaterial.FLOWER_POPPY : RealMaterial.FLOWER_DANDELION;
+		//materialBlades = RealMaterial.TALL_GRASS;
+		//materialFlower = odds.nextBoolean() ? RealMaterial.FLOWER_POPPY : RealMaterial.FLOWER_DANDELION;
 		
-		materialMineral = materialBottom;
-		materialFertile = materialTop;
+		//materialMineral = materialBottom;
+		//materialFertile = materialTop;
 	}
 
 	protected int getHeight(double x, double z) {

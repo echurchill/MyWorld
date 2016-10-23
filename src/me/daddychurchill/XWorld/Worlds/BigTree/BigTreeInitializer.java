@@ -3,10 +3,10 @@ package me.daddychurchill.XWorld.Worlds.BigTree;
 import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
-import me.daddychurchill.XWorld.Generators.SchemaInitializer;
 import me.daddychurchill.XWorld.Schemas.BigTreeSchema;
+import me.daddychurchill.XWorld.Schemas.AbstractSchema;
 
-public class BigTreeInitializer implements SchemaInitializer {
+public class BigTreeInitializer extends AbstractSchema {
 
 	public BigTreeInitializer(CoreGenerator generator) {
 

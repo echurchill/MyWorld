@@ -1,24 +1,27 @@
 package me.daddychurchill.XWorld.Worlds;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
-import me.daddychurchill.XWorld.Generators.AbstractedInitializer;
-import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.XWorld.Generators.AbstractInitializer;
+import me.daddychurchill.XWorld.Generators.AbstractPopulator;
 
-public abstract class ChunkedWorld extends AbstractedWorld {
+public abstract class ChunkedWorld extends AbstractWorld {
 
-	protected List<AbstractedInitializer> initializers;
-	protected List<AbstractedPopulator> populators;
+	protected List<AbstractInitializer> initializers;
+	protected List<AbstractPopulator> populators;
 	
 	public ChunkedWorld() {
-		// TODO Auto-generated constructor stub
+		
+		initializers = new ArrayList<AbstractInitializer>();
+		populators = new ArrayList<AbstractPopulator>();
 	}
 
 	@Override
 	public void renderHere(InitializeChunk chunk) {
-		for (AbstractedInitializer initializer : initializers) {
+		for (AbstractInitializer initializer : initializers) {
 			if (initializer.isHere(chunk))
 				initializer.renderHere(chunk);
 		}
@@ -26,7 +29,7 @@ public abstract class ChunkedWorld extends AbstractedWorld {
 
 	@Override
 	public void renderHere(FinalizeChunk chunk) {
-		for (AbstractedPopulator populator : populators) {
+		for (AbstractPopulator populator : populators) {
 			if (populator.isHere(chunk))
 				populator.renderHere(chunk);
 		}

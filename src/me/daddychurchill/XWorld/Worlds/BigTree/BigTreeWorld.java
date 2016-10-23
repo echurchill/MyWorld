@@ -3,9 +3,9 @@ package me.daddychurchill.XWorld.Worlds.BigTree;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
-import me.daddychurchill.XWorld.Worlds.AbstractedWorld;
+import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
-public class BigTreeWorld extends AbstractedWorld {
+public class BigTreeWorld extends AbstractWorld {
 
 	public BigTreeWorld(CoreGenerator generator) {
 		// TODO Auto-generated constructor stub

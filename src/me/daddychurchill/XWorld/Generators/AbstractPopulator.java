@@ -2,8 +2,8 @@ package me.daddychurchill.XWorld.Generators;
 
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 
-public interface AbstractedPopulator {
+public abstract class AbstractPopulator {
 
-	public boolean isHere(FinalizeChunk chunk);
+	public abstract boolean isHere(FinalizeChunk chunk);
 	public abstract void renderHere(FinalizeChunk chunk);
 }

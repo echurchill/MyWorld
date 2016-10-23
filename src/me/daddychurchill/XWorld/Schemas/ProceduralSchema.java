@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Blocks;
+package me.daddychurchill.XWorld.Schemas;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 

@@ -1,8 +1,9 @@
-package me.daddychurchill.XWorld.Blocks;
+package me.daddychurchill.XWorld.Schemas;
 
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
+import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
 public class MinecraftSchema extends AbstractedSchema {

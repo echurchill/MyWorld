@@ -1,10 +1,10 @@
 package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
-import me.daddychurchill.XWorld.Generators.AbstractedPopulator;
+import me.daddychurchill.XWorld.Generators.AbstractPopulator;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class BushPopulator implements AbstractedPopulator {
+public class BushPopulator extends AbstractPopulator {
 
 	public BushPopulator() {
 	}

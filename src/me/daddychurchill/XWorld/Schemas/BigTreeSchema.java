@@ -1,7 +1,6 @@
 package me.daddychurchill.XWorld.Schemas;
 
 import me.daddychurchill.XWorld.Config;
-import me.daddychurchill.XWorld.Blocks.ProceduralSchema;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
