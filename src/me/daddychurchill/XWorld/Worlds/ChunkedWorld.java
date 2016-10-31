@@ -22,16 +22,16 @@ public abstract class ChunkedWorld extends AbstractWorld {
 	@Override
 	public void renderHere(InitializeChunk chunk) {
 		for (AbstractInitializer initializer : initializers) {
-			if (initializer.isHere(chunk))
-				initializer.renderHere(chunk);
+			if (initializer.isHere(this, chunk))
+				initializer.renderHere(this, chunk);
 		}
 	}
 
 	@Override
 	public void renderHere(FinalizeChunk chunk) {
 		for (AbstractPopulator populator : populators) {
-			if (populator.isHere(chunk))
-				populator.renderHere(chunk);
+			if (populator.isHere(this, chunk))
+				populator.renderHere(this, chunk);
 		}
 	}
 

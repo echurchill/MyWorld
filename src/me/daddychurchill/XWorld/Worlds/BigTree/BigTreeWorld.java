@@ -1,5 +1,6 @@
 package me.daddychurchill.XWorld.Worlds.BigTree;
 
+import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
@@ -23,13 +24,8 @@ public class BigTreeWorld extends AbstractWorld {
 		
 	}
 
-//	@Override
-//	public void initializeGenerator(CoreGenerator generator) {
-//		generator.addInitializer(new FlatTerrainInitializer(generator));
-//		
-////		generator.addPopulator(new SingleTreePopulator());
-////		generator.addPopulator(new WoodenFencePopulator());
-////		generator.addPopulator(new BushPopulator());
-//	}
-
+	@Override
+	public int getSurfaceY(AbstractedChunk chunk, int x, int z) {
+		return 64;
+	}
 }

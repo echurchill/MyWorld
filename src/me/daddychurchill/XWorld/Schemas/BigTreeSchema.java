@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Schemas;
 
-import me.daddychurchill.XWorld.Config;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
@@ -10,11 +9,6 @@ public class BigTreeSchema extends ProceduralSchema {
 	public BigTreeSchema(CoreGenerator generator) {
 		super(generator, 100, 150, 100);
 		
-	}
-
-	@Override
-	public int getGroundY() {
-		return Config.defaultStreetLevel;
 	}
 
 	@Override

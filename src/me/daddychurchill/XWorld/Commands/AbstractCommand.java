@@ -23,7 +23,7 @@ public abstract class AbstractCommand implements CommandExecutor {
         this.plugin = plugin;
     }
     
-    protected boolean ifMatch(String argument, String ... matches) {
+    public static boolean ifMatch(String argument, String ... matches) {
     	for (int i = 0; i < matches.length; i++)
     		if (argument.equalsIgnoreCase(matches[i]))
     			return true;

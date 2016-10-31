@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Schemas;
 
-import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
 import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
@@ -27,12 +26,6 @@ public class MinecraftSchema extends AbstractedSchema {
 
 	@Override
 	public int getSizeZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getGroundY() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -72,23 +65,4 @@ public class MinecraftSchema extends AbstractedSchema {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public Biome getBiome(int x, int z) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setBiome(int x, int z, Biome biome) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setBiome(Biome biome) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

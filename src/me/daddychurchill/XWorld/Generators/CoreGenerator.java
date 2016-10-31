@@ -2,12 +2,15 @@ package me.daddychurchill.XWorld.Generators;
 
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
@@ -16,9 +19,11 @@ import me.daddychurchill.XWorld.Config;
 import me.daddychurchill.XWorld.XWorld;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
+import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 import me.daddychurchill.XWorld.Worlds.WorldFactory;
+import me.daddychurchill.XWorld.Worlds.BigFlat.BigFlatFactory;
 import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
 import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
 import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
@@ -33,6 +38,7 @@ public class CoreGenerator extends ChunkGenerator {
 	static {
 		addWorldType(new TreesAndSuchFactory());
 		addWorldType(new SimpleNatureFactory());
+		addWorldType(new BigFlatFactory());
 		addWorldType(new BigTreeFactory());
 	}
 	
@@ -63,7 +69,7 @@ public class CoreGenerator extends ChunkGenerator {
 		
 		WorldFactory factory = findWorldFactory(worldStyle);
 		assert(factory != null);
-
+		
 		worldMaker = factory.getWorld(this);
 		worldStyle = factory.getStyle(); // reset this to what it ends up as
 		
@@ -72,6 +78,15 @@ public class CoreGenerator extends ChunkGenerator {
 
 		this.blockCallback = new BlockCallback(this);
 		return Arrays.asList((BlockPopulator) blockCallback);
+	}
+	
+	@Override
+	public Location getFixedSpawnLocation(World world, Random random) {
+		Location result = super.getFixedSpawnLocation(world, random);
+		if (result == null)
+			result = new Location(world, random.nextInt(64) - 32, world.getSeaLevel(), random.nextInt(64) - 32);
+		
+		return worldMaker.fixSpawnLocation(world, random, result);
 	}
 	
 	public XWorld getPlugin() {
@@ -177,6 +192,7 @@ public class CoreGenerator extends ChunkGenerator {
 		
 		// this style shouldn't be already here!
 		String style = factory.getStyle().toUpperCase();
+		assert(!XWorldCommand.ifParam(style));
 		assert(!worldFactories.containsKey(style));
 		worldFactories.put(style, factory);
 	}
@@ -187,6 +203,20 @@ public class CoreGenerator extends ChunkGenerator {
 	
 	public static String getDefaultWorldType() {
 		return defaultFactory.getStyle();
+	}
+	
+	public static String[] getWorldTypes() {
+		assert(worldFactories != null);
+		int index = 0;
+		String[] results = new String[worldFactories.size()];
+		Collection<WorldFactory> factories = worldFactories.values();
+		Iterator<WorldFactory> looper = factories.iterator();
+		while (looper.hasNext()) {
+			WorldFactory factory = looper.next();
+			results[index] = factory.getStyle();
+			index++;
+		}
+		return results;
 	}
 	
 	private WorldFactory findWorldFactory(String id) {

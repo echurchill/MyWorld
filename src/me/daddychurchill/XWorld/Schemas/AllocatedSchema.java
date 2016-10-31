@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Schemas;
 
-import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
 import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
@@ -46,11 +45,6 @@ public abstract class AllocatedSchema extends AbstractedSchema {
 		return arrayOfData;
 	}
 	
-	@Override
-	public Biome getBiome(int x, int z) {
-		return Biome.PLAINS;
-	}
-	
 	protected int clamp(int i, int max) {
 		if (i < 0)
 			return 0;
@@ -66,16 +60,6 @@ public abstract class AllocatedSchema extends AbstractedSchema {
 		y = clamp(y, sizeY);
 		z = clamp(z, sizeZ);
 		return arrayOfData[x][y][z];
-	}
-	
-	@Override
-	public void setBiome(int x, int z, Biome biome) {
-		// schemas don't support biomes
-	}
-	
-	@Override
-	public void setBiome(Biome biome) {
-		// schemas don't support biomes
 	}
 	
 	@Override

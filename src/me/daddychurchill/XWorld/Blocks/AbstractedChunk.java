@@ -60,11 +60,6 @@ public abstract class AbstractedChunk extends AbstractedBlocks {
 		return Width;
 	}
 	
-	@Override
-	public int getGroundY() {
-		return getGenerator().getConfig().getStreetLevel();
-	}
-	
 	public Location getBlockWorldLocation(int x, int y, int z) {
 		return new Location(getGenerator().getWorld(), chunkX * Width + x, y, chunkZ * Width + z);
 	}
@@ -77,11 +72,11 @@ public abstract class AbstractedChunk extends AbstractedBlocks {
 	public void setBlocks(int y1, int y2, MaterialData data) {
 		setBlocks(0, Width, y1, y2, 0, Width, data);
 	}
-	
+
 	@Override
 	public void setBiome(Biome biome) {
-		for (int x = 0; x < 16; x++)
-			for (int z = 0; z < 16; z++)
+		for (int x = 0; x < Width; x++)
+			for (int z = 0; z < Width; z++)
 				setBiome(x, z, biome);
 	}
 }

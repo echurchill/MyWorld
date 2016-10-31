@@ -31,9 +31,9 @@ public class FinalizeChunk extends AbstractedChunk {
 		setBlock(x, y, z, RealMaterial.AIR);
 		Location at = getBlockWorldLocation(x, y, z);
 		
-//		getGenerator().getWorld().generateTree(at, treeType);
-		if (!getGenerator().getWorld().generateTree(at, treeType))
-			getGenerator().getPlugin().reportMessage("Failed to create tree at " + at);
+		getGenerator().getWorld().generateTree(at, treeType);
+//		if (!getGenerator().getWorld().generateTree(at, treeType))
+//			getGenerator().getPlugin().reportMessage("Failed to create tree at " + at);
 	}
 
 	@Override
