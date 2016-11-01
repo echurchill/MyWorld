@@ -5,6 +5,7 @@ import org.bukkit.material.MaterialData;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
+import me.daddychurchill.XWorld.Things.RealMaterial;
 
 public abstract class AbstractedBlocks {
 
@@ -85,6 +86,32 @@ public abstract class AbstractedBlocks {
 		setBlocks(x2 - 1, x2, y1, y2, z1 + 1, z2 - 1, data);
 	}
 	
+	// emptying
+	public void emptyBlock(int x, int y, int z) {
+		setBlock(x, y, z, RealMaterial.AIR);
+	}
+	
+	public void emptyBlocks(int x, int y1, int y2, int z) {
+		setBlocks(x, y1, y2, z, RealMaterial.AIR);
+	}
+	
+	public void emptyBlocks(int x1, int x2, int y, int z1, int z2) {
+		setBlocks(x1, x2, y, z1, z2, RealMaterial.AIR);
+	}
+
+	public void emptyBlocks(int x1, int x2, int y1, int y2, int z1, int z2) {
+		setBlocks(x1, x2, y1, y2, z1, z2, RealMaterial.AIR);
+	}
+	
+	public void emptyBlocks(int y) {
+		setBlocks(y, RealMaterial.AIR);
+	}
+	
+	public void emptyBlocks(int y1, int y2) {
+		setBlocks(y1, y2, RealMaterial.AIR);
+	}
+	
+	// foundations
 	public void setBlocksBelow(int x, int y, int z, MaterialData data) {
 		for (int b = y - 1; y >= 0; y--)
 			if (isEmpty(x, b, z))
