@@ -15,6 +15,6 @@ public class BigFlatWorld extends FlatChunkedWorld {
 	
 	@Override
 	protected int getTopY() {
-		return 2;
+		return 16;
 	}
 }

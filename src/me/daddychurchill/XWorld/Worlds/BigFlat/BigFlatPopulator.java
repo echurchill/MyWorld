@@ -18,8 +18,8 @@ public class BigFlatPopulator extends AbstractPopulator {
 
 	@Override
 	public void renderHere(AbstractWorld world, FinalizeChunk chunk) {
-		for (int x = 1; x < 16; x = x + 2) {
-			for (int z = 1; z < 16; z = z + 2) {
+		for (int x = 1; x < 16; x = x + 4) {
+			for (int z = 1; z < 16; z = z + 4) {
 				int y = world.getSurfaceY(chunk, x, z);
 				
 				chunk.setBlocks(x, y, y + 5, z, RealMaterial.ANDESITE);

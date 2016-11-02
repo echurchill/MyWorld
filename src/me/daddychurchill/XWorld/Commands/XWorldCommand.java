@@ -28,17 +28,16 @@ public class XWorldCommand extends AbstractCommand {
 	private static String TheEndId1 = "The_End";
 	private static String TheEndId2 = "TheEnd";
 	private static String TheEndId3 = "End";
-	private static String ListMode1 = "List";
 	
 	public static boolean ifParam(String param) {
-		return ifMatch(param, NetherId1, TheEndId1, TheEndId2, TheEndId3, ListMode1);
+		return ifMatch(param, NetherId1, TheEndId1, TheEndId2, TheEndId3);
 	}
 	
 	@Override
 	public boolean doCommand(Player player, Command command, String[] arguments) {
 
 		// look at arguments
-		boolean listMode = false;
+		boolean doIt = false;
 		String worldType = "";
 		Environment worldEnvironment = Environment.NORMAL;
 		for (int i = 0; i < arguments.length; i++) {
@@ -47,8 +46,6 @@ public class XWorldCommand extends AbstractCommand {
 				worldEnvironment = Environment.NETHER;
 			else if (ifMatch(argument, TheEndId1, TheEndId2, TheEndId3))
 				worldEnvironment = Environment.THE_END;
-			else if (ifMatch(argument, ListMode1))
-				listMode = true;
 			else if (CoreGenerator.supportsWorldType(arguments[i]))
 				worldType = arguments[i];
 		}
