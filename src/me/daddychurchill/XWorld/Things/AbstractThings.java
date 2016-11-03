@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Things;
 
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
@@ -26,9 +25,8 @@ public abstract class AbstractThings {
 	}
 	
 	@SuppressWarnings("deprecation")
-	protected static MaterialData define(Material material, DyeColor color) {
+	protected static MaterialData define(Material material, int data, int orWith) {
 		assertTest(material);
-		return new MaterialData(material, color.getData());
+		return new MaterialData(material, (byte)(data + orWith));
 	}
-	
 }

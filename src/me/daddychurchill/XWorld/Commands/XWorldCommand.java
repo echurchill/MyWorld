@@ -42,34 +42,20 @@ public class XWorldCommand extends AbstractCommand {
 		Environment worldEnvironment = Environment.NORMAL;
 		for (int i = 0; i < arguments.length; i++) {
 			String argument = arguments[i];
-			if (ifMatch(argument, NetherId1))
+			if (ifMatch(argument, NetherId1)) {
 				worldEnvironment = Environment.NETHER;
-			else if (ifMatch(argument, TheEndId1, TheEndId2, TheEndId3))
+				doIt = true;
+			} else if (ifMatch(argument, TheEndId1, TheEndId2, TheEndId3)) {
 				worldEnvironment = Environment.THE_END;
-			else if (CoreGenerator.supportsWorldType(arguments[i]))
+				doIt = true;
+			} else if (CoreGenerator.supportsWorldType(arguments[i])) {
 				worldType = arguments[i];
+				doIt = true;
+			}
 		}
 		
-		// show the user what we can do?
-		if (listMode) {
-			StringBuilder result = new StringBuilder();
-			result.append("/");
-			result.append(getKeyword());
-			result.append(" ");
-			result.append(ListMode1);
-			result.append(" | [");
-			result.append(NetherId1);
-			result.append(" | ");
-			result.append(TheEndId1);
-			result.append(" ]");
-			String[] worldTypes = CoreGenerator.getWorldTypes();
-			for (int i = 0; i < worldTypes.length; i++) {
-				result.append(" ");
-				result.append(worldTypes[i]);
-			}
-			player.sendMessage(result.toString());
-			return true;
-		} else {
+		// let's do it?
+		if (doIt) {
 			
 			// figure out what we call it
 			String worldName = worldPrime_Name;
@@ -103,6 +89,23 @@ public class XWorldCommand extends AbstractCommand {
 				player.teleport(world.getSpawnLocation());
 				return true;
 			}
+		} else {
+			// show the user what we can do?
+			StringBuilder result = new StringBuilder();
+			result.append("/");
+			result.append(getKeyword());
+			result.append(" [");
+			result.append(NetherId1);
+			result.append(" | ");
+			result.append(TheEndId1);
+			result.append(" ]");
+			String[] worldTypes = CoreGenerator.getWorldTypes();
+			for (int i = 0; i < worldTypes.length; i++) {
+				result.append(" ");
+				result.append(worldTypes[i]);
+			}
+			player.sendMessage(result.toString());
+			return true;
 		}
 	}
 }

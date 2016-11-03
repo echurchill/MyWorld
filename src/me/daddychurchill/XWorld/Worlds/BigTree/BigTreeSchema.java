@@ -1,6 +1,7 @@
-package me.daddychurchill.XWorld.Schemas;
+package me.daddychurchill.XWorld.Worlds.BigTree;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Schemas.ProceduralSchema;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
@@ -41,7 +42,7 @@ public class BigTreeSchema extends ProceduralSchema {
 			setBlocks(centerX - halfSize, centerX + halfSize, 
 					y, y + size, 
 					centerZ - halfSize, centerZ + halfSize, 
-					RealMaterial.WOOL_GREEN);
+					RealMaterial.LEAVES_OAK_NODECAY);
 		}
 	}
 

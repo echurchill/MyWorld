@@ -76,6 +76,14 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData LEAVES_ACACIA = define(Material.LEAVES, TreeSpecies.ACACIA);
 	public final static MaterialData LEAVES_DARK_OAK = define(Material.LEAVES, TreeSpecies.DARK_OAK);
 
+	private final static int NoDecay = 8;
+	public final static MaterialData LEAVES_OAK_NODECAY = define(Material.LEAVES, TreeSpecies.GENERIC, NoDecay);
+	public final static MaterialData LEAVES_REDWOOD_NODECAY = define(Material.LEAVES, TreeSpecies.REDWOOD, NoDecay);
+	public final static MaterialData LEAVES_BIRCH_NODECAY = define(Material.LEAVES, TreeSpecies.BIRCH, NoDecay);
+	public final static MaterialData LEAVES_JUNGLE_NODECAY = define(Material.LEAVES, TreeSpecies.JUNGLE, NoDecay);
+	public final static MaterialData LEAVES_ACACIA_NODECAY = define(Material.LEAVES, TreeSpecies.ACACIA, NoDecay);
+	public final static MaterialData LEAVES_DARK_OAK_NODECAY = define(Material.LEAVES, TreeSpecies.DARK_OAK, NoDecay);
+
 	public final static MaterialData SPONGE_DRY = define(Material.SPONGE, 1);
 	public final static MaterialData SPONGE_WET = define(Material.SPONGE, 1);
 
@@ -513,7 +521,17 @@ public final class RealMaterial extends AbstractThings {
 		assert(material.getId() > 255);
 	}
 	
-	private static MaterialData define (Material material, TreeSpecies species) {
+	@SuppressWarnings("deprecation")
+	protected static MaterialData define(Material material, DyeColor color) {
+		assertTest(material);
+		return new MaterialData(material, color.getData());
+	}
+
+	private static MaterialData define(Material material, TreeSpecies species) {
+		return define(material, species, 0);
+	}
+	
+	private static MaterialData define(Material material, TreeSpecies species, int orWith) {
 		switch (material) {
 		case WOOD:
 		case SAPLING:
@@ -556,17 +574,17 @@ public final class RealMaterial extends AbstractThings {
 		case LEAVES_2:
 			switch (species) {
 			case GENERIC:
-				return define(Material.LEAVES, 0);
+				return define(Material.LEAVES, 0, orWith);
 			case REDWOOD:
-				return define(Material.LEAVES, 1);
+				return define(Material.LEAVES, 1, orWith);
 			case BIRCH:
-				return define(Material.LEAVES, 2);
+				return define(Material.LEAVES, 2, orWith);
 			case JUNGLE:
-				return define(Material.LEAVES, 3);
+				return define(Material.LEAVES, 3, orWith);
 			case ACACIA:
-				return define(Material.LEAVES_2, 0);
+				return define(Material.LEAVES_2, 0, orWith);
 			case DARK_OAK:
-				return define(Material.LEAVES_2, 1);
+				return define(Material.LEAVES_2, 1, orWith);
 			default:
 				return null;
 			}
