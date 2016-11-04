@@ -76,7 +76,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData LEAVES_ACACIA = define(Material.LEAVES, TreeSpecies.ACACIA);
 	public final static MaterialData LEAVES_DARK_OAK = define(Material.LEAVES, TreeSpecies.DARK_OAK);
 
-	private final static int NoDecay = 8;
+	private final static int NoDecay = 4;
 	public final static MaterialData LEAVES_OAK_NODECAY = define(Material.LEAVES, TreeSpecies.GENERIC, NoDecay);
 	public final static MaterialData LEAVES_REDWOOD_NODECAY = define(Material.LEAVES, TreeSpecies.REDWOOD, NoDecay);
 	public final static MaterialData LEAVES_BIRCH_NODECAY = define(Material.LEAVES, TreeSpecies.BIRCH, NoDecay);
