@@ -9,7 +9,7 @@ import me.daddychurchill.XWorld.Worlds.Standard.SingleTreePopulator;
 public class RingWorld extends ShapedWorld {
 
 	public RingWorld(CoreGenerator generator) {
-		super(generator, new RingWorldShape(generator, 400, 192));
+		super(generator, new RingWorldShape(generator, 200, 120));
 		
 		initializers.add(new NaturalTerrainInitializer(getWorldShape()));
 		

@@ -81,6 +81,10 @@ public class NaturalGroundShape extends AbstractedShape {
 	public int getSeaLevel() {
 		return seaLevel;
 	}
+	
+	protected double getSurfaceNoiseOnWorld(double x, double z) {
+		return noiseGenerator.noise(x / noiseXFactor, z / noiseZFactor, noiseFrequency, noiseAmplitude) * noiseVScale;
+	}
 
 	@Override
 	public double getSurfaceYOnWorld(double x, double z) {
@@ -89,8 +93,6 @@ public class NaturalGroundShape extends AbstractedShape {
 		if (shiftY > shapeY)
 			shapeY = shiftY;
 		
-		double noiseY = noiseGenerator.noise(x / noiseXFactor, z / noiseZFactor, noiseFrequency, noiseAmplitude) * noiseVScale;
-		
-		return (shapeY + noiseY) + seaLevel;
+		return (shapeY + getSurfaceNoiseOnWorld(x, z)) + seaLevel;
 	}
 }

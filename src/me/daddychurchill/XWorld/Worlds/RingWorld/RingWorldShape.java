@@ -41,7 +41,7 @@ public class RingWorldShape extends NaturalGroundShape {
 				return ringTop;
 		} else {
 			double defaultY = super.getSurfaceYOnWorld(x, z);
-			double ringZtoY = ringTop - Math.sqrt((1.0 - ((z * z) / ringRange2)) * ringHeight2);
+			double ringZtoY = Math.min(ringTop, ringTop - Math.sqrt((1.0 - ((z * z) / ringRange2)) * ringHeight2) + getSurfaceNoiseOnWorld(x, z));
 			if (ringZtoY > defaultY)
 				return ringZtoY;
 			else
