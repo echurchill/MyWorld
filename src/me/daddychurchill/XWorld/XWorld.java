@@ -12,8 +12,8 @@ import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.Alex.AlexFactory;
 import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
+import me.daddychurchill.XWorld.Worlds.RingWorld.RingWorldFactory;
 import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
-import me.daddychurchill.XWorld.Worlds.SimpleRing.RingWorldFactory;
 import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
 
 public class XWorld extends JavaPlugin{

@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.SimpleRing;
+package me.daddychurchill.XWorld.Worlds.RingWorld;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.Shapes.NaturalGroundShape;
