@@ -10,6 +10,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.daddychurchill.XWorld.Commands.AbstractCommand;
 import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Worlds.Alex.AlexFactory;
+import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
+import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
+import me.daddychurchill.XWorld.Worlds.SimpleRing.RingWorldFactory;
+import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
 
 public class XWorld extends JavaPlugin{
 	
@@ -17,6 +22,12 @@ public class XWorld extends JavaPlugin{
    	
     public XWorld() {
 		super();
+		
+		CoreGenerator.addWorldType(new TreesAndSuchFactory());
+		CoreGenerator.addWorldType(new SimpleNatureFactory());
+		CoreGenerator.addWorldType(new AlexFactory());
+		CoreGenerator.addWorldType(new BigTreeFactory());
+		CoreGenerator.addWorldType(new RingWorldFactory());
 	}
 
 	public CoreGenerator getCoreGenerator(String name, String style){

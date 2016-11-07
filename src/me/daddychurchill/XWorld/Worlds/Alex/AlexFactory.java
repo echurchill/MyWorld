@@ -1,23 +1,23 @@
-package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
+package me.daddychurchill.XWorld.Worlds.Alex;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 import me.daddychurchill.XWorld.Worlds.AbstractedWorldFactory;
 
-public class TreesAndSuchFactory extends AbstractedWorldFactory {
+public class AlexFactory extends AbstractedWorldFactory {
 
-	public TreesAndSuchFactory() {
-		// TODO Auto-generated constructor stub
+	public AlexFactory() {
+
 	}
 
 	@Override
 	public String getStyle() {
-		return "TreesAndSuch";
+		return "Alex";
 	}
 
 	@Override
 	public AbstractWorld getWorld(CoreGenerator generator) {
-		return new TreesAndSuchWorld(generator);
+		return new AlexWorld(generator);
 	}
 
 }

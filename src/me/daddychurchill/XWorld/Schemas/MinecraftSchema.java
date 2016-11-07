@@ -2,10 +2,10 @@ package me.daddychurchill.XWorld.Schemas;
 
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
+import me.daddychurchill.XWorld.Blocks.PasteableBlocks;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
-public class MinecraftSchema extends AbstractedSchema {
+public class MinecraftSchema extends PasteableBlocks {
 
 	public MinecraftSchema(CoreGenerator generator, String URI) {
 		super(generator);

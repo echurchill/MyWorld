@@ -17,11 +17,10 @@ public abstract class AbstractWorld {
 	public abstract int getSurfaceY(AbstractedChunk chunk, int x, int z);
 	
 	public int getBuildY(AbstractedChunk chunk, int x, int z) {
-		return getBuildY(chunk, x, z) + 1;
+		return getSurfaceY(chunk, x, z) + 1;
 	}
 	
 	public Location fixSpawnLocation(World world, Random random, Location location) {
-		
 		return location;
 	}
 }

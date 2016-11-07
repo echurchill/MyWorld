@@ -1,12 +1,13 @@
-package me.daddychurchill.XWorld.Worlds.SimpleNature;
+package me.daddychurchill.XWorld.Worlds.Standard;
 
 import org.bukkit.material.MaterialData;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractInitializer;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
+import me.daddychurchill.XWorld.Worlds.Shapes.AbstractedShape;
 
-public class SimpleNaturalInitializer extends AbstractInitializer {
+public class NaturalTerrainInitializer extends AbstractInitializer {
 
 	//protected int specialBlockOdds; // 1/n chance that there is minerals on this level
 	//protected int specialsPerLayer; // number of minerals per layer
@@ -25,9 +26,9 @@ public class SimpleNaturalInitializer extends AbstractInitializer {
 	//protected MaterialData materialMineral; // for later use in the populator
 	//protected MaterialData materialFertile;
 	//protected int airId; 
-	SimpleNatureShape worldShape;
+	AbstractedShape worldShape;
 	
-	public SimpleNaturalInitializer(SimpleNatureShape shape) {
+	public NaturalTerrainInitializer(AbstractedShape shape) {
 		worldShape = shape;
 		
 		materialBottom = RealMaterial.STONE;
@@ -50,16 +51,17 @@ public class SimpleNaturalInitializer extends AbstractInitializer {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
 				int y = world.getSurfaceY(chunk, x, z);
-				
-				chunk.setBlock(x, 0, y, RealMaterial.BEDROCK);
-				chunk.setBlocks(x, 1, y - middleThickness, z, materialBottom);
-				chunk.setBlocks(x, y - middleThickness, y - 1, z, materialMiddle);
-				
-				if (y - 1 < seaLevel) {
-					chunk.setBlock(x, y - 1, z, materialLiquidBase);
-					chunk.setBlocks(x, y, seaLevel, z, materialLiquid);
-				} else
-					chunk.setBlock(x, y - 1, z, materialTop);
+				if (y > 0) {
+					chunk.setBlock(x, 0, y, RealMaterial.BEDROCK);
+					chunk.setBlocks(x, 1, y - middleThickness, z, materialBottom);
+					chunk.setBlocks(x, y - middleThickness, y - 1, z, materialMiddle);
+					
+					if (y - 1 < seaLevel) {
+						chunk.setBlock(x, y - 1, z, materialLiquidBase);
+						chunk.setBlocks(x, y, seaLevel, z, materialLiquid);
+					} else
+						chunk.setBlock(x, y - 1, z, materialTop);
+				}
 			}
 		}
 	}

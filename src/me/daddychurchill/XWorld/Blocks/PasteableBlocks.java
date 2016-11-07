@@ -5,14 +5,14 @@ import org.bukkit.block.Biome;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 
-public abstract class AbstractedSchema extends AbstractedBlocks {
+public abstract class PasteableBlocks extends AbstractedBlocks {
 	
 	private Odds odds;
 	
-	public AbstractedSchema(CoreGenerator generator) {
+	public PasteableBlocks(CoreGenerator generator) {
 		super(generator);
 		
-		odds = new Odds();
+		odds = new Odds(generator.getWorldSeed());
 	}
 	
 	@Override

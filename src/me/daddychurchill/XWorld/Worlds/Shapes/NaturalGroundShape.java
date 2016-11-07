@@ -1,13 +1,11 @@
-package me.daddychurchill.XWorld.Worlds.SimpleNature;
+package me.daddychurchill.XWorld.Worlds.Shapes;
 
-import org.bukkit.util.noise.NoiseGenerator;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
 
-import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 
-public class SimpleNatureShape {
+public class NaturalGroundShape extends AbstractedShape {
 
 	private int seabedLevel; // how thick is the bottom bit
 	private int middleThickness; // how thick is the middle bit
@@ -34,8 +32,8 @@ public class SimpleNatureShape {
 	private SimplexOctaveGenerator shiftGenerator;
 	private SimplexOctaveGenerator noiseGenerator;
 	
-	public SimpleNatureShape(CoreGenerator generator) {
-		long worldSeed = generator.getWorld().getSeed(); 
+	public NaturalGroundShape(CoreGenerator generator) {
+		long worldSeed = generator.getWorldSeed(); 
 		odds = new Odds(worldSeed);
 
 		//specialBlockOdds = odds.nextInt(3) + 1;
@@ -50,14 +48,14 @@ public class SimpleNatureShape {
 		shapeZFactor = odds.nextBetween(0.75, 1.25);
 		shapeFrequency = odds.nextBetween(0.40, 0.60);
 		shapeAmplitude = odds.nextBetween(0.40, 0.60);
-		shapeHScale = odds.nextBetween(1.0 / 100.0, 1.0 / 150.0);
-		shapeVScale = odds.nextBetween(13.0, 19.0);
+		shapeHScale = odds.nextBetween(1.0 / 150.0, 1.0 / 200.0);
+		shapeVScale = odds.nextBetween(15.0, 30.0);
 		
 		noiseXFactor = shapeXFactor / 2;
 		noiseZFactor = shapeZFactor / 2;
 		noiseFrequency = shapeFrequency * 4;
 		noiseAmplitude = shapeAmplitude / 4;
-		noiseHScale = odds.nextBetween(1.0 / 26.0, 1.0 / 34.0);
+		noiseHScale = odds.nextBetween(1.0 / 30.0, 1.0 / 40.0);
 		noiseVScale = odds.nextBetween(1.0, 5.0);
 		
 		shapeGenerator = new SimplexOctaveGenerator(worldSeed, shapeOctives);
@@ -69,9 +67,25 @@ public class SimpleNatureShape {
 		
 	}
 
+	@Override
+	public int getSeabedLevel() {
+		return seabedLevel;
+	}
+
+	@Override
+	public int getMiddleThickness() {
+		return middleThickness;
+	}
+
+	@Override
+	public int getSeaLevel() {
+		return seaLevel;
+	}
+
+	@Override
 	public double getSurfaceYOnWorld(double x, double z) {
 		double shapeY = shapeGenerator.noise(x / shapeXFactor, z / shapeZFactor, shapeFrequency, shapeAmplitude) * shapeVScale;
-		double shiftY = shiftGenerator.noise((-x + 100) / shapeXFactor, (-z - 100) / shapeZFactor, shapeFrequency, shapeAmplitude) * shapeVScale * 1.25;
+		double shiftY = shiftGenerator.noise((-x + 100) / shapeXFactor, (-z - 100) / shapeZFactor, shapeFrequency, shapeAmplitude) * shapeVScale * 1.50;
 		if (shiftY > shapeY)
 			shapeY = shiftY;
 		
@@ -79,21 +93,4 @@ public class SimpleNatureShape {
 		
 		return (shapeY + noiseY) + seaLevel;
 	}
-	
-	public int getSurfaceY(AbstractedChunk chunk, int x, int z) {
-		return NoiseGenerator.floor(getSurfaceYOnWorld(chunk.getBlockWorldX(x), chunk.getBlockWorldZ(z)));
-	}
-
-	public int getSeabedLevel() {
-		return seabedLevel;
-	}
-
-	public int getMiddleThickness() {
-		return middleThickness;
-	}
-
-	public int getSeaLevel() {
-		return seaLevel;
-	}
-
 }

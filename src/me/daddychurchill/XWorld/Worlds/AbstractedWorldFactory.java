@@ -2,9 +2,9 @@ package me.daddychurchill.XWorld.Worlds;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
-public abstract class WorldFactory {
+public abstract class AbstractedWorldFactory {
 
-	public WorldFactory() {
+	public AbstractedWorldFactory() {
 		// TODO Auto-generated constructor stub
 	}
 	

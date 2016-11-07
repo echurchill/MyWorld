@@ -10,7 +10,7 @@ public class GrassPopulator extends AbstractPopulator {
 	private double oddsOfSpawn;
 	
 	public GrassPopulator() {
-		this.oddsOfSpawn = Odds.oddsSomewhatUnlikely;
+		this.oddsOfSpawn = Odds.oddsEven;
 	}
 
 	public GrassPopulator(double oddsOfSpawn) {
@@ -24,7 +24,25 @@ public class GrassPopulator extends AbstractPopulator {
 			for (int z = 0; z < 16; z++) {
 				int y = world.getSurfaceY(chunk, x, z);
 				if (odds.playOdds(oddsOfSpawn) && chunk.isEmpty(x, y, z) && chunk.isType(x, y - 1, z, RealMaterial.GRASS))
-					chunk.setBlock(x, y, z, RealMaterial.TALL_GRASS);
+					if (odds.playOdds(Odds.oddsLikely))
+						chunk.setBlock(x, y, z, RealMaterial.TALL_GRASS);
+					else switch (odds.rollDice()) {
+					default:
+					case 0:
+					case 1:
+					case 2:
+						chunk.setBlock(x, y, z, RealMaterial.FLOWER_POPPY);
+						break;
+					case 3:
+						chunk.setBlock(x, y, z, RealMaterial.FLOWER_RED_TULIP);
+						break;
+					case 4:
+						chunk.setBlock(x, y, z, RealMaterial.FLOWER_WHITE_TULIP);
+						break;
+					case 5:
+						chunk.setBlock(x, y, z, RealMaterial.FLOWER_DANDELION);
+						break;
+					}
 			}
 		}
 	}

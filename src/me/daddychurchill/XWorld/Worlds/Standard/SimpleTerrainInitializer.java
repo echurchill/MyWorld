@@ -5,9 +5,9 @@ import me.daddychurchill.XWorld.Generators.AbstractInitializer;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
-public class FlatTerrainInitializer extends AbstractInitializer {
+public class SimpleTerrainInitializer extends AbstractInitializer {
 
-	public FlatTerrainInitializer() {
+	public SimpleTerrainInitializer() {
 
 	}
 

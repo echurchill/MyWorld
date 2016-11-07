@@ -23,17 +23,19 @@ public class FinalizeChunk extends AbstractedChunk {
 		this.bukkitChunk = bukkitChunk;
 	}
 	
-	public void generateTree(int x, int y, int z, TreeType ...treeTypes) {
-		generateTree(x, y, z, treeTypes[getOdds().nextInt(treeTypes.length)]);
+	public boolean isFertile(int x, int y, int z) {
+		return isType(x, y - 1, z, RealMaterial.GRASS);
+	}
+	
+	public void plantTree(int x, int y, int z, TreeType ...treeTypes) {
+		plantTree(x, y, z, treeTypes[getOdds().nextInt(treeTypes.length)]);
 	}
 
-	public void generateTree(int x, int y, int z, TreeType treeType) {
+	public void plantTree(int x, int y, int z, TreeType treeType) {
 		setBlock(x, y, z, RealMaterial.AIR);
 		Location at = getBlockWorldLocation(x, y, z);
 		
 		getGenerator().getWorld().generateTree(at, treeType);
-//		if (!getGenerator().getWorld().generateTree(at, treeType))
-//			getGenerator().getPlugin().reportMessage("Failed to create tree at " + at);
 	}
 
 	@Override

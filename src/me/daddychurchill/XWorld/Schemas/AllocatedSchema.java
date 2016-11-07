@@ -2,10 +2,10 @@ package me.daddychurchill.XWorld.Schemas;
 
 import org.bukkit.material.MaterialData;
 
-import me.daddychurchill.XWorld.Blocks.AbstractedSchema;
+import me.daddychurchill.XWorld.Blocks.PasteableBlocks;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
-public abstract class AllocatedSchema extends AbstractedSchema {
+public abstract class AllocatedSchema extends PasteableBlocks {
 
 	private int sizeX;
 	private int sizeY;

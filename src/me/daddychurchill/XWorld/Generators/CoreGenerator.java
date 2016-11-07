@@ -22,25 +22,13 @@ import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
-import me.daddychurchill.XWorld.Worlds.WorldFactory;
-import me.daddychurchill.XWorld.Worlds.BigFlat.BigFlatFactory;
-import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
-import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
-import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
+import me.daddychurchill.XWorld.Worlds.AbstractedWorldFactory;
 
 public class CoreGenerator extends ChunkGenerator {
 
 	// all the registered world factories
-	private static Map<String, WorldFactory> worldFactories = new HashMap<String, WorldFactory>();
-	private static WorldFactory defaultFactory = null;
-	
-	// what can we make?
-	static {
-		addWorldType(new TreesAndSuchFactory());
-		addWorldType(new SimpleNatureFactory());
-		addWorldType(new BigFlatFactory());
-		addWorldType(new BigTreeFactory());
-	}
+	private static Map<String, AbstractedWorldFactory> worldFactories = new HashMap<String, AbstractedWorldFactory>();
+	private static AbstractedWorldFactory defaultFactory = null;
 	
 	private XWorld worldPlugin;
 	private String worldName;
@@ -67,7 +55,7 @@ public class CoreGenerator extends ChunkGenerator {
 	public List<BlockPopulator> getDefaultPopulators(World world) {
 		worldMinecraft = world;
 		
-		WorldFactory factory = findWorldFactory(worldStyle);
+		AbstractedWorldFactory factory = findWorldFactory(worldStyle);
 		assert(factory != null);
 		
 		worldMaker = factory.getWorld(this);
@@ -95,6 +83,11 @@ public class CoreGenerator extends ChunkGenerator {
 
 	public World getWorld() {
 		return worldMinecraft;
+	}
+
+	public long getWorldSeed() {
+		assert(worldMinecraft != null);
+		return worldMinecraft.getSeed();
 	}
 
 	public AbstractWorld getWorldMaker() {
@@ -186,7 +179,7 @@ public class CoreGenerator extends ChunkGenerator {
 //		defaultFactory = factory;
 //	}
 	
-	private static void addWorldType(WorldFactory factory) {
+	public static void addWorldType(AbstractedWorldFactory factory) {
 		if (defaultFactory == null)
 			defaultFactory = factory;
 		
@@ -209,18 +202,18 @@ public class CoreGenerator extends ChunkGenerator {
 		assert(worldFactories != null);
 		int index = 0;
 		String[] results = new String[worldFactories.size()];
-		Collection<WorldFactory> factories = worldFactories.values();
-		Iterator<WorldFactory> looper = factories.iterator();
+		Collection<AbstractedWorldFactory> factories = worldFactories.values();
+		Iterator<AbstractedWorldFactory> looper = factories.iterator();
 		while (looper.hasNext()) {
-			WorldFactory factory = looper.next();
+			AbstractedWorldFactory factory = looper.next();
 			results[index] = factory.getStyle();
 			index++;
 		}
 		return results;
 	}
 	
-	private WorldFactory findWorldFactory(String id) {
-		WorldFactory worldFactory = null;
+	private AbstractedWorldFactory findWorldFactory(String id) {
+		AbstractedWorldFactory worldFactory = null;
 		if (worldFactories != null)
 			worldFactory = worldFactories.get(id.toUpperCase());
 		if (worldFactory == null)

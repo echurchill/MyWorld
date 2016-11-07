@@ -23,20 +23,23 @@ public class SingleTreePopulator extends AbstractPopulator {
 	@Override
 	public void renderHere(AbstractWorld world, FinalizeChunk chunk) {
 		Odds odds = chunk.getOdds();
-		int x = odds.nextBetween(6, 10);
-		int z = odds.nextBetween(6, 10);
+		int x = odds.nextBetween(6, 14);
+		int z = odds.nextBetween(6, 14);
 		int y = world.getSurfaceY(chunk, x, z);
-		
-		if (odds.playOdds(Odds.oddsPrettyUnlikely)) {
-			chunk.emptyBlocks(x, x + 2, y, z, z + 2);
-			chunk.setBlocksBelow(x, x + 2, y, z, z + 2, RealMaterial.DIRT);
-			chunk.generateTree(x, y, z, TreeType.DARK_OAK, TreeType.MEGA_REDWOOD);
-		} else {
-			chunk.emptyBlock(x, y, z);
-			chunk.setBlocksBelow(x, y, z, RealMaterial.DIRT);
-			chunk.generateTree(x, y, z, TreeType.TREE, TreeType.BIG_TREE, 
-										TreeType.BIRCH, TreeType.TALL_BIRCH, 
-										TreeType.REDWOOD, TreeType.TALL_REDWOOD);
+		if (y > 0) {
+			if (chunk.isFertile(x, y, z)) {
+				if (odds.playOdds(Odds.oddsPrettyUnlikely)) {
+					chunk.emptyBlocks(x, x + 2, y, z, z + 2);
+					chunk.setBlocksBelow(x, x + 2, y, z, z + 2, RealMaterial.DIRT);
+					chunk.plantTree(x, y, z, TreeType.DARK_OAK, TreeType.MEGA_REDWOOD);
+				} else {
+					chunk.emptyBlock(x, y, z);
+					chunk.setBlocksBelow(x, y, z, RealMaterial.DIRT);
+					chunk.plantTree(x, y, z, TreeType.TREE, TreeType.BIG_TREE, 
+												TreeType.BIRCH, TreeType.TALL_BIRCH, 
+												TreeType.REDWOOD, TreeType.TALL_REDWOOD);
+				}
+			}
 		}
 	}
 

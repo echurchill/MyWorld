@@ -9,7 +9,6 @@ public class BigTreeSchema extends ProceduralSchema {
 
 	public BigTreeSchema(CoreGenerator generator) {
 		super(generator, 100, 150, 100);
-		
 	}
 
 	@Override
