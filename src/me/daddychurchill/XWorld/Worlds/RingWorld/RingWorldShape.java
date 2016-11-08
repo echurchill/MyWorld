@@ -1,5 +1,7 @@
 package me.daddychurchill.XWorld.Worlds.RingWorld;
 
+import org.bukkit.util.noise.NoiseGenerator;
+
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.Shapes.NaturalGroundShape;
 
@@ -47,5 +49,9 @@ public class RingWorldShape extends NaturalGroundShape {
 			else
 				return defaultY;
 		}
+	}
+	
+	protected int getRingTop() {
+		return NoiseGenerator.floor(ringTop);
 	}
 }

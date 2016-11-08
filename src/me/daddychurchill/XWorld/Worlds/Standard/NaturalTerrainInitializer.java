@@ -15,9 +15,9 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 	//protected TreeType treeType;
 	//protected int treesPerChunk;
 	
-	protected MaterialData materialBottom; // what is the stone made of?
-	protected MaterialData materialMiddle; // what is dirt made of?
-	protected MaterialData materialTop; // what is grass made of?
+	protected MaterialData materialStone; // what is the stone made of?
+	protected MaterialData materialTopsoil; // what is dirt made of?
+	protected MaterialData materialSurface; // what is grass made of?
 	protected MaterialData materialLiquidBase; // what is sand made of?
 	protected MaterialData materialLiquid; // what is the liquid made of?
 	//protected MaterialData materialBlades; // what is a blade of grass made of?
@@ -31,9 +31,9 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 	public NaturalTerrainInitializer(AbstractedShape shape) {
 		worldShape = shape;
 		
-		materialBottom = RealMaterial.STONE;
-		materialMiddle = RealMaterial.DIRT;
-		materialTop = RealMaterial.GRASS;
+		materialStone = RealMaterial.STONE;
+		materialTopsoil = RealMaterial.DIRT;
+		materialSurface = RealMaterial.GRASS;
 		materialLiquidBase = RealMaterial.SAND;
 		materialLiquid = RealMaterial.WATER_STATIONARY;
 		//materialBlades = RealMaterial.TALL_GRASS;
@@ -45,24 +45,27 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 
 	@Override
 	public void renderHere(AbstractWorld world, InitializeChunk chunk) {
-		int middleThickness = worldShape.getMiddleThickness();
+		int topsoilThickness = worldShape.getMiddleThickness();
 		int seaLevel = worldShape.getSeaLevel();
 		
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
-				int y = world.getSurfaceY(chunk, x, z);
-				if (y > 0) {
-					chunk.setBlock(x, 0, y, RealMaterial.BEDROCK);
-					chunk.setBlocks(x, 1, y - middleThickness, z, materialBottom);
-					chunk.setBlocks(x, y - middleThickness, y - 1, z, materialMiddle);
-					
-					if (y - 1 < seaLevel) {
-						chunk.setBlock(x, y - 1, z, materialLiquidBase);
-						chunk.setBlocks(x, y, seaLevel, z, materialLiquid);
-					} else
-						chunk.setBlock(x, y - 1, z, materialTop);
-				}
+				renderHere(world, chunk, x, world.getSurfaceY(chunk, x, z), z, topsoilThickness, seaLevel);
 			}
+		}
+	}
+	
+	protected void renderHere(AbstractWorld world, InitializeChunk chunk, int x, int y, int z, int topsoilThickness, int seaLevel) {
+		if (y > 0) {
+			chunk.setBlock(x, 0, y, RealMaterial.BEDROCK);
+			chunk.setBlocks(x, 1, Math.max(1, y - topsoilThickness), z, materialStone);
+			chunk.setBlocks(x, Math.max(1, y - topsoilThickness), y - 1, z, materialTopsoil);
+			
+			if (y - 1 < seaLevel) {
+				chunk.setBlock(x, y - 1, z, materialLiquidBase);
+				chunk.setBlocks(x, y, seaLevel, z, materialLiquid);
+			} else
+				chunk.setBlock(x, y - 1, z, materialSurface);
 		}
 	}
 
