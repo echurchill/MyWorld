@@ -8,12 +8,14 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData IRON_SPADE = define(Material.IRON_SPADE);
 	public final static MaterialData IRON_PICKAXE = define(Material.IRON_PICKAXE);
 	public final static MaterialData IRON_AXE = define(Material.IRON_AXE);
+	
 	public final static MaterialData FLINT_AND_STEEL = define(Material.FLINT_AND_STEEL);
 	public final static MaterialData APPLE = define(Material.APPLE);
 	public final static MaterialData BOW = define(Material.BOW);
 	public final static MaterialData ARROW = define(Material.ARROW);
 	public final static MaterialData COAL = define(Material.COAL);
 	public final static MaterialData DIAMOND = define(Material.DIAMOND);
+	
 	public final static MaterialData IRON_INGOT = define(Material.IRON_INGOT);
 	public final static MaterialData GOLD_INGOT = define(Material.GOLD_INGOT);
 	public final static MaterialData IRON_SWORD = define(Material.IRON_SWORD);
@@ -29,24 +31,30 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData DIAMOND_SPADE = define(Material.DIAMOND_SPADE);
 	public final static MaterialData DIAMOND_PICKAXE = define(Material.DIAMOND_PICKAXE);
 	public final static MaterialData DIAMOND_AXE = define(Material.DIAMOND_AXE);
+	
 	public final static MaterialData STICK = define(Material.STICK);
 	public final static MaterialData BOWL = define(Material.BOWL);
 	public final static MaterialData MUSHROOM_SOUP = define(Material.MUSHROOM_SOUP);
+	
 	public final static MaterialData GOLD_SWORD = define(Material.GOLD_SWORD);
 	public final static MaterialData GOLD_SPADE = define(Material.GOLD_SPADE);
 	public final static MaterialData GOLD_PICKAXE = define(Material.GOLD_PICKAXE);
 	public final static MaterialData GOLD_AXE = define(Material.GOLD_AXE);
+	
 	public final static MaterialData STRING = define(Material.STRING);
 	public final static MaterialData FEATHER = define(Material.FEATHER);
 	public final static MaterialData SULPHUR = define(Material.SULPHUR);
+	
 	public final static MaterialData WOOD_HOE = define(Material.WOOD_HOE);
 	public final static MaterialData STONE_HOE = define(Material.STONE_HOE);
 	public final static MaterialData IRON_HOE = define(Material.IRON_HOE);
 	public final static MaterialData DIAMOND_HOE = define(Material.DIAMOND_HOE);
 	public final static MaterialData GOLD_HOE = define(Material.GOLD_HOE);
+	
 	public final static MaterialData SEEDS = define(Material.SEEDS);
 	public final static MaterialData WHEAT = define(Material.WHEAT);
 	public final static MaterialData BREAD = define(Material.BREAD);
+	
 	public final static MaterialData LEATHER_HELMET = define(Material.LEATHER_HELMET);
 	public final static MaterialData LEATHER_CHESTPLATE = define(Material.LEATHER_CHESTPLATE);
 	public final static MaterialData LEATHER_LEGGINGS = define(Material.LEATHER_LEGGINGS);
@@ -67,6 +75,7 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData GOLD_CHESTPLATE = define(Material.GOLD_CHESTPLATE);
 	public final static MaterialData GOLD_LEGGINGS = define(Material.GOLD_LEGGINGS);
 	public final static MaterialData GOLD_BOOTS = define(Material.GOLD_BOOTS);
+	
 	public final static MaterialData FLINT = define(Material.FLINT);
 	public final static MaterialData PORK = define(Material.PORK);
 	public final static MaterialData GRILLED_PORK = define(Material.GRILLED_PORK);
@@ -150,8 +159,10 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData CARROT_STICK = define(Material.CARROT_STICK);
 	public final static MaterialData NETHER_STAR = define(Material.NETHER_STAR);
 	public final static MaterialData PUMPKIN_PIE = define(Material.PUMPKIN_PIE);
+	
 	public final static MaterialData FIREWORK = define(Material.FIREWORK);
 	public final static MaterialData FIREWORK_CHARGE = define(Material.FIREWORK_CHARGE);
+
 	public final static MaterialData ENCHANTED_BOOK = define(Material.ENCHANTED_BOOK);
 	public final static MaterialData REDSTONE_COMPARATOR = define(Material.REDSTONE_COMPARATOR);
 	public final static MaterialData NETHER_BRICK_ITEM = define(Material.NETHER_BRICK_ITEM);
@@ -160,15 +171,18 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData HOPPER_MINECART = define(Material.HOPPER_MINECART);
 	public final static MaterialData PRISMARINE_SHARD = define(Material.PRISMARINE_SHARD);
 	public final static MaterialData PRISMARINE_CRYSTALS = define(Material.PRISMARINE_CRYSTALS);
+	
 	public final static MaterialData RABBIT = define(Material.RABBIT);
 	public final static MaterialData COOKED_RABBIT = define(Material.COOKED_RABBIT);
 	public final static MaterialData RABBIT_STEW = define(Material.RABBIT_STEW);
 	public final static MaterialData RABBIT_FOOT = define(Material.RABBIT_FOOT);
 	public final static MaterialData RABBIT_HIDE = define(Material.RABBIT_HIDE);
+	
 	public final static MaterialData ARMOR_STAND = define(Material.ARMOR_STAND);
 	public final static MaterialData IRON_BARDING = define(Material.IRON_BARDING);
 	public final static MaterialData GOLD_BARDING = define(Material.GOLD_BARDING);
 	public final static MaterialData DIAMOND_BARDING = define(Material.DIAMOND_BARDING);
+	
 	public final static MaterialData LEASH = define(Material.LEASH);
 	public final static MaterialData NAME_TAG = define(Material.NAME_TAG);
 	public final static MaterialData COMMAND_MINECART = define(Material.COMMAND_MINECART);
@@ -176,11 +190,13 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData COOKED_MUTTON = define(Material.COOKED_MUTTON);
 	public final static MaterialData BANNER = define(Material.BANNER);
 	public final static MaterialData END_CRYSTAL = define(Material.END_CRYSTAL);
+	
 	public final static MaterialData SPRUCE_DOOR_ITEM = define(Material.SPRUCE_DOOR_ITEM);
 	public final static MaterialData BIRCH_DOOR_ITEM = define(Material.BIRCH_DOOR_ITEM);
 	public final static MaterialData JUNGLE_DOOR_ITEM = define(Material.JUNGLE_DOOR_ITEM);
 	public final static MaterialData ACACIA_DOOR_ITEM = define(Material.ACACIA_DOOR_ITEM);
 	public final static MaterialData DARK_OAK_DOOR_ITEM = define(Material.DARK_OAK_DOOR_ITEM);
+	
 	public final static MaterialData CHORUS_FRUIT = define(Material.CHORUS_FRUIT);
 	public final static MaterialData CHORUS_FRUIT_POPPED = define(Material.CHORUS_FRUIT_POPPED);
 	public final static MaterialData BEETROOT = define(Material.BEETROOT);
@@ -193,23 +209,28 @@ public final class RealItem extends AbstractThings {
 	public final static MaterialData LINGERING_POTION = define(Material.LINGERING_POTION);
 	public final static MaterialData SHIELD = define(Material.SHIELD);
 	public final static MaterialData ELYTRA = define(Material.ELYTRA);
+	
 	public final static MaterialData BOAT_SPRUCE = define(Material.BOAT_SPRUCE);
 	public final static MaterialData BOAT_BIRCH = define(Material.BOAT_BIRCH);
 	public final static MaterialData BOAT_JUNGLE = define(Material.BOAT_JUNGLE);
 	public final static MaterialData BOAT_ACACIA = define(Material.BOAT_ACACIA);
 	public final static MaterialData BOAT_DARK_OAK = define(Material.BOAT_DARK_OAK);
-	public final static MaterialData GOLD_RECORD = define(Material.GOLD_RECORD);
-	public final static MaterialData GREEN_RECORD = define(Material.GREEN_RECORD);
-	public final static MaterialData RECORD_3 = define(Material.RECORD_3);
-	public final static MaterialData RECORD_4 = define(Material.RECORD_4);
-	public final static MaterialData RECORD_5 = define(Material.RECORD_5);
-	public final static MaterialData RECORD_6 = define(Material.RECORD_6);
-	public final static MaterialData RECORD_7 = define(Material.RECORD_7);
-	public final static MaterialData RECORD_8 = define(Material.RECORD_8);
-	public final static MaterialData RECORD_9 = define(Material.RECORD_9);
-	public final static MaterialData RECORD_10 = define(Material.RECORD_10);
+
+	public final static MaterialData TOTEM_OF_UNDYING = define(Material.TOTEM);
+	public final static MaterialData SHULKER_SHELL = define(Material.SHULKER_SHELL);
+	
+	public final static MaterialData RECORD_13 = define(Material.GOLD_RECORD);
+	public final static MaterialData RECORD_CAT = define(Material.GREEN_RECORD);
+	public final static MaterialData RECORD_BLOCKS = define(Material.RECORD_3);
+	public final static MaterialData RECORD_CHIRP = define(Material.RECORD_4);
+	public final static MaterialData RECORD_FAR = define(Material.RECORD_5);
+	public final static MaterialData RECORD_MALL = define(Material.RECORD_6);
+	public final static MaterialData RECORD_MELLOHI = define(Material.RECORD_7);
+	public final static MaterialData RECORD_STAL = define(Material.RECORD_8);
+	public final static MaterialData RECORD_STRAD = define(Material.RECORD_9);
+	public final static MaterialData RECORD_WARD = define(Material.RECORD_10);
 	public final static MaterialData RECORD_11 = define(Material.RECORD_11);
-	public final static MaterialData RECORD_12 = define(Material.RECORD_12);
+	public final static MaterialData RECORD_WAIT = define(Material.RECORD_12);
 
 	@SuppressWarnings("deprecation")
 	protected static void assertTest(Material material) {

@@ -469,6 +469,27 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData RED_NETHER_BRICK = define(Material.RED_NETHER_BRICK);
 	public final static MaterialData BONE_BLOCK = define(Material.BONE_BLOCK);
 	public final static MaterialData STRUCTURE_VOID = define(Material.STRUCTURE_VOID);
+	
+	public final static MaterialData OBSERVER = define(Material.OBSERVER);
+	public final static MaterialData SHULKER_BOX = define(Material.BLACK_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_WHITE = define(Material.WHITE_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_ORANGE = define(Material.ORANGE_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_MAGENTA = define(Material.MAGENTA_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_LIGHT_BLUE = define(Material.LIGHT_BLUE_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_YELLOW = define(Material.YELLOW_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_LIME = define(Material.LIME_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_PINK = define(Material.PINK_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_GRAY = define(Material.GRAY_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_SILVER = define(Material.SILVER_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_CYAN = define(Material.CYAN_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_PURPLE = define(Material.PURPLE_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_BLUE = define(Material.BLUE_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_BROWN = define(Material.BROWN_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_GREEN = define(Material.GREEN_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_RED = define(Material.RED_SHULKER_BOX);
+	public final static MaterialData SHULKER_BOX_BLACK = define(Material.BLACK_SHULKER_BOX);
+	
+	// THIS SHOULD BE THE LAST ONE... because it is
 	public final static MaterialData STRUCTURE_BLOCK = define(Material.STRUCTURE_BLOCK, 0); //TODO: data variant
 
 	@Deprecated // Use WATER_STATIONARY instead
@@ -524,7 +545,7 @@ public final class RealMaterial extends AbstractThings {
 	@SuppressWarnings("deprecation")
 	protected static MaterialData define(Material material, DyeColor color) {
 		assertTest(material);
-		return new MaterialData(material, color.getData());
+		return new MaterialData(material, color.getDyeData());
 	}
 
 	private static MaterialData define(Material material, TreeSpecies species) {
