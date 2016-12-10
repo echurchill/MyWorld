@@ -1,22 +1,22 @@
-package me.daddychurchill.XWorld.Worlds.RingWorld;
+package me.daddychurchill.XWorld.Worlds.DiscWorld;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 import me.daddychurchill.XWorld.Worlds.AbstractedWorldFactory;
 
-public class RingWorldFactory extends AbstractedWorldFactory {
+public class DiscWorldFactory extends AbstractedWorldFactory {
 
-	public RingWorldFactory() {
+	public DiscWorldFactory() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String getStyle() {
-		return "RingWorld";
+		return "DiscWorld";
 	}
 
 	@Override
 	public AbstractWorld getWorld(CoreGenerator generator) {
-		return new RingWorld(generator);
+		return new DiscWorld(generator);
 	}
 }

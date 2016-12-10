@@ -14,8 +14,8 @@
         <file path="/XWorld/.project"/>
         <file path="/XWorld/README.md"/>
         <file path="/XWorld/xworld_description.txt"/>
-        <file path="/XWorld/plugin.yml"/>
         <file path="/XWorld/XWorldToMinecraft.jardesc"/>
+        <file path="/XWorld/plugin.yml"/>
         <javaElement handleIdentifier="=XWorld/src"/>
         <file path="/XWorld/.classpath"/>
         <file path="/XWorld/LICENSE"/>

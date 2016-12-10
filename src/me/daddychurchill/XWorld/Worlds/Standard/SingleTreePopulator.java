@@ -25,8 +25,8 @@ public class SingleTreePopulator extends AbstractPopulator {
 		Odds odds = chunk.getOdds();
 		if (odds.playOdds(oddsOfSpawn))
 			if (odds.playOdds(oddsOfSpawn)) {
-				plantTree(world, chunk, odds, odds.nextBetween(13, 16), odds.nextBetween(6, 10));
-				plantTree(world, chunk, odds, odds.nextBetween(6, 10), odds.nextBetween(13, 16));
+				plantTree(world, chunk, odds, odds.nextBetween(13, 15), odds.nextBetween(6, 10));
+				plantTree(world, chunk, odds, odds.nextBetween(6, 10), odds.nextBetween(13, 15));
 			} else {
 				plantTree(world, chunk, odds, odds.nextBetween(6, 10), odds.nextBetween(6, 10));
 			}

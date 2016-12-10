@@ -12,6 +12,7 @@ import me.daddychurchill.XWorld.Commands.XWorldCommand;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.Alex.AlexFactory;
 import me.daddychurchill.XWorld.Worlds.BigTree.BigTreeFactory;
+import me.daddychurchill.XWorld.Worlds.DiscWorld.DiscWorldFactory;
 import me.daddychurchill.XWorld.Worlds.RingWorld.RingWorldFactory;
 import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
 import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
@@ -28,6 +29,7 @@ public class XWorld extends JavaPlugin{
 		CoreGenerator.addWorldType(new AlexFactory());
 		CoreGenerator.addWorldType(new BigTreeFactory());
 		CoreGenerator.addWorldType(new RingWorldFactory());
+		CoreGenerator.addWorldType(new DiscWorldFactory());
 	}
 
 	public CoreGenerator getCoreGenerator(String name, String style){
