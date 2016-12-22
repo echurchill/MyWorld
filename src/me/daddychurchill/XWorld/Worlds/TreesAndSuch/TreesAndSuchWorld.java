@@ -4,7 +4,7 @@ import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.FlatChunkedWorld;
 import me.daddychurchill.XWorld.Worlds.Standard.GrassPopulator;
 import me.daddychurchill.XWorld.Worlds.Standard.SimpleTerrainInitializer;
-import me.daddychurchill.XWorld.Worlds.Standard.SingleTreePopulator;
+import me.daddychurchill.XWorld.Worlds.Standard.SimpleTreePopulator;
 
 public class TreesAndSuchWorld extends FlatChunkedWorld {
 
@@ -14,7 +14,7 @@ public class TreesAndSuchWorld extends FlatChunkedWorld {
 		initializers.add(new SimpleTerrainInitializer());
 		populators.add(new GrassPopulator());
 		populators.add(new WoodenFencePopulator());
-		populators.add(new SingleTreePopulator());
+		populators.add(new SimpleTreePopulator());
 	}
 	
 	@Override

@@ -2,6 +2,8 @@ package me.daddychurchill.XWorld.Support;
 
 import java.util.Random;
 
+import org.bukkit.DyeColor;
+import org.bukkit.TreeType;
 import org.bukkit.material.MaterialData;
 
 public class Odds {
@@ -81,10 +83,6 @@ public class Odds {
 		return rollDice(sides) == want;
 	}
 	
-	public MaterialData getRandomThing(MaterialData ... items) {
-		return items[random.nextInt(items.length)];
-	}
-	
 	public boolean nextBoolean() {
 		return random.nextBoolean();
 	}
@@ -107,5 +105,17 @@ public class Odds {
 	
 	public double nextBetween(double min, double max) {
 		return min + random.nextDouble() * (max - min);
+	}
+	
+	public MaterialData getOneOf(MaterialData ... values) {
+		return values[random.nextInt(values.length)];
+	}
+	
+	public TreeType getOneOf(TreeType ... values) {
+		return values[random.nextInt(values.length)];
+	}
+	
+	public DyeColor getOneOf(DyeColor ... values) {
+		return values[random.nextInt(values.length)];
 	}
 }

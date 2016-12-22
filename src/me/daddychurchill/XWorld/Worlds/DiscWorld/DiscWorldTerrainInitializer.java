@@ -8,7 +8,6 @@ import me.daddychurchill.XWorld.Worlds.Standard.NaturalTerrainInitializer;
 public class DiscWorldTerrainInitializer extends NaturalTerrainInitializer {
 	
 	private int discTop;
-	private static int discTopPlus = 24;
 
 	public DiscWorldTerrainInitializer(DiscWorldShape shape) {
 		super(shape);
@@ -20,9 +19,13 @@ public class DiscWorldTerrainInitializer extends NaturalTerrainInitializer {
 	protected void renderHere(AbstractWorld world, InitializeChunk chunk, int x, int y, int z, 
 			int topsoilThickness, int seaLevel) {
 		
-		if (y >= discTop)
-			chunk.setBlocks(x, 1, y + discTopPlus, z, RealMaterial.SMOOTH_BRICK_CRACKED);
-		else
+//		chunk.setBlock(x, 0, z, RealMaterial.BEDROCK);
+//		chunk.setBlocks(x, 1, y, z, RealMaterial.SMOOTH_BRICK_CRACKED);
+		
+		if (y >= discTop - 8) {
+			super.renderHere(world, chunk, x, y - 8, z, 0, 0);
+			chunk.setBlocks(x, y - 8, y, z, RealMaterial.QUARTZ_PILLAR);
+		} else
 			super.renderHere(world, chunk, x, y, z, topsoilThickness, seaLevel);
 	}
 }
