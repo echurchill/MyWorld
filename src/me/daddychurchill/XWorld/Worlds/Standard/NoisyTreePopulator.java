@@ -18,22 +18,30 @@ public class NoisyTreePopulator extends AbstractTreePopulator {
 		noiseGenerator.setScale(noiseHScale);
 	}
 
-	private int noiseOctives = 5;
-	private double noiseFrequency = 0.5;
-	private double noiseAmplitude = 0.5;
-	private double noiseHScale = 1.0 / 64.0;
+	private int noiseOctives = 1;
+	private double noiseFrequency = 1.0;
+	private double noiseAmplitude = 1.0;
+	private double noiseHScale = 3.0;
 	
 	private SimplexOctaveGenerator noiseGenerator;
 	
-	protected double getTreeOddsOnWorld(double x, double z) {
-		return noiseGenerator.noise(x, z, noiseFrequency, noiseAmplitude);
+	protected double getTreeOddsOnWorld(FinalizeChunk chunk) {
+		return (noiseGenerator.noise(chunk.getChunkX(), chunk.getChunkZ(), noiseFrequency, noiseAmplitude) + 1.0) / 2.0;
 	}
 
 	@Override
 	public void renderHere(AbstractWorld world, FinalizeChunk chunk) {
 		Odds odds = chunk.getOdds();
+		double treeOdds = getTreeOddsOnWorld(chunk);
 		
-		plantTree(world, chunk, odds, odds.nextBetween(13, 15), odds.nextBetween(6, 10));
+		if (odds.playOdds(treeOdds))
+			plantTreeNear(world, chunk, 5, 5);
+		if (odds.playOdds(treeOdds))
+			plantTreeNear(world, chunk, 5, 13);
+		if (odds.playOdds(treeOdds))
+			plantTreeNear(world, chunk, 13, 5);
+		if (odds.playOdds(treeOdds))
+			plantTreeNear(world, chunk, 13, 13);
 	}
 	
 	@Override

@@ -21,10 +21,10 @@ public class SimpleTreePopulator extends AbstractTreePopulator {
 		Odds odds = chunk.getOdds();
 		if (odds.playOdds(oddsOfSpawn))
 			if (odds.playOdds(oddsOfSpawn)) {
-				plantTree(world, chunk, odds, odds.nextBetween(13, 15), odds.nextBetween(6, 10));
-				plantTree(world, chunk, odds, odds.nextBetween(6, 10), odds.nextBetween(13, 15));
+				plantTree(world, chunk, odds.nextBetween(13, 15), odds.nextBetween(6, 10));
+				plantTree(world, chunk, odds.nextBetween(6, 10), odds.nextBetween(13, 15));
 			} else {
-				plantTree(world, chunk, odds, odds.nextBetween(6, 15), odds.nextBetween(6, 15));
+				plantTree(world, chunk, odds.nextBetween(6, 15), odds.nextBetween(6, 15));
 			}
 	}
 	

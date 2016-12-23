@@ -49,11 +49,16 @@ public abstract class AbstractTreePopulator extends AbstractPopulator {
 			return doNotPlant;
 	}
 	
-	protected void plantTree(AbstractWorld world, FinalizeChunk chunk, Odds odds, int x, int z) {
+	protected void plantTreeNear(AbstractWorld world, FinalizeChunk chunk, int x, int z) {
+		Odds odds = chunk.getOdds();
+		plantTree(world, chunk, x + odds.nextBetween(-1, 2), z + odds.nextBetween(-1, 2));
+	}
+
+	protected void plantTree(AbstractWorld world, FinalizeChunk chunk, int x, int z) {
 		int y = world.getSurfaceY(chunk, x, z);
 		if (y > 0) {
 			if (chunk.isFertile(x, y, z)) {
-				TreeType tree = getTreeTypeBasedOnAltitude(odds, y);
+				TreeType tree = getTreeTypeBasedOnAltitude(chunk.getOdds(), y);
 				if (tree != doNotPlant)
 					switch (tree) {
 					case DARK_OAK:
@@ -68,8 +73,8 @@ public abstract class AbstractTreePopulator extends AbstractPopulator {
 						chunk.plantTree(x, y, z, tree);
 						break;
 					}
-				else
-					chunk.setBlocks(x, y, y + 20, z, RealMaterial.GOLD_BLOCK);
+//				else
+//					chunk.setBlocks(x, y, y + 20, z, RealMaterial.GOLD_BLOCK);
 			}
 		}
 	}

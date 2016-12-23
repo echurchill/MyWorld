@@ -2,9 +2,11 @@ package me.daddychurchill.XWorld.Blocks;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.TreeType;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.material.MaterialData;
 
@@ -100,6 +102,23 @@ public class FinalizeChunk extends AbstractedChunk {
 		Block block = bukkitChunk.getBlock(x, 0, z);
 		if (block != null) {
 			block.setBiome(biome);
+		}
+	}
+	
+	public void setSign(int x, int y, int z, BlockFace direction, String ... text) {
+		Block block = bukkitChunk.getBlock(x, y, z);
+		block.setType(Material.SIGN_POST);
+		if (block.getType() == Material.SIGN_POST) {
+			org.bukkit.block.Sign signState = (org.bukkit.block.Sign) block.getState();
+			org.bukkit.material.Sign signDirection = new org.bukkit.material.Sign();
+
+			signDirection.setFacingDirection(direction);
+			signState.setData(signDirection);
+			
+			for (int i = 0; i < text.length && i < 4; i++) 
+				signState.setLine(i, text[i]);
+
+			signState.update();
 		}
 	}
 }
