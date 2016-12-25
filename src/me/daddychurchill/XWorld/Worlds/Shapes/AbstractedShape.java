@@ -9,6 +9,7 @@ public abstract class AbstractedShape {
 	public abstract int getSeabedLevel();
 	public abstract int getMiddleThickness();
 	public abstract int getSeaLevel();
+	public abstract int getSnowLevel();
 
 	public abstract double getSurfaceYOnWorld(double x, double z);
 	

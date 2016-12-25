@@ -26,18 +26,90 @@ public class FinalizeChunk extends AbstractedChunk {
 	}
 	
 	public boolean isFertile(int x, int y, int z) {
-		return isType(x, y - 1, z, RealMaterial.GRASS);
+		return isTypes(x, y - 1, z, RealMaterial.GRASS, RealMaterial.DIRT);
 	}
 	
-	public void plantTree(int x, int y, int z, TreeType ...treeTypes) {
-		plantTree(x, y, z, treeTypes[getOdds().nextInt(treeTypes.length)]);
-	}
-
 	public void plantTree(int x, int y, int z, TreeType treeType) {
-		setBlock(x, y, z, RealMaterial.AIR);
-		Location at = getBlockWorldLocation(x, y, z);
+		if (y > 0)
+			rawPlantTree(x, y, z, treeType);
+	}
+	
+	private boolean isNotRootBall(MaterialData material) {
+		switch (material.getItemType()) {
+		case STONE:
+		case DIRT:
+		case BEDROCK:
+		case SAND:
+		case SANDSTONE:
+		case RED_SANDSTONE:
+		case NETHERRACK:
+		case GRAVEL:
+		case COBBLESTONE:
+		case MOSSY_COBBLESTONE:
+		case CLAY:
+		case MYCEL:
+		case ENDER_STONE:
+			return false;
+		default:
+			return true;
+		}
+	}
+	
+	private void rawPlantTree(int x, int y, int z, TreeType treeType) {
+
+		// how big will it be?
+		int width;
+		switch (treeType) {
+		case DARK_OAK:
+		case MEGA_REDWOOD:
+		case JUNGLE:
+			width = 2;
+			break;
+		default:
+			width = 1;
+			break;
+		}
 		
-		getGenerator().getWorld().generateTree(at, treeType);
+		// how to remember
+		RestorableBlocks rootBlocks = new RestorableBlocks(this);
+		
+		// make the root ball
+		rootBlocks.emptyBlocks(x, x + width, y, y + width, z, z + width);
+		for (int x1 = x; x1 < x + width; x1++)
+			for (int z1 = z; z1 < z + width; z1++) {
+				int y1 = y - 1;
+				rootBlocks.setBlock(x1, y1, z1, RealMaterial.DIRT);
+				while (y1 > 0) {
+					y1--;
+					if (isNotRootBall(rootBlocks.getBlock(x1, y1, z1)))
+						rootBlocks.setBlock(x1, y1, z1, RealMaterial.DIRT);
+					else
+						break;
+				}
+			}
+		
+		// make the tree
+		Location at = getBlockWorldLocation(x, y, z);
+		boolean success = getGenerator().getWorld().generateTree(at, treeType);
+		
+		// if not, try one more time!
+		if (!success) {
+			int initY = y;
+			for (int i = 0; i < 10; i++) {
+				y++;
+				rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, RealMaterial.DIRT);
+				at = getBlockWorldLocation(x, y, z);
+				success = getGenerator().getWorld().generateTree(at, treeType);
+				if (success) {
+					rootBlocks.setBlocks(x, x + width, initY, y, z, z + width, getBlock(x, y, z));
+					break;
+				}
+			}
+		}
+		
+		// no tree... no root ball
+		if (!success)
+			rootBlocks.restoreBlocks();
 	}
 
 	@Override
@@ -54,6 +126,10 @@ public class FinalizeChunk extends AbstractedChunk {
 
 	@Override
 	public void setBlock(int x, int y, int z, MaterialData data) {
+		setBlock(x, y, z, data, false);
+	}
+
+	public void setBlock(int x, int y, int z, MaterialData data, boolean applyPhysics) {
 		Block block = bukkitChunk.getBlock(x, y, z);
 		if (block != null) {
 			BlockState state = block.getState();
@@ -62,23 +138,13 @@ public class FinalizeChunk extends AbstractedChunk {
 				if (current != null && !current.equals(data)) {
 					state.setType(data.getItemType());
 					state.setData(data);
-					state.update(true, true);
+//					state.update();
+					state.update(true, applyPhysics);
 				}
 			}
 		}
 	}
 
-	@Override
-	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
-		for (int x = x1; x < x2; x++) {
-			for (int z = z1; z < z2; z++) {
-				for (int y = y1; y < y2; y++) {
-					setBlock(x, y, z, data);
-				}
-			}
-		}
-	}
-	
 	@Override
 	public boolean isEmpty(int x, int y, int z) {
 		Block block = bukkitChunk.getBlock(x, y, z);

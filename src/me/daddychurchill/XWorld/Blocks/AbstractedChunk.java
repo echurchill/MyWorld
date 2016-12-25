@@ -2,8 +2,6 @@ package me.daddychurchill.XWorld.Blocks;
 
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
-import org.bukkit.material.MaterialData;
-
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 
@@ -64,19 +62,13 @@ public abstract class AbstractedChunk extends AbstractedBlocks {
 		return new Location(getGenerator().getWorld(), chunkX * Width + x, y, chunkZ * Width + z);
 	}
 	
-	@Override
-	public void setBlocks(int y, MaterialData data) {
-		setBlocks(0, Width, y, y + 1, 0, Width, data);
-	}
-	@Override
-	public void setBlocks(int y1, int y2, MaterialData data) {
-		setBlocks(0, Width, y1, y2, 0, Width, data);
-	}
-
-	@Override
+	// biome support
 	public void setBiome(Biome biome) {
 		for (int x = 0; x < Width; x++)
 			for (int z = 0; z < Width; z++)
 				setBiome(x, z, biome);
 	}
+
+	public abstract Biome getBiome(int x, int z);
+	public abstract void setBiome(int x, int z, Biome biome);
 }

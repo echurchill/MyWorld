@@ -223,7 +223,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData SUGAR_CANE_BLOCK = define(Material.SUGAR_CANE_BLOCK, 0); //TODO: wrong name; data variant
 	public final static MaterialData JUKEBOX = define(Material.JUKEBOX, 0); //TODO: data variant
 
-	//@Deprecated // Use FENCE_OAK instead
+	//TODO: it turns out Fences wood type is controlled via MetaData?
 	public final static MaterialData FENCE = define(Material.FENCE);
 //	public final static MaterialData FENCE_OAK = define(Material.FENCE, TreeSpecies.GENERIC);
 //	public final static MaterialData FENCE_REDWOOD = define(Material.FENCE, TreeSpecies.REDWOOD);
@@ -649,4 +649,5 @@ public final class RealMaterial extends AbstractThings {
 		    throw new IllegalArgumentException("Invalid block type for tree species");
 		}
 	}
+	
 }

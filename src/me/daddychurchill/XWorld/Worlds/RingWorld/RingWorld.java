@@ -2,7 +2,7 @@ package me.daddychurchill.XWorld.Worlds.RingWorld;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.ShapedWorld;
-import me.daddychurchill.XWorld.Worlds.Standard.GrassPopulator;
+import me.daddychurchill.XWorld.Worlds.Standard.NaturalSurfacePopulator;
 import me.daddychurchill.XWorld.Worlds.Standard.SimpleTreePopulator;
 
 public class RingWorld extends ShapedWorld {
@@ -13,6 +13,6 @@ public class RingWorld extends ShapedWorld {
 		initializers.add(new RingWorldTerrainInitializer((RingWorldShape)getWorldShape()));
 		
 		populators.add(new SimpleTreePopulator());
-		populators.add(new GrassPopulator());
+		populators.add(new NaturalSurfacePopulator());
 	}
 }

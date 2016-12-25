@@ -85,16 +85,6 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 	}
 	
 	@Override
-	public void setBlocks(int y, MaterialData data) {
-		setBlocks(0, sizeX, y, y + 1, 0, sizeZ, data);
-	}
-	
-	@Override
-	public void setBlocks(int y1, int y2, MaterialData data) {
-		setBlocks(0, sizeX, y1, y2, 0, sizeZ, data);
-	}
-	
-	@Override
 	public boolean isEmpty(int x, int y, int z) {
 		// TODO Auto-generated method stub
 		return false;

@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Blocks;
 
-import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
@@ -24,11 +23,25 @@ public abstract class AbstractedBlocks {
 		return generator;
 	}
 	
-	// simple 
+	// sub-classes need to implement these two
 	public abstract MaterialData getBlock(int x, int y, int z);
 	public abstract void setBlock(int x, int y, int z, MaterialData data);
-	public abstract void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data);
-	public abstract boolean isEmpty(int x, int y, int z);
+
+	// default implementation, certain sub-classes implement this differently
+	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
+		for (int x = x1; x < x2; x++) {
+			for (int z = z1; z < z2; z++) {
+				for (int y = y1; y < y2; y++) {
+					setBlock(x, y, z, data);
+				}
+			}
+		}
+	}
+
+	// default implementation, certain sub-classes implement this differently
+	public boolean isEmpty(int x, int y, int z) {
+		return isType(x, y, z, RealMaterial.AIR);
+	}
 	
 	public boolean isEmpty(int x1, int x2, int y, int z1, int z2) {
 		for (int x = x1; x < x2; x++)
@@ -48,8 +61,7 @@ public abstract class AbstractedBlocks {
 	}
 	
 	public boolean isType(int x, int y, int z, MaterialData data) {
-		MaterialData there = getBlock(x, y, z);
-		return there.equals(data);
+		return getBlock(x, y, z).equals(data);
 	}
 	
 	public boolean isTypes(int x, int y, int z, MaterialData ... datas) {
@@ -62,9 +74,14 @@ public abstract class AbstractedBlocks {
 	}
 	
 	// layers
-	public abstract void setBlocks(int y, MaterialData data);
-	public abstract void setBlocks(int y1, int y2, MaterialData data);
+	public void setBlocks(int y, MaterialData data) {
+		setBlocks(0, getSizeX(), y, y + 1, 0, getSizeZ(), data);
+	}
 	
+	public void setBlocks(int y1, int y2, MaterialData data) {
+		setBlocks(0, getSizeX(), y1, y2, 0, getSizeZ(), data);
+	}
+
 	// columns 
 	public void setBlocks(int x, int y1, int y2, int z, MaterialData data) {
 		setBlocks(x, x + 1, y1, y2, z, z + 1, data);
@@ -123,9 +140,4 @@ public abstract class AbstractedBlocks {
 			for (int z = z1; z < z2; z++)
 				setBlocksBelow(x, y, z, data);
 	}
-	
-	// biome support
-	public abstract Biome getBiome(int x, int z);
-	public abstract void setBiome(int x, int z, Biome biome);
-	public abstract void setBiome(Biome biome);
 }

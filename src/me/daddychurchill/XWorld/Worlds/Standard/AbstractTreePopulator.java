@@ -5,7 +5,6 @@ import org.bukkit.TreeType;
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractPopulator;
 import me.daddychurchill.XWorld.Support.Odds;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
 public abstract class AbstractTreePopulator extends AbstractPopulator {
@@ -34,18 +33,19 @@ public abstract class AbstractTreePopulator extends AbstractPopulator {
 	private static TreeType doNotPlant = TreeType.CHORUS_PLANT;
 	
 	private TreeType getTreeTypeBasedOnAltitude(Odds odds, int y) {
-		if (odds.playOdds(getOddsOfRedwoods(y))) {
+		if (odds.playOdds(getOddsOfNonRedwoods(y))) {
+			if (odds.playOdds(Odds.oddsUnlikely))
+				return odds.getOneOf(TreeType.TALL_BIRCH, TreeType.BIG_TREE, TreeType.DARK_OAK);
+//				return odds.getOneOf(TreeType.JUNGLE, TreeType.TALL_BIRCH, TreeType.ACACIA, TreeType.COCOA_TREE);
+			else
+				return odds.getOneOf(TreeType.TREE, TreeType.BIRCH, TreeType.ACACIA, TreeType.SMALL_JUNGLE, TreeType.JUNGLE_BUSH);
+		} else if (odds.playOdds(getOddsOfRedwoods(y))) {
 			if (odds.playOdds(Odds.oddsUnlikely))
 				return TreeType.MEGA_REDWOOD;
 			else
 				return odds.getOneOf(TreeType.REDWOOD, TreeType.TALL_REDWOOD);
 			
-		} else if (odds.playOdds(getOddsOfNonRedwoods(y))) {
-			if (odds.playOdds(Odds.oddsUnlikely))
-				return odds.getOneOf(TreeType.DARK_OAK, TreeType.BIG_TREE, TreeType.TALL_BIRCH, TreeType.ACACIA);
-			else
-				return odds.getOneOf(TreeType.TREE, TreeType.BIRCH, TreeType.JUNGLE, TreeType.SMALL_JUNGLE, TreeType.COCOA_TREE);
-		} else
+		} else 
 			return doNotPlant;
 	}
 	
@@ -56,26 +56,15 @@ public abstract class AbstractTreePopulator extends AbstractPopulator {
 
 	protected void plantTree(AbstractWorld world, FinalizeChunk chunk, int x, int z) {
 		int y = world.getSurfaceY(chunk, x, z);
-		if (y > 0) {
-			if (chunk.isFertile(x, y, z)) {
-				TreeType tree = getTreeTypeBasedOnAltitude(chunk.getOdds(), y);
-				if (tree != doNotPlant)
-					switch (tree) {
-					case DARK_OAK:
-					case MEGA_REDWOOD:
-						chunk.emptyBlocks(x, x + 2, y, z, z + 2);
-						chunk.setBlocksBelow(x, x + 2, y, z, z + 2, RealMaterial.DIRT);
-						chunk.plantTree(x, y, z, tree);
-						break;
-					default:
-						chunk.emptyBlock(x, y, z);
-						chunk.setBlocksBelow(x, y, z, RealMaterial.DIRT);
-						chunk.plantTree(x, y, z, tree);
-						break;
-					}
-//				else
-//					chunk.setBlocks(x, y, y + 20, z, RealMaterial.GOLD_BLOCK);
-			}
-		}
+		plantTree(world, chunk, x, y, z, getTreeTypeBasedOnAltitude(chunk.getOdds(), y));
+	}
+
+	protected void plantTree(AbstractWorld world, FinalizeChunk chunk, int x, int z, TreeType tree) {
+		plantTree(world, chunk, x, world.getSurfaceY(chunk, x, z), z, tree);
+	}
+
+	private void plantTree(AbstractWorld world, FinalizeChunk chunk, int x, int y, int z, TreeType tree) {
+		if (tree != doNotPlant && y < FinalizeChunk.Height - 20)
+			chunk.plantTree(x, y, z, tree);
 	}
 }

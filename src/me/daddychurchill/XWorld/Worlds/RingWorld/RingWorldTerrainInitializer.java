@@ -19,7 +19,7 @@ public class RingWorldTerrainInitializer extends NaturalTerrainInitializer {
 	@Override
 	protected void renderHere(AbstractWorld world, InitializeChunk chunk, int x, int y, int z, 
 			int topsoilThickness, int seaLevel) {
-		
+	
 		if (y >= ringTop)
 			chunk.setBlocks(x, 1, y + ringTopPlus, z, RealMaterial.SMOOTH_BRICK_CRACKED);
 		else

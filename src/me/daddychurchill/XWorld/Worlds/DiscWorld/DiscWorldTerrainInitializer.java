@@ -23,8 +23,10 @@ public class DiscWorldTerrainInitializer extends NaturalTerrainInitializer {
 //		chunk.setBlocks(x, 1, y, z, RealMaterial.SMOOTH_BRICK_CRACKED);
 		
 		if (y >= discTop - 8) {
-			super.renderHere(world, chunk, x, y - 8, z, 0, 0);
-			chunk.setBlocks(x, y - 8, y, z, RealMaterial.QUARTZ_PILLAR);
+			super.renderHere(world, chunk, x, y - 1, z, 0, seaLevel);
+			chunk.setBlock(x, y - 1, z, RealMaterial.SNOW_BLOCK);
+			chunk.setBlock(x, y, z, RealMaterial.SNOW);
+//			chunk.setBlocks(x, y - 8, y, z, RealMaterial.ENDER_STONE);
 		} else
 			super.renderHere(world, chunk, x, y, z, topsoilThickness, seaLevel);
 	}

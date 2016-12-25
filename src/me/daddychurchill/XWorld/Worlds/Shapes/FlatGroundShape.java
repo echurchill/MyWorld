@@ -24,6 +24,11 @@ public class FlatGroundShape extends AbstractedShape {
 	public int getSeaLevel() {
 		return groundLevel;
 	}
+	
+	@Override
+	public int getSnowLevel() {
+		return (AbstractedChunk.Height - groundLevel) / 2 + groundLevel;
+	}
 
 	@Override
 	public double getSurfaceYOnWorld(double x, double z) {

@@ -59,20 +59,6 @@ public class DiscWorldShape extends NaturalGroundShape {
 			else
 				return defaultY;
 		}
-//		double absZ = Math.abs(z);
-//		if (absZ > discRange) {
-//			if (absZ > discExtreme)
-//				return 0;
-//			else
-//				return discTop;
-//		} else {
-//			double defaultY = super.getSurfaceYOnWorld(x, z);
-//			double ringZtoY = Math.min(discTop, discTop - Math.sqrt((1.0 - ((z * z) / discRange2)) * discHeight2) + getSurfaceNoiseOnWorld(x, z));
-//			if (ringZtoY > defaultY)
-//				return ringZtoY;
-//			else
-//				return defaultY;
-//		}
 	}
 	
 	public int getDiscTop() {
