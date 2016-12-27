@@ -70,7 +70,8 @@ public class NaturalGroundShape extends AbstractedShape {
 		return (AbstractedChunk.Height - seaLevel) / 2 + seaLevel;
 	}
 
-	protected double getSurfaceNoiseOnWorld(double x, double z) {
+	@Override
+	public double getSurfaceNoiseOnWorld(double x, double z) {
 		return noiseGenerator.noise(x / noiseXFactor, z / noiseZFactor, noiseFrequency, noiseAmplitude) * noiseVScale;
 	}
 

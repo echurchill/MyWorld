@@ -4,6 +4,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
 import org.bukkit.material.MaterialData;
+import org.bukkit.util.noise.NoiseGenerator;
 
 public final class RealMaterial extends AbstractThings {
 
@@ -536,6 +537,11 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData LEAVES_2 = LEAVES_OAK;
 	@Deprecated // Use LOG_OAK instead
 	public final static MaterialData LOG_2 = LOG_OAK;
+	
+	public static MaterialData realSnow(double realAmount) {
+		int amount = NoiseGenerator.floor((realAmount - Math.floor(realAmount)) * 8.0);
+		return define(Material.SNOW, amount);
+	}
 	
 	@SuppressWarnings("deprecation")
 	protected static void assertTest(Material material) {

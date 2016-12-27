@@ -25,7 +25,8 @@ public class DiscWorldTerrainInitializer extends NaturalTerrainInitializer {
 		if (y >= discTop - 8) {
 			super.renderHere(world, chunk, x, y - 1, z, 0, seaLevel);
 			chunk.setBlock(x, y - 1, z, RealMaterial.SNOW_BLOCK);
-			chunk.setBlock(x, y, z, RealMaterial.SNOW);
+			double doubleY = worldShape.getSurfaceNoiseOnWorld(x, z);
+			chunk.setBlock(x, y, z, RealMaterial.realSnow(doubleY));
 //			chunk.setBlocks(x, y - 8, y, z, RealMaterial.ENDER_STONE);
 		} else
 			super.renderHere(world, chunk, x, y, z, topsoilThickness, seaLevel);

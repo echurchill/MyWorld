@@ -36,6 +36,11 @@ public class FlatGroundShape extends AbstractedShape {
 	}
 	
 	@Override
+	public double getSurfaceNoiseOnWorld(double x, double z) {
+		return 0;
+	}
+	
+	@Override
 	public int getSurfaceY(AbstractedChunk chunk, int x, int z) {
 		return groundLevel; // faster than letting the default implementation handle this
 	}
