@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.Standard;
+package me.daddychurchill.XWorld.Reusable.Populators;
 
 import org.bukkit.TreeType;
 import org.bukkit.block.BlockFace;

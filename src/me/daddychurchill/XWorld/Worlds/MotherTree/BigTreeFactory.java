@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.BigTree;
+package me.daddychurchill.XWorld.Worlds.MotherTree;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;

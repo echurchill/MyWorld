@@ -1,9 +1,9 @@
 package me.daddychurchill.XWorld.Worlds.RingWorld;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Reusable.Populators.NaturalSurfacePopulator;
+import me.daddychurchill.XWorld.Reusable.Populators.SimpleTreePopulator;
 import me.daddychurchill.XWorld.Worlds.ShapedWorld;
-import me.daddychurchill.XWorld.Worlds.Standard.NaturalSurfacePopulator;
-import me.daddychurchill.XWorld.Worlds.Standard.SimpleTreePopulator;
 
 public class RingWorld extends ShapedWorld {
 

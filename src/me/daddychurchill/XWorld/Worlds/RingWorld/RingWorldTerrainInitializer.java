@@ -1,9 +1,9 @@
 package me.daddychurchill.XWorld.Worlds.RingWorld;
 
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
+import me.daddychurchill.XWorld.Reusable.Initializers.NaturalTerrainInitializer;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
-import me.daddychurchill.XWorld.Worlds.Standard.NaturalTerrainInitializer;
 
 public class RingWorldTerrainInitializer extends NaturalTerrainInitializer {
 	

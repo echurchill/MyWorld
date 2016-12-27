@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.Standard;
+package me.daddychurchill.XWorld.Reusable.Initializers;
 
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractInitializer;

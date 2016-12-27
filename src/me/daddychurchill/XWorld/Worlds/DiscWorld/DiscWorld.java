@@ -1,9 +1,9 @@
 package me.daddychurchill.XWorld.Worlds.DiscWorld;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Reusable.Populators.NaturalSurfacePopulator;
+import me.daddychurchill.XWorld.Reusable.Populators.NaturalTreePopulator;
 import me.daddychurchill.XWorld.Worlds.ShapedWorld;
-import me.daddychurchill.XWorld.Worlds.Standard.NaturalSurfacePopulator;
-import me.daddychurchill.XWorld.Worlds.Standard.NaturalTreePopulator;
 
 public class DiscWorld extends ShapedWorld {
 

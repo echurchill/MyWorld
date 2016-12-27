@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.Shapes;
+package me.daddychurchill.XWorld.Reusable.Shapes;
 
 import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 

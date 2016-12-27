@@ -7,7 +7,7 @@ import org.bukkit.World;
 
 import me.daddychurchill.XWorld.Blocks.AbstractedChunk;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
-import me.daddychurchill.XWorld.Worlds.Shapes.AbstractedShape;
+import me.daddychurchill.XWorld.Reusable.Shapes.AbstractedShape;
 
 public class ShapedWorld extends ChunkedWorld {
 

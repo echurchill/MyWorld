@@ -1,12 +1,12 @@
-package me.daddychurchill.XWorld.Worlds.Standard;
+package me.daddychurchill.XWorld.Reusable.Initializers;
 
 import org.bukkit.block.Biome;
 import org.bukkit.material.MaterialData;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractInitializer;
+import me.daddychurchill.XWorld.Reusable.Shapes.AbstractedShape;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
-import me.daddychurchill.XWorld.Worlds.Shapes.AbstractedShape;
 
 public class NaturalTerrainInitializer extends AbstractInitializer {
 

@@ -3,7 +3,7 @@ package me.daddychurchill.XWorld.Worlds.DiscWorld;
 import org.bukkit.util.noise.NoiseGenerator;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
-import me.daddychurchill.XWorld.Worlds.Shapes.NaturalGroundShape;
+import me.daddychurchill.XWorld.Reusable.Shapes.NaturalGroundShape;
 
 public class DiscWorldShape extends NaturalGroundShape {
 

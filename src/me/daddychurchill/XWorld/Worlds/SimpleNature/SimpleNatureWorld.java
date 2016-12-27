@@ -1,11 +1,11 @@
 package me.daddychurchill.XWorld.Worlds.SimpleNature;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Reusable.Initializers.SimpleTerrainInitializer;
+import me.daddychurchill.XWorld.Reusable.Populators.NaturalSurfacePopulator;
+import me.daddychurchill.XWorld.Reusable.Populators.SimpleTreePopulator;
+import me.daddychurchill.XWorld.Reusable.Shapes.NaturalGroundShape;
 import me.daddychurchill.XWorld.Worlds.ShapedWorld;
-import me.daddychurchill.XWorld.Worlds.Shapes.NaturalGroundShape;
-import me.daddychurchill.XWorld.Worlds.Standard.NaturalSurfacePopulator;
-import me.daddychurchill.XWorld.Worlds.Standard.SimpleTerrainInitializer;
-import me.daddychurchill.XWorld.Worlds.Standard.SimpleTreePopulator;
 
 public class SimpleNatureWorld extends ShapedWorld {
 	

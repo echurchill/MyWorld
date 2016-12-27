@@ -1,10 +1,10 @@
 package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
+import me.daddychurchill.XWorld.Reusable.Initializers.SimpleTerrainInitializer;
+import me.daddychurchill.XWorld.Reusable.Populators.NaturalSurfacePopulator;
+import me.daddychurchill.XWorld.Reusable.Populators.SimpleTreePopulator;
 import me.daddychurchill.XWorld.Worlds.FlatChunkedWorld;
-import me.daddychurchill.XWorld.Worlds.Standard.NaturalSurfacePopulator;
-import me.daddychurchill.XWorld.Worlds.Standard.SimpleTerrainInitializer;
-import me.daddychurchill.XWorld.Worlds.Standard.SimpleTreePopulator;
 
 public class TreesAndSuchWorld extends FlatChunkedWorld {
 

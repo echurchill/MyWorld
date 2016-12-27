@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.Standard;
+package me.daddychurchill.XWorld.Reusable.Populators;
 
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractPopulator;

@@ -1,13 +1,13 @@
-package me.daddychurchill.XWorld.Worlds.BigTree;
+package me.daddychurchill.XWorld.Worlds.MotherTree;
 
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Schemas.ProceduralSchema;
 import me.daddychurchill.XWorld.Support.Odds;
 import me.daddychurchill.XWorld.Things.RealMaterial;
 
-public class BigTreeSchema extends ProceduralSchema {
+public class MotherTreeSchema extends ProceduralSchema {
 
-	public BigTreeSchema(CoreGenerator generator) {
+	public MotherTreeSchema(CoreGenerator generator) {
 		super(generator, 100, 150, 100);
 	}
 

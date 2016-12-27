@@ -1,4 +1,4 @@
-package me.daddychurchill.XWorld.Worlds.BigTree;
+package me.daddychurchill.XWorld.Worlds.MotherTree;
 
 import org.bukkit.generator.ChunkGenerator.BiomeGrid;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
@@ -7,13 +7,13 @@ import me.daddychurchill.XWorld.Blocks.PasteingInitializeChunk;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 
-public class BigTreeInitializer extends PasteingInitializeChunk {
+public class MotherTreeInitializer extends PasteingInitializeChunk {
 
-	public BigTreeInitializer(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData, Odds odds,
+	public MotherTreeInitializer(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData, Odds odds,
 			int chunkX, int chunkZ) {
 		super(generator, bukkitChunkData, bukkitBiomeData, odds, chunkX, chunkZ);
 		
-		addSchema(new BigTreeSchema(generator), 0, 0);
+		addSchema(new MotherTreeSchema(generator), 0, 0);
 	}
 
 //	@Override
