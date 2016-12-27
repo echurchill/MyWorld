@@ -92,14 +92,18 @@ public class FinalizeChunk extends AbstractedChunk {
 		Location at = getBlockWorldLocation(x, y, z);
 		boolean success = getGenerator().getWorld().generateTree(at, treeType);
 		
-		// if not, try one more time!
+		// if not, try a few more times
 		if (!success) {
 			int initY = y;
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 8; i++) {
+				
+				// maybe it just isn't clear enough above, move up and try again
 				y++;
 				rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, RealMaterial.DIRT);
 				at = getBlockWorldLocation(x, y, z);
 				success = getGenerator().getWorld().generateTree(at, treeType);
+				
+				// if we made the tree after all, copy it's trunk block down to fill up all of that added dirt
 				if (success) {
 					rootBlocks.setBlocks(x, x + width, initY, y, z, z + width, getBlock(x, y, z));
 					break;

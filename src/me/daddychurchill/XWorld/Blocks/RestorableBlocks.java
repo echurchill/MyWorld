@@ -25,7 +25,7 @@ public class RestorableBlocks extends AbstractedBlocks {
 		oldBlocks = new ArrayList<StoredBlock>();
 	}
 
-	private class StoredBlock {
+	private static class StoredBlock {
 		private int oldX;
 		private int oldY;
 		private int oldZ;
