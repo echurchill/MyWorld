@@ -539,7 +539,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData LOG_2 = LOG_OAK;
 	
 	public static MaterialData microSnow(double realAmount) {
-		int amount = Math.max(7, NoiseGenerator.floor((realAmount - Math.floor(realAmount)) * 8.0));
+		int amount = Math.min(7, NoiseGenerator.floor((realAmount - Math.floor(realAmount)) * 8.0));
 		return define(Material.SNOW, amount);
 	}
 	
