@@ -490,6 +490,60 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData SHULKER_BOX_RED = define(Material.RED_SHULKER_BOX);
 	public final static MaterialData SHULKER_BOX_BLACK = define(Material.BLACK_SHULKER_BOX);
 	
+	public final static MaterialData TERRACOTTA_WHITE = define(Material.BLACK_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_ORANGE = define(Material.ORANGE_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_MAGENTA = define(Material.MAGENTA_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_LIGHT_BLUE = define(Material.LIGHT_BLUE_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_YELLOW = define(Material.YELLOW_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_LIME = define(Material.LIME_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_PINK = define(Material.PINK_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_GRAY = define(Material.GRAY_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_SILVER = define(Material.SILVER_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_CYAN = define(Material.CYAN_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_PURPLE = define(Material.PURPLE_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_BLUE = define(Material.BLUE_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_BROWN = define(Material.BROWN_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_GREEN = define(Material.GREEN_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_RED = define(Material.RED_GLAZED_TERRACOTTA);
+	public final static MaterialData TERRACOTTA_BLACK = define(Material.BLACK_GLAZED_TERRACOTTA);
+
+	public final static MaterialData CONCRETE = define(Material.CONCRETE);
+	public final static MaterialData CONCRETE_WHITE = define(Material.CONCRETE, DyeColor.WHITE);
+	public final static MaterialData CONCRETE_ORANGE = define(Material.CONCRETE, DyeColor.ORANGE);
+	public final static MaterialData CONCRETE_MAGENTA = define(Material.CONCRETE, DyeColor.MAGENTA);
+	public final static MaterialData CONCRETE_LIGHT_BLUE = define(Material.CONCRETE, DyeColor.LIGHT_BLUE);
+	public final static MaterialData CONCRETE_YELLOW = define(Material.CONCRETE, DyeColor.YELLOW);
+	public final static MaterialData CONCRETE_LIME = define(Material.CONCRETE, DyeColor.LIME);
+	public final static MaterialData CONCRETE_PINK = define(Material.CONCRETE, DyeColor.PINK);
+	public final static MaterialData CONCRETE_GRAY = define(Material.CONCRETE, DyeColor.GRAY);
+	public final static MaterialData CONCRETE_SILVER = define(Material.CONCRETE, DyeColor.SILVER);
+	public final static MaterialData CONCRETE_CYAN = define(Material.CONCRETE, DyeColor.CYAN);
+	public final static MaterialData CONCRETE_PURPLE = define(Material.CONCRETE, DyeColor.PURPLE);
+	public final static MaterialData CONCRETE_BLUE = define(Material.CONCRETE, DyeColor.BLUE);
+	public final static MaterialData CONCRETE_BROWN = define(Material.CONCRETE, DyeColor.BROWN);
+	public final static MaterialData CONCRETE_GREEN = define(Material.CONCRETE, DyeColor.GREEN);
+	public final static MaterialData CONCRETE_RED = define(Material.CONCRETE, DyeColor.RED);
+	public final static MaterialData CONCRETE_BLACK = define(Material.CONCRETE, DyeColor.BLACK);
+
+	public final static MaterialData CONCRETE_POWDER = define(Material.CONCRETE_POWDER);
+	public final static MaterialData CONCRETE_POWDER_WHITE = define(Material.CONCRETE_POWDER, DyeColor.WHITE);
+	public final static MaterialData CONCRETE_POWDER_ORANGE = define(Material.CONCRETE_POWDER, DyeColor.ORANGE);
+	public final static MaterialData CONCRETE_POWDER_MAGENTA = define(Material.CONCRETE_POWDER, DyeColor.MAGENTA);
+	public final static MaterialData CONCRETE_POWDER_LIGHT_BLUE = define(Material.CONCRETE_POWDER, DyeColor.LIGHT_BLUE);
+	public final static MaterialData CONCRETE_POWDER_YELLOW = define(Material.CONCRETE_POWDER, DyeColor.YELLOW);
+	public final static MaterialData CONCRETE_POWDER_LIME = define(Material.CONCRETE_POWDER, DyeColor.LIME);
+	public final static MaterialData CONCRETE_POWDER_PINK = define(Material.CONCRETE_POWDER, DyeColor.PINK);
+	public final static MaterialData CONCRETE_POWDER_GRAY = define(Material.CONCRETE_POWDER, DyeColor.GRAY);
+	public final static MaterialData CONCRETE_POWDER_SILVER = define(Material.CONCRETE_POWDER, DyeColor.SILVER);
+	public final static MaterialData CONCRETE_POWDER_CYAN = define(Material.CONCRETE_POWDER, DyeColor.CYAN);
+	public final static MaterialData CONCRETE_POWDER_PURPLE = define(Material.CONCRETE_POWDER, DyeColor.PURPLE);
+	public final static MaterialData CONCRETE_POWDER_BLUE = define(Material.CONCRETE_POWDER, DyeColor.BLUE);
+	public final static MaterialData CONCRETE_POWDER_BROWN = define(Material.CONCRETE_POWDER, DyeColor.BROWN);
+	public final static MaterialData CONCRETE_POWDER_GREEN = define(Material.CONCRETE_POWDER, DyeColor.GREEN);
+	public final static MaterialData CONCRETE_POWDER_RED = define(Material.CONCRETE_POWDER, DyeColor.RED);
+	public final static MaterialData CONCRETE_POWDER_BLACK = define(Material.CONCRETE_POWDER, DyeColor.BLACK);
+
+	
 	// THIS SHOULD BE THE LAST ONE... because it is
 	public final static MaterialData STRUCTURE_BLOCK = define(Material.STRUCTURE_BLOCK, 0); //TODO: data variant
 
