@@ -14,6 +14,7 @@ public enum Materials {
 	
 	// THESE REALLY SHOULD FOLLOW A BETTER NAMING SCHEME
 	// <Material>[_<MaterialModifier>[[<FormModifier>_]_<Form>]]
+	// [<Shape>_]<Material>[_<MaterialModifier>][_<ColorModifier>]
 	
 	AIR(Material.AIR),
 
