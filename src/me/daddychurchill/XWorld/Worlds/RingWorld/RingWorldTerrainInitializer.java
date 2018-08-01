@@ -1,8 +1,9 @@
 package me.daddychurchill.XWorld.Worlds.RingWorld;
 
+import org.bukkit.Material;
+
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Reusable.Initializers.NaturalTerrainInitializer;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
 public class RingWorldTerrainInitializer extends NaturalTerrainInitializer {
@@ -21,7 +22,7 @@ public class RingWorldTerrainInitializer extends NaturalTerrainInitializer {
 			int topsoilThickness, int seaLevel) {
 	
 		if (y >= ringTop)
-			chunk.setBlocks(x, 1, y + ringTopPlus, z, RealMaterial.SMOOTH_BRICK_CRACKED);
+			chunk.setBlocks(x, 1, y + ringTopPlus, z, Material.CRACKED_STONE_BRICKS);
 		else
 			super.renderHere(world, chunk, x, y, z, topsoilThickness, seaLevel);
 	}

@@ -51,9 +51,9 @@ public enum Materials {
 	BEDROCK(Material.BEDROCK),
 
 	WATER_FLOWING(Material.WATER, 0), //TODO: wrong name, data variant
-	WATER_STATIONARY(Material.STATIONARY_WATER, 0), //TODO: wrong name, data variant
+	WATER_STATIONARY(Material.WATER, 0), //TODO: wrong name, data variant
 	LAVA_FLOWING(Material.LAVA, 0), //TODO: wrong name, data variant
-	LAVA_STATIONARY(Material.STATIONARY_LAVA, 0), //TODO: wrong name, data variant
+	LAVA_STATIONARY(Material.LAVA, 0), //TODO: wrong name, data variant
 
 	SAND(Material.SAND),
 	SAND_RED(Material.SAND, 1),
@@ -107,9 +107,9 @@ public enum Materials {
 
 	WEB(Material.WEB),
 
-	SHRUB(Material.LONG_GRASS, 0),
-	TALL_GRASS(Material.LONG_GRASS, 1),
-	FERN(Material.LONG_GRASS, 2),
+	SHRUB(Material.TALL_GRASS, 0),
+	TALL_GRASS(Material.TALL_GRASS, 1),
+	FERN(Material.TALL_GRASS, 2),
 
 	DEAD_BUSH(Material.DEAD_BUSH),
 
@@ -136,16 +136,16 @@ public enum Materials {
 
 	PISTON_MOVING_PIECE(Material.PISTON_MOVING_PIECE, 0), //TODO: wrong name, data variant
 	
-	FLOWER_DANDELION(Material.YELLOW_FLOWER),
-	FLOWER_POPPY(Material.RED_ROSE, 0),
-	FLOWER_BLUE_ORCHID(Material.RED_ROSE, 1),
-	FLOWER_ALLIUM(Material.RED_ROSE, 2),
-	FLOWER_AZURE_BLUET(Material.RED_ROSE, 3),
-	FLOWER_RED_TULIP(Material.RED_ROSE, 4),
-	FLOWER_ORANGE_TULIP(Material.RED_ROSE, 5),
-	FLOWER_WHITE_TULIP(Material.RED_ROSE, 6),
-	FLOWER_PINK_TULIP(Material.RED_ROSE, 7),
-	FLOWER_OXEYE_DAISY(Material.RED_ROSE, 8),
+	FLOWER_DANDELION(Material.DANDELION),
+	FLOWER_POPPY(Material.POPPY, 0),
+	FLOWER_BLUE_ORCHID(Material.POPPY, 1),
+	FLOWER_ALLIUM(Material.POPPY, 2),
+	FLOWER_AZURE_BLUET(Material.POPPY, 3),
+	FLOWER_RED_TULIP(Material.POPPY, 4),
+	FLOWER_ORANGE_TULIP(Material.POPPY, 5),
+	FLOWER_WHITE_TULIP(Material.POPPY, 6),
+	FLOWER_PINK_TULIP(Material.POPPY, 7),
+	FLOWER_OXEYE_DAISY(Material.POPPY, 8),
 	
 	MUSHROOM_BROWN(Material.BROWN_MUSHROOM),
 	MUSHROOM_RED(Material.RED_MUSHROOM),
@@ -157,7 +157,7 @@ public enum Materials {
 	STONEWOOD_DOUBLE_SLAB(Material.DOUBLE_STEP, 2),
 	COBBLESTONE_DOUBLE_SLAB(Material.DOUBLE_STEP, 3),
 	BRICK_DOUBLE_SLAB(Material.DOUBLE_STEP, 4),
-	SMOOTH_BRICK_DOUBLE_SLAB(Material.DOUBLE_STEP, 5),
+	STONE_BRICKS_DOUBLE_SLAB(Material.DOUBLE_STEP, 5),
 	NETHER_BRICK_DOUBLE_SLAB(Material.DOUBLE_STEP, 6),
 	QUARTZ_DOUBLE_SLAB(Material.DOUBLE_STEP, 7),
 	SANDSTONE_RED_DOUBLE_SLAB(Material.DOUBLE_STONE_SLAB2, 0),
@@ -167,7 +167,7 @@ public enum Materials {
 	STONEWOOD_SLAB(Material.STEP, 2),
 	COBBLESTONE_SLAB(Material.STEP, 3),
 	BRICK_SLAB(Material.STEP, 4),
-	SMOOTH_BRICK_SLAB(Material.STEP, 5),
+	STONE_BRICKS_SLAB(Material.STEP, 5),
 	NETHER_BRICK_SLAB(Material.STEP, 6),
 	QUARTZ_SLAB(Material.STEP, 7),
 	SANDSTONE_RED_SLAB(Material.STONE_SLAB2, 0),
@@ -176,7 +176,7 @@ public enum Materials {
 	STONEWOOD_UPPER_SLAB(Material.STEP, 2 + 8),
 	COBBLESTONE_UPPER_SLAB(Material.STEP, 3 + 8),
 	BRICK_UPPER_SLAB(Material.STEP, 4 + 8),
-	SMOOTH_BRICK_UPPER_SLAB(Material.STEP, 5 + 8),
+	STONE_BRICKS_UPPER_SLAB(Material.STEP, 5 + 8),
 	NETHER_BRICK_UPPER_SLAB(Material.STEP, 6 + 8),
 	QUARTZ_UPPER_SLAB(Material.STEP, 7 + 8),
 	SANDSTONE_RED_UPPER_SLAB(Material.STONE_SLAB2, 0 + 8),
@@ -264,15 +264,15 @@ public enum Materials {
 	TRAP_DOOR(Material.TRAP_DOOR, 0), //TODO: wrong name, data variant
 	MONSTER_EGGS(Material.MONSTER_EGGS, 0), //TODO: wrong name, data variant
 
-	SMOOTH_BRICK(Material.SMOOTH_BRICK),
-	SMOOTH_BRICK_MOSSY(Material.SMOOTH_BRICK, 1),
-	SMOOTH_BRICK_CRACKED(Material.SMOOTH_BRICK, 2),
-	SMOOTH_BRICK_CHISELED(Material.SMOOTH_BRICK, 3),
+	STONE_BRICKS(Material.STONE_BRICKS),
+	STONE_BRICKS_MOSSY(Material.STONE_BRICKS, 1),
+	STONE_BRICKS_CRACKED(Material.STONE_BRICKS, 2),
+	STONE_BRICKS_CHISELED(Material.STONE_BRICKS, 3),
 
 	HUGE_MUSHROOM_1(Material.HUGE_MUSHROOM_1, 0), //TODO: wrong name, data variant
 	HUGE_MUSHROOM_2(Material.HUGE_MUSHROOM_2, 0), //TODO: wrong name, data variant
 	IRON_FENCE(Material.IRON_FENCE), //TODO: wrong name
-	THIN_GLASS(Material.THIN_GLASS), //TODO: wrong name
+	GLASS_PANE(Material.GLASS_PANE), //TODO: wrong name
 	MELON_BLOCK(Material.MELON_BLOCK),
 	PUMPKIN_STEM(Material.PUMPKIN_STEM, 0), //TODO: data variant
 	MELON_STEM(Material.MELON_STEM, 0), //TODO: data variant
@@ -280,7 +280,7 @@ public enum Materials {
 	FENCE_GATE(Material.FENCE_GATE, 0), //TODO: data variant
 	BRICK_STAIRS(Material.BRICK_STAIRS, 0), //TODO: data variant
 	SMOOTH_STAIRS(Material.SMOOTH_STAIRS, 0), //TODO: wrong name, data variant
-	MYCEL(Material.MYCEL), //TODO: wrong name
+	MYCELIUM(Material.MYCELIUM), //TODO: wrong name
 	WATER_LILY(Material.WATER_LILY), //TODO: wrong name
 	NETHER_BRICK(Material.NETHER_BRICK),
 	NETHER_FENCE(Material.NETHER_FENCE), //TODO: wrong name
@@ -291,7 +291,7 @@ public enum Materials {
 	CAULDRON(Material.CAULDRON, 0), //TODO: data variant
 	ENDER_PORTAL(Material.ENDER_PORTAL), //TODO: wrong name
 	ENDER_PORTAL_FRAME(Material.ENDER_PORTAL_FRAME, 0), //TODO: wrong name, data variant
-	ENDER_STONE(Material.ENDER_STONE, 0), //TODO: wrong name, data variant
+	END_STONE(Material.END_STONE, 0), //TODO: wrong name, data variant
 	DRAGON_EGG(Material.DRAGON_EGG),
 	REDSTONE_LAMP_OFF(Material.REDSTONE_LAMP_OFF), //TODO: wrong name
 	REDSTONE_LAMP_ON(Material.REDSTONE_LAMP_ON), //TODO: wrong name

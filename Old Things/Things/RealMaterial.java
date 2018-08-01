@@ -50,9 +50,9 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData BEDROCK = define(Material.BEDROCK);
 
 	public final static MaterialData WATER_FLOWING = define(Material.WATER, 0); //TODO: wrong name; data variant
-	public final static MaterialData WATER_STATIONARY = define(Material.STATIONARY_WATER, 0); //TODO: wrong name; data variant
+	public final static MaterialData WATER_STATIONARY = define(Material.WATER, 0); //TODO: wrong name; data variant
 	public final static MaterialData LAVA_FLOWING = define(Material.LAVA, 0); //TODO: wrong name; data variant
-	public final static MaterialData LAVA_STATIONARY = define(Material.STATIONARY_LAVA, 0); //TODO: wrong name; data variant
+	public final static MaterialData LAVA_STATIONARY = define(Material.LAVA, 0); //TODO: wrong name; data variant
 
 	public final static MaterialData SAND = define(Material.SAND);
 	public final static MaterialData SAND_RED = define(Material.SAND, 1);
@@ -107,9 +107,9 @@ public final class RealMaterial extends AbstractThings {
 
 	public final static MaterialData WEB = define(Material.WEB);
 
-	public final static MaterialData SHRUB = define(Material.LONG_GRASS, 0);
-	public final static MaterialData TALL_GRASS = define(Material.LONG_GRASS, 1);
-	public final static MaterialData FERN = define(Material.LONG_GRASS, 2);
+	public final static MaterialData SHRUB = define(Material.TALL_GRASS, 0);
+	public final static MaterialData TALL_GRASS = define(Material.TALL_GRASS, 1);
+	public final static MaterialData FERN = define(Material.TALL_GRASS, 2);
 
 	public final static MaterialData DEAD_BUSH = define(Material.DEAD_BUSH);
 
@@ -136,16 +136,16 @@ public final class RealMaterial extends AbstractThings {
 
 	public final static MaterialData PISTON_MOVING_PIECE = define(Material.PISTON_MOVING_PIECE, 0); //TODO: wrong name; data variant
 	
-	public final static MaterialData FLOWER_DANDELION = define(Material.YELLOW_FLOWER);
-	public final static MaterialData FLOWER_POPPY = define(Material.RED_ROSE, 0);
-	public final static MaterialData FLOWER_BLUE_ORCHID = define(Material.RED_ROSE, 1);
-	public final static MaterialData FLOWER_ALLIUM = define(Material.RED_ROSE, 2);
-	public final static MaterialData FLOWER_AZURE_BLUET = define(Material.RED_ROSE, 3);
-	public final static MaterialData FLOWER_RED_TULIP = define(Material.RED_ROSE, 4);
-	public final static MaterialData FLOWER_ORANGE_TULIP = define(Material.RED_ROSE, 5);
-	public final static MaterialData FLOWER_WHITE_TULIP = define(Material.RED_ROSE, 6);
-	public final static MaterialData FLOWER_PINK_TULIP = define(Material.RED_ROSE, 7);
-	public final static MaterialData FLOWER_OXEYE_DAISY = define(Material.RED_ROSE, 8);
+	public final static MaterialData FLOWER_DANDELION = define(Material.DANDELION);
+	public final static MaterialData FLOWER_POPPY = define(Material.POPPY, 0);
+	public final static MaterialData FLOWER_BLUE_ORCHID = define(Material.POPPY, 1);
+	public final static MaterialData FLOWER_ALLIUM = define(Material.POPPY, 2);
+	public final static MaterialData FLOWER_AZURE_BLUET = define(Material.POPPY, 3);
+	public final static MaterialData FLOWER_RED_TULIP = define(Material.POPPY, 4);
+	public final static MaterialData FLOWER_ORANGE_TULIP = define(Material.POPPY, 5);
+	public final static MaterialData FLOWER_WHITE_TULIP = define(Material.POPPY, 6);
+	public final static MaterialData FLOWER_PINK_TULIP = define(Material.POPPY, 7);
+	public final static MaterialData FLOWER_OXEYE_DAISY = define(Material.POPPY, 8);
 	
 	public final static MaterialData MUSHROOM_BROWN = define(Material.BROWN_MUSHROOM);
 	public final static MaterialData MUSHROOM_RED = define(Material.RED_MUSHROOM);
@@ -157,7 +157,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData STONEWOOD_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 2);
 	public final static MaterialData COBBLESTONE_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 3);
 	public final static MaterialData BRICK_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 4);
-	public final static MaterialData SMOOTH_BRICK_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 5);
+	public final static MaterialData STONE_BRICKS_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 5);
 	public final static MaterialData NETHER_BRICK_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 6);
 	public final static MaterialData QUARTZ_DOUBLE_SLAB = define(Material.DOUBLE_STEP, 7);
 	public final static MaterialData SANDSTONE_RED_DOUBLE_SLAB = define(Material.DOUBLE_STONE_SLAB2, 0);
@@ -167,7 +167,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData STONEWOOD_SLAB = define(Material.STEP, 2);
 	public final static MaterialData COBBLESTONE_SLAB = define(Material.STEP, 3);
 	public final static MaterialData BRICK_SLAB = define(Material.STEP, 4);
-	public final static MaterialData SMOOTH_BRICK_SLAB = define(Material.STEP, 5);
+	public final static MaterialData STONE_BRICKS_SLAB = define(Material.STEP, 5);
 	public final static MaterialData NETHER_BRICK_SLAB = define(Material.STEP, 6);
 	public final static MaterialData QUARTZ_SLAB = define(Material.STEP, 7);
 	public final static MaterialData SANDSTONE_RED_SLAB = define(Material.STONE_SLAB2, 0);
@@ -176,7 +176,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData STONEWOOD_UPPER_SLAB = define(Material.STEP, 2 + 8);
 	public final static MaterialData COBBLESTONE_UPPER_SLAB = define(Material.STEP, 3 + 8);
 	public final static MaterialData BRICK_UPPER_SLAB = define(Material.STEP, 4 + 8);
-	public final static MaterialData SMOOTH_BRICK_UPPER_SLAB = define(Material.STEP, 5 + 8);
+	public final static MaterialData STONE_BRICKS_UPPER_SLAB = define(Material.STEP, 5 + 8);
 	public final static MaterialData NETHER_BRICK_UPPER_SLAB = define(Material.STEP, 6 + 8);
 	public final static MaterialData QUARTZ_UPPER_SLAB = define(Material.STEP, 7 + 8);
 	public final static MaterialData SANDSTONE_RED_UPPER_SLAB = define(Material.STONE_SLAB2, 0 + 8);
@@ -264,15 +264,15 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData TRAP_DOOR = define(Material.TRAP_DOOR, 0); //TODO: wrong name; data variant
 	public final static MaterialData MONSTER_EGGS = define(Material.MONSTER_EGGS, 0); //TODO: wrong name; data variant
 
-	public final static MaterialData SMOOTH_BRICK = define(Material.SMOOTH_BRICK);
-	public final static MaterialData SMOOTH_BRICK_MOSSY = define(Material.SMOOTH_BRICK, 1);
-	public final static MaterialData SMOOTH_BRICK_CRACKED = define(Material.SMOOTH_BRICK, 2);
-	public final static MaterialData SMOOTH_BRICK_CHISELED = define(Material.SMOOTH_BRICK, 3);
+	public final static MaterialData STONE_BRICKS = define(Material.STONE_BRICKS);
+	public final static MaterialData STONE_BRICKS_MOSSY = define(Material.STONE_BRICKS, 1);
+	public final static MaterialData STONE_BRICKS_CRACKED = define(Material.STONE_BRICKS, 2);
+	public final static MaterialData STONE_BRICKS_CHISELED = define(Material.STONE_BRICKS, 3);
 
 	public final static MaterialData HUGE_MUSHROOM_1 = define(Material.HUGE_MUSHROOM_1, 0); //TODO: wrong name; data variant
 	public final static MaterialData HUGE_MUSHROOM_2 = define(Material.HUGE_MUSHROOM_2, 0); //TODO: wrong name; data variant
 	public final static MaterialData IRON_FENCE = define(Material.IRON_FENCE); //TODO: wrong name
-	public final static MaterialData THIN_GLASS = define(Material.THIN_GLASS); //TODO: wrong name
+	public final static MaterialData GLASS_PANE = define(Material.GLASS_PANE); //TODO: wrong name
 	public final static MaterialData MELON_BLOCK = define(Material.MELON_BLOCK);
 	public final static MaterialData PUMPKIN_STEM = define(Material.PUMPKIN_STEM, 0); //TODO: data variant
 	public final static MaterialData MELON_STEM = define(Material.MELON_STEM, 0); //TODO: data variant
@@ -280,7 +280,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData FENCE_GATE = define(Material.FENCE_GATE, 0); //TODO: data variant
 	public final static MaterialData BRICK_STAIRS = define(Material.BRICK_STAIRS, 0); //TODO: data variant
 	public final static MaterialData SMOOTH_STAIRS = define(Material.SMOOTH_STAIRS, 0); //TODO: wrong name; data variant
-	public final static MaterialData MYCEL = define(Material.MYCEL); //TODO: wrong name
+	public final static MaterialData MYCELIUM = define(Material.MYCELIUM); //TODO: wrong name
 	public final static MaterialData WATER_LILY = define(Material.WATER_LILY); //TODO: wrong name
 	public final static MaterialData NETHER_BRICK = define(Material.NETHER_BRICK);
 	public final static MaterialData NETHER_FENCE = define(Material.NETHER_FENCE); //TODO: wrong name
@@ -291,7 +291,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData CAULDRON = define(Material.CAULDRON, 0); //TODO: data variant
 	public final static MaterialData ENDER_PORTAL = define(Material.ENDER_PORTAL); //TODO: wrong name
 	public final static MaterialData ENDER_PORTAL_FRAME = define(Material.ENDER_PORTAL_FRAME, 0); //TODO: wrong name; data variant
-	public final static MaterialData ENDER_STONE = define(Material.ENDER_STONE, 0); //TODO: wrong name; data variant
+	public final static MaterialData END_STONE = define(Material.END_STONE, 0); //TODO: wrong name; data variant
 	public final static MaterialData DRAGON_EGG = define(Material.DRAGON_EGG);
 	public final static MaterialData REDSTONE_LAMP_OFF = define(Material.REDSTONE_LAMP_OFF); //TODO: wrong name
 	public final static MaterialData REDSTONE_LAMP_ON = define(Material.REDSTONE_LAMP_ON); //TODO: wrong name
@@ -550,11 +550,11 @@ public final class RealMaterial extends AbstractThings {
 	@Deprecated // Use WATER_STATIONARY instead
 	public final static MaterialData WATER = WATER_STATIONARY;
 	@Deprecated // Use WATER_STATIONARY instead
-	public final static MaterialData STATIONARY_WATER = WATER_STATIONARY;
+	public final static MaterialData WATER = WATER_STATIONARY;
 	@Deprecated // Use LAVA_STATIONARY instead
 	public final static MaterialData LAVA = LAVA_STATIONARY; 
 	@Deprecated // Use LAVA_STATIONARY instead
-	public final static MaterialData STATIONARY_LAVA = LAVA_STATIONARY; 
+	public final static MaterialData LAVA = LAVA_STATIONARY; 
 	@Deprecated // Use LEAVES_OAK instead
 	public final static MaterialData LEAVES = LEAVES_OAK;
 	@Deprecated // Use WOOD_OAK instead
@@ -566,11 +566,11 @@ public final class RealMaterial extends AbstractThings {
 	@Deprecated // Use SPONGE_DRY instead
 	public final static MaterialData SPONGE = SPONGE_DRY;
 	@Deprecated // Use TALL_GRASS instead
-	public final static MaterialData LONG_GRASS = TALL_GRASS;
+	public final static MaterialData TALL_GRASS = TALL_GRASS;
 	@Deprecated // Use FLOWER_DANDELION instead
-	public final static MaterialData YELLOW_FLOWER = FLOWER_DANDELION;
+	public final static MaterialData DANDELION = FLOWER_DANDELION;
 	@Deprecated // Use FLOWER_POPPY instead
-	public final static MaterialData RED_ROSE = FLOWER_POPPY;
+	public final static MaterialData POPPY = FLOWER_POPPY;
 	@Deprecated // Use MUSHROOM_BROWN instead
 	public final static MaterialData BROWN_MUSHROOM = MUSHROOM_BROWN;
 	@Deprecated // Use MUSHROOM_RED instead

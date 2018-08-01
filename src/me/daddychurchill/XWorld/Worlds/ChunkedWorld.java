@@ -15,8 +15,8 @@ public abstract class ChunkedWorld extends AbstractWorld {
 	
 	public ChunkedWorld() {
 		
-		initializers = new ArrayList<AbstractInitializer>();
-		populators = new ArrayList<AbstractPopulator>();
+		initializers = new ArrayList<>();
+		populators = new ArrayList<>();
 	}
 
 	@Override

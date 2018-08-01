@@ -8,11 +8,9 @@ import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
-import org.bukkit.material.MaterialData;
-
+import org.bukkit.block.data.BlockData;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 
 // should be called final blocks
 public class FinalizeChunk extends AbstractedChunk {
@@ -26,7 +24,7 @@ public class FinalizeChunk extends AbstractedChunk {
 	}
 	
 	public boolean isFertile(int x, int y, int z) {
-		return isTypes(x, y - 1, z, RealMaterial.GRASS, RealMaterial.DIRT);
+		return isTypes(x, y - 1, z, Material.GRASS, Material.DIRT);
 	}
 	
 	public void plantTree(int x, int y, int z, TreeType treeType) {
@@ -34,8 +32,8 @@ public class FinalizeChunk extends AbstractedChunk {
 			rawPlantTree(x, y, z, treeType);
 	}
 	
-	private boolean isNotRootBall(MaterialData material) {
-		switch (material.getItemType()) {
+	private boolean isNotRootBall(Material material) {
+		switch (material) {
 		case STONE:
 		case DIRT:
 		case BEDROCK:
@@ -47,8 +45,8 @@ public class FinalizeChunk extends AbstractedChunk {
 		case COBBLESTONE:
 		case MOSSY_COBBLESTONE:
 		case CLAY:
-		case MYCEL:
-		case ENDER_STONE:
+		case MYCELIUM:
+		case END_STONE:
 			return false;
 		default:
 			return true;
@@ -78,11 +76,11 @@ public class FinalizeChunk extends AbstractedChunk {
 		for (int x1 = x; x1 < x + width; x1++)
 			for (int z1 = z; z1 < z + width; z1++) {
 				int y1 = y - 1;
-				rootBlocks.setBlock(x1, y1, z1, RealMaterial.DIRT);
+				rootBlocks.setBlock(x1, y1, z1, Material.DIRT);
 				while (y1 > 0) {
 					y1--;
 					if (isNotRootBall(rootBlocks.getBlock(x1, y1, z1)))
-						rootBlocks.setBlock(x1, y1, z1, RealMaterial.DIRT);
+						rootBlocks.setBlock(x1, y1, z1, Material.DIRT);
 					else
 						break;
 				}
@@ -99,7 +97,7 @@ public class FinalizeChunk extends AbstractedChunk {
 				
 				// maybe it just isn't clear enough above, move up and try again
 				y++;
-				rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, RealMaterial.DIRT);
+				rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, Material.DIRT);
 				at = getBlockWorldLocation(x, y, z);
 				success = getGenerator().getWorld().generateTree(at, treeType);
 				
@@ -117,35 +115,36 @@ public class FinalizeChunk extends AbstractedChunk {
 	}
 
 	@Override
-	public MaterialData getBlock(int x, int y, int z) {
+	public Material getBlock(int x, int y, int z) {
 		Block block = bukkitChunk.getBlock(x, y, z);
 		if (block != null) {
-			BlockState state = block.getState();
-			if (state != null) {
-				return state.getData();
-			}
+			return block.getType();
 		}
 		return null;
 	}
-
-	@Override
-	public void setBlock(int x, int y, int z, MaterialData data) {
-		setBlock(x, y, z, data, false);
+	
+	private int physicsLevel = 0;
+	private boolean physicsDo = false;
+	public void startDoingPhysics() {
+		physicsLevel++;
+		physicsDo = physicsLevel > 0;
+	}
+	
+	public void stopDoingPhysics() {
+		assert(physicsLevel > 0);
+		physicsLevel--;
+		physicsDo = physicsLevel > 0;
 	}
 
-	public void setBlock(int x, int y, int z, MaterialData data, boolean applyPhysics) {
+	@Override
+	public void setBlock(int x, int y, int z, Material data) {
+		setBlock(x, y, z, data, physicsDo);
+	}
+
+	public void setBlock(int x, int y, int z, Material data, boolean applyPhysics) {
 		Block block = bukkitChunk.getBlock(x, y, z);
-		if (block != null) {
-			BlockState state = block.getState();
-			if (state != null) {
-				MaterialData current = state.getData();
-				if (current != null && !current.equals(data)) {
-					state.setType(data.getItemType());
-					state.setData(data);
-//					state.update();
-					state.update(true, applyPhysics);
-				}
-			}
+		if (block != null && block.getType() != data) {
+			block.setType(data, applyPhysics);
 		}
 	}
 
@@ -177,18 +176,21 @@ public class FinalizeChunk extends AbstractedChunk {
 	
 	public void setSign(int x, int y, int z, BlockFace direction, String ... text) {
 		Block block = bukkitChunk.getBlock(x, y, z);
-		block.setType(Material.SIGN_POST);
-		if (block.getType() == Material.SIGN_POST) {
-			org.bukkit.block.Sign signState = (org.bukkit.block.Sign) block.getState();
-			org.bukkit.material.Sign signDirection = new org.bukkit.material.Sign();
-
-			signDirection.setFacingDirection(direction);
-			signState.setData(signDirection);
-			
-			for (int i = 0; i < text.length && i < 4; i++) 
-				signState.setLine(i, text[i]);
-
-			signState.update();
+		block.setType(Material.SIGN);
+		if (block.getType() == Material.SIGN) {
+			BlockData signDirection = block.getBlockData();
+			if (signDirection instanceof org.bukkit.block.data.type.Sign) {
+				org.bukkit.block.data.type.Sign sign = (org.bukkit.block.data.type.Sign)signDirection;
+				sign.setRotation(direction);
+				
+				BlockState state = block.getState();
+				if (state instanceof org.bukkit.block.Sign) {
+					org.bukkit.block.Sign signState = (org.bukkit.block.Sign)state;
+					for (int i = 0; i < text.length && i < 4; i++) 
+						signState.setLine(i, text[i]);
+					signState.update();
+				}
+			}
 		}
 	}
 }

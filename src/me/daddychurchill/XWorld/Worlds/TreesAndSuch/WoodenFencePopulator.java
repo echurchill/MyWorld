@@ -1,8 +1,9 @@
 package me.daddychurchill.XWorld.Worlds.TreesAndSuch;
 
+import org.bukkit.Material;
+
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractPopulator;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
 public class WoodenFencePopulator extends AbstractPopulator {
@@ -13,7 +14,9 @@ public class WoodenFencePopulator extends AbstractPopulator {
 	@Override
 	public void renderHere(AbstractWorld world, FinalizeChunk chunk) {
 		int y1 = world.getSurfaceY(chunk, 0, 0);
-		chunk.setWalls(1, 14, y1, 1, 14, RealMaterial.FENCE);
+		chunk.startDoingPhysics();
+		chunk.setWalls(1, 14, y1, 1, 14, Material.SPRUCE_FENCE);
+		chunk.stopDoingPhysics();
 	}
 
 	@Override

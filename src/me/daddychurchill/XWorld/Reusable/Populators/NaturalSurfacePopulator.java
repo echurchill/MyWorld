@@ -1,9 +1,10 @@
 package me.daddychurchill.XWorld.Reusable.Populators;
 
+import org.bukkit.Material;
+
 import me.daddychurchill.XWorld.Blocks.FinalizeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractPopulator;
 import me.daddychurchill.XWorld.Support.Odds;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
 public class NaturalSurfacePopulator extends AbstractPopulator {
@@ -24,25 +25,25 @@ public class NaturalSurfacePopulator extends AbstractPopulator {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
 				int y = world.getSurfaceY(chunk, x, z);
-				if (odds.playOdds(oddsOfSpawn) && chunk.isEmpty(x, y, z) && chunk.isType(x, y - 1, z, RealMaterial.GRASS)) {
+				if (odds.playOdds(oddsOfSpawn) && chunk.isEmpty(x, y, z) && chunk.isType(x, y - 1, z, Material.GRASS_BLOCK)) {
 					if (odds.playOdds(Odds.oddsLikely))
-						chunk.setBlock(x, y, z, RealMaterial.TALL_GRASS);
+						chunk.setBlock(x, y, z, Material.TALL_GRASS);
 					else {
 						switch (odds.rollDice()) {
 						default:
 						case 0:
 						case 1:
 						case 2:
-							chunk.setBlock(x, y, z, RealMaterial.FLOWER_POPPY);
+							chunk.setBlock(x, y, z, Material.POPPY);
 							break;
 						case 3:
-							chunk.setBlock(x, y, z, RealMaterial.FLOWER_RED_TULIP);
+							chunk.setBlock(x, y, z, Material.RED_TULIP);
 							break;
 						case 4:
-							chunk.setBlock(x, y, z, RealMaterial.FLOWER_WHITE_TULIP);
+							chunk.setBlock(x, y, z, Material.WHITE_TULIP);
 							break;
 						case 5:
-							chunk.setBlock(x, y, z, RealMaterial.FLOWER_DANDELION);
+							chunk.setBlock(x, y, z, Material.DANDELION);
 							break;
 						}
 					}

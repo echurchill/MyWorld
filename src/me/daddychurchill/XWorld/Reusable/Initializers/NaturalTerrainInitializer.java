@@ -1,11 +1,10 @@
 package me.daddychurchill.XWorld.Reusable.Initializers;
 
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
-import org.bukkit.material.MaterialData;
 import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 import me.daddychurchill.XWorld.Generators.AbstractInitializer;
 import me.daddychurchill.XWorld.Reusable.Shapes.AbstractedShape;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 
 public class NaturalTerrainInitializer extends AbstractInitializer {
@@ -16,29 +15,29 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 	//protected TreeType treeType;
 	//protected int treesPerChunk;
 	
-	protected MaterialData materialStone; // what is the stone made of?
-	protected MaterialData materialTopsoil; // what is dirt made of?
-	protected MaterialData materialSurface; // what is grass made of?
-	protected MaterialData materialLiquidBase; // what is sand made of?
-	protected MaterialData materialLiquid; // what is the liquid made of?
-	//protected MaterialData materialBlades; // what is a blade of grass made of?
-	//protected MaterialData materialFlower; // what is a flower made of?
+	protected Material materialStone; // what is the stone made of?
+	protected Material materialTopsoil; // what is dirt made of?
+	protected Material materialSurface; // what is grass made of?
+	protected Material materialLiquidBase; // what is sand made of?
+	protected Material materialLiquid; // what is the liquid made of?
+	//protected Material materialBlades; // what is a blade of grass made of?
+	//protected Material materialFlower; // what is a flower made of?
 	
-	//protected MaterialData materialMineral; // for later use in the populator
-	//protected MaterialData materialFertile;
+	//protected Material materialMineral; // for later use in the populator
+	//protected Material materialFertile;
 	//protected int airId; 
 	protected AbstractedShape worldShape;
 	
 	public NaturalTerrainInitializer(AbstractedShape shape) {
 		worldShape = shape;
 		
-		materialStone = RealMaterial.STONE;
-		materialTopsoil = RealMaterial.DIRT;
-		materialSurface = RealMaterial.GRASS;
-		materialLiquidBase = RealMaterial.SAND;
-		materialLiquid = RealMaterial.WATER_STATIONARY;
-		//materialBlades = RealMaterial.TALL_GRASS;
-		//materialFlower = odds.nextBoolean() ? RealMaterial.FLOWER_POPPY : RealMaterial.FLOWER_DANDELION;
+		materialStone = Material.STONE;
+		materialTopsoil = Material.DIRT;
+		materialSurface = Material.GRASS;
+		materialLiquidBase = Material.SAND;
+		materialLiquid = Material.WATER;
+		//materialBlades = Material.TALL_GRASS;
+		//materialFlower = odds.nextBoolean() ? Material.FLOWER_POPPY : Material.FLOWER_DANDELION;
 		
 		//materialMineral = materialBottom;
 		//materialFertile = materialTop;
@@ -56,7 +55,7 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 	
 	protected void renderHere(AbstractWorld world, InitializeChunk chunk, int x, int y, int z, int topsoilThickness, int seaLevel) {
 		if (y > 0) {
-			chunk.setBlock(x, 0, y, RealMaterial.BEDROCK);
+			chunk.setBlock(x, 0, y, Material.BEDROCK);
 			if (topsoilThickness > 0) {
 				chunk.setBlocks(x, 1, Math.max(1, y - topsoilThickness), z, materialStone);
 				chunk.setBlocks(x, Math.max(1, y - topsoilThickness), y - 1, z, materialTopsoil);
@@ -70,7 +69,7 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 			} else if (topsoilThickness > 0)
 				chunk.setBlock(x, y - 1, z, materialSurface);
 		} else
-			chunk.setBiome(x, z, Biome.VOID);
+			chunk.setBiome(x, z, Biome.THE_VOID);
 	}
 
 	@Override

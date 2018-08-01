@@ -1,6 +1,6 @@
 package me.daddychurchill.XWorld.Schemas;
 
-import org.bukkit.material.MaterialData;
+import org.bukkit.Material;
 
 import me.daddychurchill.XWorld.Blocks.PasteableBlocks;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
@@ -31,19 +31,19 @@ public class MinecraftSchema extends PasteableBlocks {
 	}
 
 	@Override
-	public MaterialData getBlock(int x, int y, int z) {
+	public Material getBlock(int x, int y, int z) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setBlock(int x, int y, int z, MaterialData data) {
+	public void setBlock(int x, int y, int z, Material data) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
+	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, Material data) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -55,13 +55,13 @@ public class MinecraftSchema extends PasteableBlocks {
 	}
 
 	@Override
-	public void setBlocks(int y, MaterialData data) {
+	public void setBlocks(int y, Material data) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void setBlocks(int y1, int y2, MaterialData data) {
+	public void setBlocks(int y1, int y2, Material data) {
 		// TODO Auto-generated method stub
 		
 	}

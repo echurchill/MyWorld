@@ -3,8 +3,7 @@ package me.daddychurchill.XWorld.Blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.material.MaterialData;
-
+import org.bukkit.Material;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 
@@ -22,16 +21,16 @@ public class RestorableBlocks extends AbstractedBlocks {
 	public RestorableBlocks(AbstractedChunk chunk) {
 		super(chunk.getGenerator());
 		oldChunk = chunk;
-		oldBlocks = new ArrayList<StoredBlock>();
+		oldBlocks = new ArrayList<>();
 	}
 
 	private static class StoredBlock {
 		private int oldX;
 		private int oldY;
 		private int oldZ;
-		private MaterialData oldData;
+		private Material oldData;
 		
-		public StoredBlock(int x, int y, int z, MaterialData data) {
+		public StoredBlock(int x, int y, int z, Material data) {
 			oldX = x;
 			oldY = y;
 			oldZ = z;
@@ -39,18 +38,18 @@ public class RestorableBlocks extends AbstractedBlocks {
 		}
 		
 		public void restoreBlock(AbstractedChunk chunk) {
-//			chunk.setBlock(oldX, oldY, oldZ, RealMaterial.GLOWSTONE);
+//			chunk.setBlock(oldX, oldY, oldZ, Material.GLOWSTONE);
 			chunk.setBlock(oldX, oldY, oldZ, oldData);
 		}
 	}
 	
 	@Override
-	public MaterialData getBlock(int x, int y, int z) {
+	public Material getBlock(int x, int y, int z) {
 		return oldChunk.getBlock(x, y, z);
 	}
 	
 	@Override
-	public void setBlock(int x, int y, int z, MaterialData data) {
+	public void setBlock(int x, int y, int z, Material data) {
 		oldBlocks.add(new StoredBlock(x, y, z, oldChunk.getBlock(x, y, z)));
 		oldChunk.setBlock(x, y, z, data);
 	}

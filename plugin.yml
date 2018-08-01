@@ -1,6 +1,7 @@
 name: XWorld
 main: me.daddychurchill.XWorld.XWorld
 version: 0.10
+api-version: 1.13
 load: startup
 author: DaddyChurchill
 commands:

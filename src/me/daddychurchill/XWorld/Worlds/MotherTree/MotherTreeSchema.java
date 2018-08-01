@@ -1,9 +1,10 @@
 package me.daddychurchill.XWorld.Worlds.MotherTree;
 
+import org.bukkit.Material;
+
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Schemas.ProceduralSchema;
 import me.daddychurchill.XWorld.Support.Odds;
-import me.daddychurchill.XWorld.Things.RealMaterial;
 
 public class MotherTreeSchema extends ProceduralSchema {
 
@@ -29,7 +30,7 @@ public class MotherTreeSchema extends ProceduralSchema {
 		addClump(Odds.oddsSomewhatUnlikely, 40, 100, 60, 5, 15);
 		addClump(Odds.oddsSomewhatUnlikely, 30, 100, 40, 5, 15);
 		
-		setBlocks(40, 60, 0, 100, 40, 60, RealMaterial.LOG_DARK_OAK);
+		setBlocks(40, 60, 0, 100, 40, 60, Material.DARK_OAK_LOG);
 	}
 	
 	private void addClump(double clumpOdds, int centerX, int centerY, int centerZ, int heightRange, int sizeRange) {
@@ -41,7 +42,7 @@ public class MotherTreeSchema extends ProceduralSchema {
 			setBlocks(centerX - halfSize, centerX + halfSize, 
 					y, y + size, 
 					centerZ - halfSize, centerZ + halfSize, 
-					RealMaterial.LEAVES_OAK_NODECAY);
+					Material.OAK_LEAVES);
 		}
 	}
 

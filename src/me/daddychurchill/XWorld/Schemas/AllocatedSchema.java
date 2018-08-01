@@ -1,6 +1,6 @@
 package me.daddychurchill.XWorld.Schemas;
 
-import org.bukkit.material.MaterialData;
+import org.bukkit.Material;
 
 import me.daddychurchill.XWorld.Blocks.PasteableBlocks;
 import me.daddychurchill.XWorld.Generators.CoreGenerator;
@@ -10,7 +10,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 	private int sizeX;
 	private int sizeY;
 	private int sizeZ;
-	private MaterialData[][][] arrayOfData;
+	private Material[][][] arrayOfData;
 
 	public AllocatedSchema(CoreGenerator generator, int sizeX, int sizeY, int sizeZ) {
 		super(generator);
@@ -18,7 +18,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		this.sizeZ = sizeZ;
-		arrayOfData = new MaterialData[sizeX][sizeY][sizeZ];
+		arrayOfData = new Material[sizeX][sizeY][sizeZ];
 		for (int x = 0; x < sizeX; x++)
 			for (int y = 0; y < sizeY; y++)
 				for (int z = 0; z < sizeZ; z++)
@@ -41,7 +41,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 		return sizeZ;
 	}
 	
-	protected MaterialData[][][] getData() {
+	protected Material[][][] getData() {
 		return arrayOfData;
 	}
 	
@@ -55,7 +55,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 	}
 	
 	@Override
-	public MaterialData getBlock(int x, int y, int z) {
+	public Material getBlock(int x, int y, int z) {
 		x = clamp(x, sizeX);
 		y = clamp(y, sizeY);
 		z = clamp(z, sizeZ);
@@ -63,7 +63,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 	}
 	
 	@Override
-	public void setBlock(int x, int y, int z, MaterialData data) {
+	public void setBlock(int x, int y, int z, Material data) {
 		x = clamp(x, sizeX);
 		y = clamp(y, sizeY);
 		z = clamp(z, sizeZ);
@@ -71,7 +71,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 	}
 	
 	@Override
-	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, MaterialData data) {
+	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, Material data) {
 		x1 = clamp(x1, sizeX);
 		y1 = clamp(y1, sizeY);
 		z1 = clamp(z1, sizeZ);

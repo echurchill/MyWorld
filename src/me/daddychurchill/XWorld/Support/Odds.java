@@ -3,8 +3,8 @@ package me.daddychurchill.XWorld.Support;
 import java.util.Random;
 
 import org.bukkit.DyeColor;
+import org.bukkit.Material;
 import org.bukkit.TreeType;
-import org.bukkit.material.MaterialData;
 
 public class Odds {
 
@@ -107,7 +107,7 @@ public class Odds {
 		return min + random.nextDouble() * (max - min);
 	}
 	
-	public MaterialData getOneOf(MaterialData ... values) {
+	public Material getOneOf(Material ... values) {
 		return values[random.nextInt(values.length)];
 	}
 	
