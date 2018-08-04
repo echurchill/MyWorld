@@ -33,7 +33,7 @@ public class NaturalTerrainInitializer extends AbstractInitializer {
 		
 		materialStone = Material.STONE;
 		materialTopsoil = Material.DIRT;
-		materialSurface = Material.GRASS;
+		materialSurface = Material.GRASS_BLOCK;
 		materialLiquidBase = Material.SAND;
 		materialLiquid = Material.WATER;
 		//materialBlades = Material.TALL_GRASS;

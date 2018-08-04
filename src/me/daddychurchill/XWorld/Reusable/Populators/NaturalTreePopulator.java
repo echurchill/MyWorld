@@ -29,17 +29,22 @@ public class NaturalTreePopulator extends AbstractTreePopulator {
 		double value = (treesGenerator.noise(chunk.getBlockWorldX(x), chunk.getBlockWorldZ(z), noiseFrequency, noiseAmplitude, true) * 2 + 1.0) / 2.0;
 		return Math.min(1.0, Math.max(0.0, value));
 	}
+	
+	private static int maxTrees = 4;
+	private static int minAt = 2;
+	private static int maxAt = 11;
 
 	@Override
 	public void renderHere(AbstractWorld world, FinalizeChunk chunk) {
 		Odds odds = chunk.getOdds();
 		
-		for (int x = 3; x < 16; x = x + 5) 
-			for (int z = 3; z < 16; z = z + 5) {
-				double theOdds = getTreeOddsOnWorld(chunk, x, z);
-				if (odds.playOdds(theOdds))
-					plantTreeNear(world, chunk, x, z);
-			}
+		for (int i = 0; i < maxTrees; i++) {
+			int x = chunk.getOdds().nextBetween(minAt, maxAt);
+			int z = chunk.getOdds().nextBetween(minAt, maxAt);
+			double theOdds = getTreeOddsOnWorld(chunk, x, z);
+			if (odds.playOdds(theOdds))
+				plantTreeNear(world, chunk, x, z);	
+		}
 	}
 	
 	@Override

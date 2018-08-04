@@ -88,25 +88,41 @@ public class FinalizeChunk extends AbstractedChunk {
 		
 		// make the tree
 		Location at = getBlockWorldLocation(x, y, z);
-		boolean success = getGenerator().getWorld().generateTree(at, treeType);
-		
-		// if not, try a few more times
-		if (!success) {
-			int initY = y;
-			for (int i = 0; i < 8; i++) {
-				
-				// maybe it just isn't clear enough above, move up and try again
-				y++;
-				rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, Material.DIRT);
-				at = getBlockWorldLocation(x, y, z);
-				success = getGenerator().getWorld().generateTree(at, treeType);
-				
-				// if we made the tree after all, copy it's trunk block down to fill up all of that added dirt
-				if (success) {
-					rootBlocks.setBlocks(x, x + width, initY, y, z, z + width, getBlock(x, y, z));
-					break;
+		boolean success = false;
+		try {
+			success = getGenerator().getWorld().generateTree(at, treeType);
+			if (!success) {
+
+				// if not, try a few more times
+				int initY = y;
+				for (int i = 0; i < 8; i++) {
+					
+					// maybe it just isn't clear enough above, move up and try again
+					y++;
+					rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, Material.DIRT);
+					at = getBlockWorldLocation(x, y, z);
+					try {
+						success = getGenerator().getWorld().generateTree(at, treeType);
+
+						// if we made the tree after all, copy it's trunk block down to fill up all of that added dirt
+						if (success) {
+							rootBlocks.setBlocks(x, x + width, initY, y, z, z + width, getBlock(x, y, z));
+							break;
+						}
+						
+					} catch (Exception e) {
+//						this.getGenerator().reportMessage(treeType.name() + " at : " + at.getBlockX() + ", " + at.getBlockY() + ", " + at.getBlockZ());
+//						this.getGenerator().reportMessage("INNER EXCEPTION: " + e.getMessage());
+						success = false;
+						rootBlocks.restoreBlocks();
+						return;
+					}
 				}
 			}
+		} catch (Exception e) {
+//			this.getGenerator().reportMessage(treeType.name() + " at : " + at.getBlockX() + ", " + at.getBlockY() + ", " + at.getBlockZ());
+//			this.getGenerator().reportMessage("OUTER EXCEPTION: " + e.getMessage());
+			success = false;
 		}
 		
 		// no tree... no root ball

@@ -11,19 +11,22 @@ public class SimpleTerrainInitializer extends AbstractInitializer {
 	public SimpleTerrainInitializer() {
 
 	}
-
+	
 	@Override
 	public void renderHere(AbstractWorld world, InitializeChunk chunk) {
-		int level = world.getSurfaceY(chunk, 0, 0);
-		assert(level > 0);
-		if (level > 0) 
-			chunk.setBlocks(0, Material.BEDROCK);
-		if (level > 1) 
-			chunk.setBlocks(level - 1, Material.GRASS_BLOCK);
-		if (level > 2) 
-			chunk.setBlocks(1, level - 1, Material.DIRT);
-		// need to figure out how to introduce stones into this
-		// need to add rocks and boulders poking out of the ground
+		for (int x = 0; x < 16; x++)
+			for (int z = 0; z < 16; z++) {
+				int y = world.getSurfaceY(chunk, x, z);
+				assert(y > 0);
+				if (y > 0) 
+					chunk.setBlock(x, 0, z, Material.BEDROCK);
+				if (y > 1) 
+					chunk.setBlock(x, y - 1, z, Material.GRASS_BLOCK);
+				if (y > 2) 
+					chunk.setBlocks(x, 1, y - 1, z, Material.DIRT);
+				// need to figure out how to introduce stones into this
+				// need to add rocks and boulders poking out of the ground
+			}
 	}
 
 	@Override
