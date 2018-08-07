@@ -125,7 +125,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData WOOL_LIME = define(Material.WOOL, DyeColor.LIME);
 	public final static MaterialData WOOL_PINK = define(Material.WOOL, DyeColor.PINK);
 	public final static MaterialData WOOL_GRAY = define(Material.WOOL, DyeColor.GRAY);
-	public final static MaterialData WOOL_SILVER = define(Material.WOOL, DyeColor.SILVER);
+	public final static MaterialData WOOL_SILVER = define(Material.WOOL, DyeColor.LIGHT_GRAY);
 	public final static MaterialData WOOL_CYAN = define(Material.WOOL, DyeColor.CYAN);
 	public final static MaterialData WOOL_PURPLE = define(Material.WOOL, DyeColor.PURPLE);
 	public final static MaterialData WOOL_BLUE = define(Material.WOOL, DyeColor.BLUE);
@@ -202,7 +202,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData FURNACE = define(Material.FURNACE, 0); //TODO: data variant
 	public final static MaterialData BURNING_FURNACE = define(Material.BURNING_FURNACE, 0); //TODO: wrong name; data variant
 	public final static MaterialData SIGN_POST = define(Material.SIGN_POST, 0); //TODO: wrong name; data variant
-	public final static MaterialData WOODEN_DOOR = define(Material.WOODEN_DOOR, 0); //TODO: data variant
+	public final static MaterialData WOODEN_DOOR = define(Material.OAK_DOOR, 0); //TODO: data variant
 	public final static MaterialData LADDER = define(Material.LADDER, 0); //TODO: data variant
 	public final static MaterialData RAILS = define(Material.RAILS, 0); //TODO: wrong name; data variant
 	public final static MaterialData COBBLESTONE_STAIRS = define(Material.COBBLESTONE_STAIRS, 0); //TODO: wrong name; data variant
@@ -225,13 +225,13 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData JUKEBOX = define(Material.JUKEBOX, 0); //TODO: data variant
 
 	//TODO: it turns out Fences wood type is controlled via MetaData?
-	public final static MaterialData FENCE = define(Material.FENCE);
-//	public final static MaterialData FENCE_OAK = define(Material.FENCE, TreeSpecies.GENERIC);
-//	public final static MaterialData FENCE_REDWOOD = define(Material.FENCE, TreeSpecies.REDWOOD);
-//	public final static MaterialData FENCE_BIRCH = define(Material.FENCE, TreeSpecies.BIRCH);
-//	public final static MaterialData FENCE_JUNGLE = define(Material.FENCE, TreeSpecies.JUNGLE);
-//	public final static MaterialData FENCE_ACACIA = define(Material.FENCE, TreeSpecies.ACACIA);
-//	public final static MaterialData FENCE_DARK_OAK = define(Material.FENCE, TreeSpecies.DARK_OAK);
+	public final static MaterialData FENCE = define(Material.SPRUCE_FENCE);
+//	public final static MaterialData FENCE_OAK = define(Material.SPRUCE_FENCE, TreeSpecies.GENERIC);
+//	public final static MaterialData FENCE_REDWOOD = define(Material.SPRUCE_FENCE, TreeSpecies.REDWOOD);
+//	public final static MaterialData FENCE_BIRCH = define(Material.SPRUCE_FENCE, TreeSpecies.BIRCH);
+//	public final static MaterialData FENCE_JUNGLE = define(Material.SPRUCE_FENCE, TreeSpecies.JUNGLE);
+//	public final static MaterialData FENCE_ACACIA = define(Material.SPRUCE_FENCE, TreeSpecies.ACACIA);
+//	public final static MaterialData FENCE_DARK_OAK = define(Material.SPRUCE_FENCE, TreeSpecies.DARK_OAK);
 
 	public final static MaterialData PUMPKIN = define(Material.PUMPKIN, 0); //TODO: data variant
 	public final static MaterialData NETHERRACK = define(Material.NETHERRACK);
@@ -252,7 +252,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData STAINED_GLASS_LIME = define(Material.STAINED_GLASS, DyeColor.LIME);
 	public final static MaterialData STAINED_GLASS_PINK = define(Material.STAINED_GLASS, DyeColor.PINK);
 	public final static MaterialData STAINED_GLASS_GRAY = define(Material.STAINED_GLASS, DyeColor.GRAY);
-	public final static MaterialData STAINED_GLASS_SILVER = define(Material.STAINED_GLASS, DyeColor.SILVER);
+	public final static MaterialData STAINED_GLASS_SILVER = define(Material.STAINED_GLASS, DyeColor.LIGHT_GRAY);
 	public final static MaterialData STAINED_GLASS_CYAN = define(Material.STAINED_GLASS, DyeColor.CYAN);
 	public final static MaterialData STAINED_GLASS_PURPLE = define(Material.STAINED_GLASS, DyeColor.PURPLE);
 	public final static MaterialData STAINED_GLASS_BLUE = define(Material.STAINED_GLASS, DyeColor.BLUE);
@@ -271,13 +271,13 @@ public final class RealMaterial extends AbstractThings {
 
 	public final static MaterialData HUGE_MUSHROOM_1 = define(Material.HUGE_MUSHROOM_1, 0); //TODO: wrong name; data variant
 	public final static MaterialData HUGE_MUSHROOM_2 = define(Material.HUGE_MUSHROOM_2, 0); //TODO: wrong name; data variant
-	public final static MaterialData IRON_FENCE = define(Material.IRON_FENCE); //TODO: wrong name
+	public final static MaterialData IRON_FENCE = define(Material.IRON_BARS); //TODO: wrong name
 	public final static MaterialData GLASS_PANE = define(Material.GLASS_PANE); //TODO: wrong name
 	public final static MaterialData MELON_BLOCK = define(Material.MELON_BLOCK);
 	public final static MaterialData PUMPKIN_STEM = define(Material.PUMPKIN_STEM, 0); //TODO: data variant
 	public final static MaterialData MELON_STEM = define(Material.MELON_STEM, 0); //TODO: data variant
 	public final static MaterialData VINE = define(Material.VINE, 0); //TODO: data variant
-	public final static MaterialData FENCE_GATE = define(Material.FENCE_GATE, 0); //TODO: data variant
+	public final static MaterialData FENCE_GATE = define(Material.SPRUCE_FENCE_GATE, 0); //TODO: data variant
 	public final static MaterialData BRICK_STAIRS = define(Material.BRICK_STAIRS, 0); //TODO: data variant
 	public final static MaterialData SMOOTH_STAIRS = define(Material.SMOOTH_STAIRS, 0); //TODO: wrong name; data variant
 	public final static MaterialData MYCELIUM = define(Material.MYCELIUM); //TODO: wrong name
@@ -361,7 +361,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData STAINED_CLAY_LIME = define(Material.STAINED_CLAY, DyeColor.LIME); //TODO: wrong name
 	public final static MaterialData STAINED_CLAY_PINK = define(Material.STAINED_CLAY, DyeColor.PINK); //TODO: wrong name
 	public final static MaterialData STAINED_CLAY_GRAY = define(Material.STAINED_CLAY, DyeColor.GRAY); //TODO: wrong name
-	public final static MaterialData STAINED_CLAY_SILVER = define(Material.STAINED_CLAY, DyeColor.SILVER); //TODO: wrong name
+	public final static MaterialData STAINED_CLAY_SILVER = define(Material.STAINED_CLAY, DyeColor.LIGHT_GRAY); //TODO: wrong name
 	public final static MaterialData STAINED_CLAY_CYAN = define(Material.STAINED_CLAY, DyeColor.CYAN); //TODO: wrong name
 	public final static MaterialData STAINED_CLAY_PURPLE = define(Material.STAINED_CLAY, DyeColor.PURPLE); //TODO: wrong name
 	public final static MaterialData STAINED_CLAY_BLUE = define(Material.STAINED_CLAY, DyeColor.BLUE); //TODO: wrong name
@@ -379,7 +379,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData STAINED_GLASS_PANE_LIME = define(Material.STAINED_GLASS_PANE, DyeColor.LIME);
 	public final static MaterialData STAINED_GLASS_PANE_PINK = define(Material.STAINED_GLASS_PANE, DyeColor.PINK);
 	public final static MaterialData STAINED_GLASS_PANE_GRAY = define(Material.STAINED_GLASS_PANE, DyeColor.GRAY);
-	public final static MaterialData STAINED_GLASS_PANE_SILVER = define(Material.STAINED_GLASS_PANE, DyeColor.SILVER);
+	public final static MaterialData STAINED_GLASS_PANE_SILVER = define(Material.STAINED_GLASS_PANE, DyeColor.LIGHT_GRAY);
 	public final static MaterialData STAINED_GLASS_PANE_CYAN = define(Material.STAINED_GLASS_PANE, DyeColor.CYAN);
 	public final static MaterialData STAINED_GLASS_PANE_PURPLE = define(Material.STAINED_GLASS_PANE, DyeColor.PURPLE);
 	public final static MaterialData STAINED_GLASS_PANE_BLUE = define(Material.STAINED_GLASS_PANE, DyeColor.BLUE);
@@ -410,7 +410,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData CARPET_LIME = define(Material.CARPET, DyeColor.LIME);
 	public final static MaterialData CARPET_PINK = define(Material.CARPET, DyeColor.PINK);
 	public final static MaterialData CARPET_GRAY = define(Material.CARPET, DyeColor.GRAY);
-	public final static MaterialData CARPET_SILVER = define(Material.CARPET, DyeColor.SILVER);
+	public final static MaterialData CARPET_SILVER = define(Material.CARPET, DyeColor.LIGHT_GRAY);
 	public final static MaterialData CARPET_CYAN = define(Material.CARPET, DyeColor.CYAN);
 	public final static MaterialData CARPET_PURPLE = define(Material.CARPET, DyeColor.PURPLE);
 	public final static MaterialData CARPET_BLUE = define(Material.CARPET, DyeColor.BLUE);
@@ -516,7 +516,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData CONCRETE_LIME = define(Material.CONCRETE, DyeColor.LIME);
 	public final static MaterialData CONCRETE_PINK = define(Material.CONCRETE, DyeColor.PINK);
 	public final static MaterialData CONCRETE_GRAY = define(Material.CONCRETE, DyeColor.GRAY);
-	public final static MaterialData CONCRETE_SILVER = define(Material.CONCRETE, DyeColor.SILVER);
+	public final static MaterialData CONCRETE_SILVER = define(Material.CONCRETE, DyeColor.LIGHT_GRAY);
 	public final static MaterialData CONCRETE_CYAN = define(Material.CONCRETE, DyeColor.CYAN);
 	public final static MaterialData CONCRETE_PURPLE = define(Material.CONCRETE, DyeColor.PURPLE);
 	public final static MaterialData CONCRETE_BLUE = define(Material.CONCRETE, DyeColor.BLUE);
@@ -534,7 +534,7 @@ public final class RealMaterial extends AbstractThings {
 	public final static MaterialData CONCRETE_POWDER_LIME = define(Material.CONCRETE_POWDER, DyeColor.LIME);
 	public final static MaterialData CONCRETE_POWDER_PINK = define(Material.CONCRETE_POWDER, DyeColor.PINK);
 	public final static MaterialData CONCRETE_POWDER_GRAY = define(Material.CONCRETE_POWDER, DyeColor.GRAY);
-	public final static MaterialData CONCRETE_POWDER_SILVER = define(Material.CONCRETE_POWDER, DyeColor.SILVER);
+	public final static MaterialData CONCRETE_POWDER_SILVER = define(Material.CONCRETE_POWDER, DyeColor.LIGHT_GRAY);
 	public final static MaterialData CONCRETE_POWDER_CYAN = define(Material.CONCRETE_POWDER, DyeColor.CYAN);
 	public final static MaterialData CONCRETE_POWDER_PURPLE = define(Material.CONCRETE_POWDER, DyeColor.PURPLE);
 	public final static MaterialData CONCRETE_POWDER_BLUE = define(Material.CONCRETE_POWDER, DyeColor.BLUE);

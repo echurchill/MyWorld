@@ -125,7 +125,7 @@ public enum Materials {
 	WOOL_LIME(Material.WOOL, DyeColor.LIME),
 	WOOL_PINK(Material.WOOL, DyeColor.PINK),
 	WOOL_GRAY(Material.WOOL, DyeColor.GRAY),
-	WOOL_SILVER(Material.WOOL, DyeColor.SILVER),
+	WOOL_SILVER(Material.WOOL, DyeColor.LIGHT_GRAY),
 	WOOL_CYAN(Material.WOOL, DyeColor.CYAN),
 	WOOL_PURPLE(Material.WOOL, DyeColor.PURPLE),
 	WOOL_BLUE(Material.WOOL, DyeColor.BLUE),
@@ -202,7 +202,7 @@ public enum Materials {
 	FURNACE(Material.FURNACE, 0), //TODO: data variant
 	BURNING_FURNACE(Material.BURNING_FURNACE, 0), //TODO: wrong name, data variant
 	SIGN_POST(Material.SIGN_POST, 0), //TODO: wrong name, data variant
-	WOODEN_DOOR(Material.WOODEN_DOOR, 0), //TODO: data variant
+	WOODEN_DOOR(Material.OAK_DOOR, 0), //TODO: data variant
 	LADDER(Material.LADDER, 0), //TODO: data variant
 	RAILS(Material.RAILS, 0), //TODO: wrong name, data variant
 	COBBLESTONE_STAIRS(Material.COBBLESTONE_STAIRS, 0), //TODO: wrong name, data variant
@@ -225,13 +225,13 @@ public enum Materials {
 	JUKEBOX(Material.JUKEBOX, 0), //TODO: data variant
 
 	//TODO: it turns out Fences wood type is controlled via MetaData?
-	FENCE(Material.FENCE),
-//	FENCE_OAK(Material.FENCE, TreeSpecies.GENERIC),
-//	FENCE_REDWOOD(Material.FENCE, TreeSpecies.REDWOOD),
-//	FENCE_BIRCH(Material.FENCE, TreeSpecies.BIRCH),
-//	FENCE_JUNGLE(Material.FENCE, TreeSpecies.JUNGLE),
-//	FENCE_ACACIA(Material.FENCE, TreeSpecies.ACACIA),
-//	FENCE_DARK_OAK(Material.FENCE, TreeSpecies.DARK_OAK),
+	FENCE(Material.SPRUCE_FENCE),
+//	FENCE_OAK(Material.SPRUCE_FENCE, TreeSpecies.GENERIC),
+//	FENCE_REDWOOD(Material.SPRUCE_FENCE, TreeSpecies.REDWOOD),
+//	FENCE_BIRCH(Material.SPRUCE_FENCE, TreeSpecies.BIRCH),
+//	FENCE_JUNGLE(Material.SPRUCE_FENCE, TreeSpecies.JUNGLE),
+//	FENCE_ACACIA(Material.SPRUCE_FENCE, TreeSpecies.ACACIA),
+//	FENCE_DARK_OAK(Material.SPRUCE_FENCE, TreeSpecies.DARK_OAK),
 
 	PUMPKIN(Material.PUMPKIN, 0), //TODO: data variant
 	NETHERRACK(Material.NETHERRACK),
@@ -252,7 +252,7 @@ public enum Materials {
 	STAINED_GLASS_LIME(Material.STAINED_GLASS, DyeColor.LIME),
 	STAINED_GLASS_PINK(Material.STAINED_GLASS, DyeColor.PINK),
 	STAINED_GLASS_GRAY(Material.STAINED_GLASS, DyeColor.GRAY),
-	STAINED_GLASS_SILVER(Material.STAINED_GLASS, DyeColor.SILVER),
+	STAINED_GLASS_SILVER(Material.STAINED_GLASS, DyeColor.LIGHT_GRAY),
 	STAINED_GLASS_CYAN(Material.STAINED_GLASS, DyeColor.CYAN),
 	STAINED_GLASS_PURPLE(Material.STAINED_GLASS, DyeColor.PURPLE),
 	STAINED_GLASS_BLUE(Material.STAINED_GLASS, DyeColor.BLUE),
@@ -271,13 +271,13 @@ public enum Materials {
 
 	HUGE_MUSHROOM_1(Material.HUGE_MUSHROOM_1, 0), //TODO: wrong name, data variant
 	HUGE_MUSHROOM_2(Material.HUGE_MUSHROOM_2, 0), //TODO: wrong name, data variant
-	IRON_FENCE(Material.IRON_FENCE), //TODO: wrong name
+	IRON_FENCE(Material.IRON_BARS), //TODO: wrong name
 	GLASS_PANE(Material.GLASS_PANE), //TODO: wrong name
 	MELON_BLOCK(Material.MELON_BLOCK),
 	PUMPKIN_STEM(Material.PUMPKIN_STEM, 0), //TODO: data variant
 	MELON_STEM(Material.MELON_STEM, 0), //TODO: data variant
 	VINE(Material.VINE, 0), //TODO: data variant
-	FENCE_GATE(Material.FENCE_GATE, 0), //TODO: data variant
+	FENCE_GATE(Material.SPRUCE_FENCE_GATE, 0), //TODO: data variant
 	BRICK_STAIRS(Material.BRICK_STAIRS, 0), //TODO: data variant
 	SMOOTH_STAIRS(Material.SMOOTH_STAIRS, 0), //TODO: wrong name, data variant
 	MYCELIUM(Material.MYCELIUM), //TODO: wrong name
@@ -361,7 +361,7 @@ public enum Materials {
 	STAINED_CLAY_LIME(Material.STAINED_CLAY, DyeColor.LIME), //TODO: wrong name
 	STAINED_CLAY_PINK(Material.STAINED_CLAY, DyeColor.PINK), //TODO: wrong name
 	STAINED_CLAY_GRAY(Material.STAINED_CLAY, DyeColor.GRAY), //TODO: wrong name
-	STAINED_CLAY_SILVER(Material.STAINED_CLAY, DyeColor.SILVER), //TODO: wrong name
+	STAINED_CLAY_SILVER(Material.STAINED_CLAY, DyeColor.LIGHT_GRAY), //TODO: wrong name
 	STAINED_CLAY_CYAN(Material.STAINED_CLAY, DyeColor.CYAN), //TODO: wrong name
 	STAINED_CLAY_PURPLE(Material.STAINED_CLAY, DyeColor.PURPLE), //TODO: wrong name
 	STAINED_CLAY_BLUE(Material.STAINED_CLAY, DyeColor.BLUE), //TODO: wrong name
@@ -379,7 +379,7 @@ public enum Materials {
 	STAINED_GLASS_PANE_LIME(Material.STAINED_GLASS_PANE, DyeColor.LIME),
 	STAINED_GLASS_PANE_PINK(Material.STAINED_GLASS_PANE, DyeColor.PINK),
 	STAINED_GLASS_PANE_GRAY(Material.STAINED_GLASS_PANE, DyeColor.GRAY),
-	STAINED_GLASS_PANE_SILVER(Material.STAINED_GLASS_PANE, DyeColor.SILVER),
+	STAINED_GLASS_PANE_SILVER(Material.STAINED_GLASS_PANE, DyeColor.LIGHT_GRAY),
 	STAINED_GLASS_PANE_CYAN(Material.STAINED_GLASS_PANE, DyeColor.CYAN),
 	STAINED_GLASS_PANE_PURPLE(Material.STAINED_GLASS_PANE, DyeColor.PURPLE),
 	STAINED_GLASS_PANE_BLUE(Material.STAINED_GLASS_PANE, DyeColor.BLUE),
@@ -410,7 +410,7 @@ public enum Materials {
 	CARPET_LIME(Material.CARPET, DyeColor.LIME),
 	CARPET_PINK(Material.CARPET, DyeColor.PINK),
 	CARPET_GRAY(Material.CARPET, DyeColor.GRAY),
-	CARPET_SILVER(Material.CARPET, DyeColor.SILVER),
+	CARPET_SILVER(Material.CARPET, DyeColor.LIGHT_GRAY),
 	CARPET_CYAN(Material.CARPET, DyeColor.CYAN),
 	CARPET_PURPLE(Material.CARPET, DyeColor.PURPLE),
 	CARPET_BLUE(Material.CARPET, DyeColor.BLUE),
@@ -516,7 +516,7 @@ public enum Materials {
 	CONCRETE_LIME(Material.CONCRETE, DyeColor.LIME),
 	CONCRETE_PINK(Material.CONCRETE, DyeColor.PINK),
 	CONCRETE_GRAY(Material.CONCRETE, DyeColor.GRAY),
-	CONCRETE_SILVER(Material.CONCRETE, DyeColor.SILVER),
+	CONCRETE_SILVER(Material.CONCRETE, DyeColor.LIGHT_GRAY),
 	CONCRETE_CYAN(Material.CONCRETE, DyeColor.CYAN),
 	CONCRETE_PURPLE(Material.CONCRETE, DyeColor.PURPLE),
 	CONCRETE_BLUE(Material.CONCRETE, DyeColor.BLUE),
@@ -534,7 +534,7 @@ public enum Materials {
 	CONCRETE_POWDER_LIME(Material.CONCRETE_POWDER, DyeColor.LIME),
 	CONCRETE_POWDER_PINK(Material.CONCRETE_POWDER, DyeColor.PINK),
 	CONCRETE_POWDER_GRAY(Material.CONCRETE_POWDER, DyeColor.GRAY),
-	CONCRETE_POWDER_SILVER(Material.CONCRETE_POWDER, DyeColor.SILVER),
+	CONCRETE_POWDER_SILVER(Material.CONCRETE_POWDER, DyeColor.LIGHT_GRAY),
 	CONCRETE_POWDER_CYAN(Material.CONCRETE_POWDER, DyeColor.CYAN),
 	CONCRETE_POWDER_PURPLE(Material.CONCRETE_POWDER, DyeColor.PURPLE),
 	CONCRETE_POWDER_BLUE(Material.CONCRETE_POWDER, DyeColor.BLUE),
