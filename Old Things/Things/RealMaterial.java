@@ -113,7 +113,7 @@ public final class RealMaterial extends AbstractThings {
 
 	public final static MaterialData DEAD_BUSH = define(Material.DEAD_BUSH);
 
-	public final static MaterialData PISTON_BASE = define(Material.PISTON_BASE, 0); //TODO: wrong name; data variant
+	public final static MaterialData PISTON_BASE = define(Material.PISTON, 0); //TODO: wrong name; data variant
 	public final static MaterialData PISTON_EXTENSION = define(Material.PISTON_EXTENSION, 0); //TODO: wrong name; data variant
 
 	public final static MaterialData WOOL = define(Material.WOOL);
@@ -196,7 +196,7 @@ public final class RealMaterial extends AbstractThings {
 	
 	public final static MaterialData DIAMOND_ORE = define(Material.DIAMOND_ORE);
 	public final static MaterialData DIAMOND_BLOCK = define(Material.DIAMOND_BLOCK);
-	public final static MaterialData WORKBENCH = define(Material.WORKBENCH); //TODO: wrong name
+	public final static MaterialData WORKBENCH = define(Material.CRAFTING_TABLE); //TODO: wrong name
 	public final static MaterialData CROPS = define(Material.CROPS, 0); //TODO: wrong name; data variant
 	public final static MaterialData SOIL = define(Material.SOIL, 0); //TODO: wrong name; data variant
 	public final static MaterialData FURNACE = define(Material.FURNACE, 0); //TODO: data variant

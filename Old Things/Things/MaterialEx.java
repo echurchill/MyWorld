@@ -87,7 +87,7 @@ public enum MaterialEx {
 	TALL_GRASS(Material.TALL_GRASS, 1), 
 	FERN(Material.TALL_GRASS, 2), 
 //	DEAD_BUSH(Material.DEAD_BUSH),
-	////PISTON_BASE(Material.PISTON_BASE),
+	////PISTON_BASE(Material.PISTON),
 	////PISTON_EXTENSION(Material.PISTON_EXTENSION),
 //	@Deprecated
 //	WOOL(Material.WOOL),
@@ -170,7 +170,7 @@ public enum MaterialEx {
 //	REDSTONE_WIRE(Material.REDSTONE_WIRE),
 //	DIAMOND_ORE(Material.DIAMOND_ORE),
 //	DIAMOND_BLOCK(Material.DIAMOND_BLOCK),
-//	WORKBENCH(Material.WORKBENCH),
+//	WORKBENCH(Material.CRAFTING_TABLE),
 //	CROPS(Material.CROPS),
 //	SOIL(Material.SOIL),
 //	FURNACE(Material.FURNACE),

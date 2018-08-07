@@ -113,7 +113,7 @@ public enum Materials {
 
 	DEAD_BUSH(Material.DEAD_BUSH),
 
-	PISTON_BASE(Material.PISTON_BASE, 0), //TODO: wrong name, data variant
+	PISTON_BASE(Material.PISTON, 0), //TODO: wrong name, data variant
 	PISTON_EXTENSION(Material.PISTON_EXTENSION, 0), //TODO: wrong name, data variant
 
 	WOOL(Material.WOOL),
@@ -196,7 +196,7 @@ public enum Materials {
 	
 	DIAMOND_ORE(Material.DIAMOND_ORE),
 	DIAMOND_BLOCK(Material.DIAMOND_BLOCK),
-	WORKBENCH(Material.WORKBENCH), //TODO: wrong name
+	WORKBENCH(Material.CRAFTING_TABLE), //TODO: wrong name
 	CROPS(Material.CROPS, 0), //TODO: wrong name, data variant
 	SOIL(Material.SOIL, 0), //TODO: wrong name, data variant
 	FURNACE(Material.FURNACE, 0), //TODO: data variant
