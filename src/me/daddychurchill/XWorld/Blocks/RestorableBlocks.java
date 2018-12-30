@@ -11,9 +11,9 @@ public class RestorableBlocks extends AbstractedBlocks {
 
 	private List<StoredBlock> oldBlocks;
 	private AbstractedChunk oldChunk;
-	
-	//TODO: Do not call this puppy
-	@Deprecated 
+
+	// TODO: Do not call this puppy
+	@Deprecated
 	public RestorableBlocks(CoreGenerator generator) {
 		super(generator);
 	}
@@ -29,31 +29,31 @@ public class RestorableBlocks extends AbstractedBlocks {
 		private int oldY;
 		private int oldZ;
 		private Material oldData;
-		
+
 		public StoredBlock(int x, int y, int z, Material data) {
 			oldX = x;
 			oldY = y;
 			oldZ = z;
 			oldData = data;
 		}
-		
+
 		public void restoreBlock(AbstractedChunk chunk) {
 //			chunk.setBlock(oldX, oldY, oldZ, Material.GLOWSTONE);
 			chunk.setBlock(oldX, oldY, oldZ, oldData);
 		}
 	}
-	
+
 	@Override
 	public Material getBlock(int x, int y, int z) {
 		return oldChunk.getBlock(x, y, z);
 	}
-	
+
 	@Override
 	public void setBlock(int x, int y, int z, Material data) {
 		oldBlocks.add(new StoredBlock(x, y, z, oldChunk.getBlock(x, y, z)));
 		oldChunk.setBlock(x, y, z, data);
 	}
-	
+
 	public void restoreBlocks() {
 		for (StoredBlock rollBackBlock : oldBlocks) {
 			rollBackBlock.restoreBlock(oldChunk);

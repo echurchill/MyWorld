@@ -11,7 +11,7 @@ public class AlexPopulator extends AbstractPopulator {
 	public AlexPopulator() {
 
 	}
-	
+
 	private static int spacesize = 4;
 
 	@Override
@@ -29,7 +29,6 @@ public class AlexPopulator extends AbstractPopulator {
 //			}
 //		}
 
-	
 //		for (int x = 1; x < 16; x = x + 4) {
 //			for (int z = 1; z < 16; z = z + 4) {
 //				int y = world.getSurfaceY(chunk, x, z);
@@ -37,7 +36,7 @@ public class AlexPopulator extends AbstractPopulator {
 //				chunk.setBlock(x, y, z, Material.CAKE_BLOCK);
 //			}
 //		}
-		
+
 //		for (int x = 0; x < 16; x++) {
 //			int y = world.getSurfaceY(chunk, x, 0);
 //		
@@ -53,10 +52,10 @@ public class AlexPopulator extends AbstractPopulator {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
 				int y = world.getSurfaceY(chunk, x, z);
-			
+
 				chunk.setBlocks(x, y, y + 20, z, Material.CAKE);
 			}
 		}
-	
+
 	}
 }

@@ -15,14 +15,15 @@ public class InitializeChunk extends AbstractedChunk {
 
 	private ChunkData bukkitChunkData;
 	private BiomeGrid bukkitBiomeData;
-	
-	public InitializeChunk(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData, Odds odds, int chunkX, int chunkZ) {
+
+	public InitializeChunk(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData, Odds odds,
+			int chunkX, int chunkZ) {
 		super(generator, odds, chunkX, chunkZ);
-		
+
 		this.bukkitChunkData = bukkitChunkData;
 		this.bukkitBiomeData = bukkitBiomeData;
 	}
-	
+
 	public ChunkData getRawData() {
 		return bukkitChunkData;
 	}
@@ -56,12 +57,12 @@ public class InitializeChunk extends AbstractedChunk {
 	public void setBiome(int x, int z, Biome biome) {
 		bukkitBiomeData.setBiome(x, z, biome);
 	}
-	
+
 	public void setSnow(int x, int y, int z, double level) {
 		bukkitChunkData.setBlock(x, y, z, Material.SNOW);
 		BlockData data = bukkitChunkData.getBlockData(x, y, z);
 		if (data instanceof Snow) {
-			Snow snow = (Snow)data;
+			Snow snow = (Snow) data;
 			snow.setLayers(NoiseGenerator.floor((level - Math.floor(level)) * 8.0) + 1);
 			bukkitChunkData.setBlock(x, y, z, snow);
 		}

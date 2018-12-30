@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Commands;
 
-
 import org.bukkit.entity.Player;
 
 import me.daddychurchill.XWorld.XWorld;
@@ -10,28 +9,28 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public abstract class AbstractCommand implements CommandExecutor {
-    private final XWorld plugin;
-    protected XWorld getPlugin() {
-    	return plugin;
-    }
+	private final XWorld plugin;
 
-    public abstract String getKeyword();
-    public abstract boolean doCommand(Player player, Command command, String[] arguments);
-    
-    public AbstractCommand(XWorld plugin)
-    {
-        this.plugin = plugin;
-    }
-    
-    public static boolean ifMatch(String argument, String ... matches) {
-    	for (int i = 0; i < matches.length; i++)
-    		if (argument.equalsIgnoreCase(matches[i]))
-    			return true;
-    	return false;
-    }
+	protected XWorld getPlugin() {
+		return plugin;
+	}
 
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] split) 
-    {
+	public abstract String getKeyword();
+
+	public abstract boolean doCommand(Player player, Command command, String[] arguments);
+
+	public AbstractCommand(XWorld plugin) {
+		this.plugin = plugin;
+	}
+
+	public static boolean ifMatch(String argument, String... matches) {
+		for (int i = 0; i < matches.length; i++)
+			if (argument.equalsIgnoreCase(matches[i]))
+				return true;
+		return false;
+	}
+
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] split) {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (player.hasPermission(getKeyword() + ".command")) {
@@ -43,8 +42,8 @@ public abstract class AbstractCommand implements CommandExecutor {
 			sender.sendMessage("This command is only usable by a player");
 		}
 		return false;
-    }
-	
+	}
+
 	protected void reportMessage(String message) {
 		plugin.reportMessage(message);
 	}

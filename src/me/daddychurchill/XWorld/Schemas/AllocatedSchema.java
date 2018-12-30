@@ -23,28 +23,28 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 			for (int y = 0; y < sizeY; y++)
 				for (int z = 0; z < sizeZ; z++)
 					arrayOfData[x][y][z] = null;
-		
+
 	}
-	
+
 	@Override
 	public int getSizeX() {
 		return sizeX;
 	}
-	
+
 	@Override
 	public int getSizeY() {
 		return sizeY;
 	}
-	
+
 	@Override
 	public int getSizeZ() {
 		return sizeZ;
 	}
-	
+
 	protected Material[][][] getData() {
 		return arrayOfData;
 	}
-	
+
 	protected int clamp(int i, int max) {
 		if (i < 0)
 			return 0;
@@ -53,7 +53,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 		else
 			return i;
 	}
-	
+
 	@Override
 	public Material getBlock(int x, int y, int z) {
 		x = clamp(x, sizeX);
@@ -61,7 +61,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 		z = clamp(z, sizeZ);
 		return arrayOfData[x][y][z];
 	}
-	
+
 	@Override
 	public void setBlock(int x, int y, int z, Material data) {
 		x = clamp(x, sizeX);
@@ -69,7 +69,7 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 		z = clamp(z, sizeZ);
 		arrayOfData[x][y][z] = data;
 	}
-	
+
 	@Override
 	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, Material data) {
 		x1 = clamp(x1, sizeX);
@@ -83,11 +83,11 @@ public abstract class AllocatedSchema extends PasteableBlocks {
 				for (int z = z1; z < z2; z++)
 					arrayOfData[x][y][z] = data;
 	}
-	
+
 	@Override
 	public boolean isEmpty(int x, int y, int z) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

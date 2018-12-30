@@ -10,13 +10,13 @@ public class TreesAndSuchWorld extends FlatChunkedWorld {
 
 	public TreesAndSuchWorld(CoreGenerator generator) {
 		super();
-		
+
 		initializers.add(new SimpleTerrainInitializer());
 		populators.add(new NaturalSurfacePopulator());
 		populators.add(new WoodenFencePopulator());
 		populators.add(new SimpleTreePopulator());
 	}
-	
+
 	@Override
 	protected int getTopY() {
 		return 64;

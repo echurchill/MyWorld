@@ -16,7 +16,7 @@ public class DebugTreePopulator extends AbstractTreePopulator {
 	public boolean isHere(AbstractWorld world, FinalizeChunk chunk) {
 		return true;
 	}
-	
+
 	private void debugTree(AbstractWorld world, FinalizeChunk chunk, TreeType tree) {
 		int y = world.getSurfaceY(chunk, 6, 6);
 		chunk.setSign(6, y, 6, BlockFace.NORTH, tree.toString());

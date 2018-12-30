@@ -14,24 +14,24 @@ import me.daddychurchill.XWorld.Support.Odds;
 
 // should be called final blocks
 public class FinalizeChunk extends AbstractedChunk {
-	
+
 	private Chunk bukkitChunk;
 
 	public FinalizeChunk(CoreGenerator generator, Odds odds, Chunk bukkitChunk, int chunkX, int chunkZ) {
 		super(generator, odds, chunkX, chunkZ);
-		
+
 		this.bukkitChunk = bukkitChunk;
 	}
-	
+
 	public boolean isFertile(int x, int y, int z) {
 		return isTypes(x, y - 1, z, Material.GRASS, Material.DIRT);
 	}
-	
+
 	public void plantTree(int x, int y, int z, TreeType treeType) {
 		if (y > 0)
 			rawPlantTree(x, y, z, treeType);
 	}
-	
+
 	private boolean isNotRootBall(Material material) {
 		switch (material) {
 		case STONE:
@@ -52,7 +52,7 @@ public class FinalizeChunk extends AbstractedChunk {
 			return true;
 		}
 	}
-	
+
 	private void rawPlantTree(int x, int y, int z, TreeType treeType) {
 
 		// how big will it be?
@@ -67,10 +67,10 @@ public class FinalizeChunk extends AbstractedChunk {
 			width = 1;
 			break;
 		}
-		
+
 		// how to remember
 		RestorableBlocks rootBlocks = new RestorableBlocks(this);
-		
+
 		// make the root ball
 		rootBlocks.emptyBlocks(x, x + width, y, y + width, z, z + width);
 		for (int x1 = x; x1 < x + width; x1++)
@@ -85,7 +85,7 @@ public class FinalizeChunk extends AbstractedChunk {
 						break;
 				}
 			}
-		
+
 		// make the tree
 		Location at = getBlockWorldLocation(x, y, z);
 		boolean success = false;
@@ -96,7 +96,7 @@ public class FinalizeChunk extends AbstractedChunk {
 				// if not, try a few more times
 				int initY = y;
 				for (int i = 0; i < 8; i++) {
-					
+
 					// maybe it just isn't clear enough above, move up and try again
 					y++;
 					rootBlocks.setBlocks(x, x + width, y - 1, z, z + width, Material.DIRT);
@@ -104,12 +104,13 @@ public class FinalizeChunk extends AbstractedChunk {
 					try {
 						success = getGenerator().getWorld().generateTree(at, treeType);
 
-						// if we made the tree after all, copy it's trunk block down to fill up all of that added dirt
+						// if we made the tree after all, copy it's trunk block down to fill up all of
+						// that added dirt
 						if (success) {
 							rootBlocks.setBlocks(x, x + width, initY, y, z, z + width, getBlock(x, y, z));
 							break;
 						}
-						
+
 					} catch (Exception e) {
 //						this.getGenerator().reportMessage(treeType.name() + " at : " + at.getBlockX() + ", " + at.getBlockY() + ", " + at.getBlockZ());
 //						this.getGenerator().reportMessage("INNER EXCEPTION: " + e.getMessage());
@@ -124,7 +125,7 @@ public class FinalizeChunk extends AbstractedChunk {
 //			this.getGenerator().reportMessage("OUTER EXCEPTION: " + e.getMessage());
 			success = false;
 		}
-		
+
 		// no tree... no root ball
 		if (!success)
 			rootBlocks.restoreBlocks();
@@ -138,16 +139,17 @@ public class FinalizeChunk extends AbstractedChunk {
 		}
 		return null;
 	}
-	
+
 	private int physicsLevel = 0;
 	private boolean physicsDo = false;
+
 	public void startDoingPhysics() {
 		physicsLevel++;
 		physicsDo = physicsLevel > 0;
 	}
-	
+
 	public void stopDoingPhysics() {
-		assert(physicsLevel > 0);
+		assert (physicsLevel > 0);
 		physicsLevel--;
 		physicsDo = physicsLevel > 0;
 	}
@@ -172,13 +174,13 @@ public class FinalizeChunk extends AbstractedChunk {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public Biome getBiome(int x, int z) {
 		Block block = bukkitChunk.getBlock(x, 0, z);
 		if (block != null) {
 			return block.getBiome();
-		} 
+		}
 		return null;
 	}
 
@@ -189,20 +191,20 @@ public class FinalizeChunk extends AbstractedChunk {
 			block.setBiome(biome);
 		}
 	}
-	
-	public void setSign(int x, int y, int z, BlockFace direction, String ... text) {
+
+	public void setSign(int x, int y, int z, BlockFace direction, String... text) {
 		Block block = bukkitChunk.getBlock(x, y, z);
 		block.setType(Material.SIGN);
 		if (block.getType() == Material.SIGN) {
 			BlockData signDirection = block.getBlockData();
 			if (signDirection instanceof org.bukkit.block.data.type.Sign) {
-				org.bukkit.block.data.type.Sign sign = (org.bukkit.block.data.type.Sign)signDirection;
+				org.bukkit.block.data.type.Sign sign = (org.bukkit.block.data.type.Sign) signDirection;
 				sign.setRotation(direction);
-				
+
 				BlockState state = block.getState();
 				if (state instanceof org.bukkit.block.Sign) {
-					org.bukkit.block.Sign signState = (org.bukkit.block.Sign)state;
-					for (int i = 0; i < text.length && i < 4; i++) 
+					org.bukkit.block.Sign signState = (org.bukkit.block.Sign) state;
+					for (int i = 0; i < text.length && i < 4; i++)
 						signState.setLine(i, text[i]);
 					signState.update();
 				}

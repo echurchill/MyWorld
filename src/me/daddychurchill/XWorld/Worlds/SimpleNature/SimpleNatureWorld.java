@@ -8,12 +8,12 @@ import me.daddychurchill.XWorld.Reusable.Shapes.NaturalGroundShape;
 import me.daddychurchill.XWorld.Worlds.ShapedWorld;
 
 public class SimpleNatureWorld extends ShapedWorld {
-	
+
 	public SimpleNatureWorld(CoreGenerator generator) {
 		super(generator, new NaturalGroundShape(generator));
-		
+
 		initializers.add(new SimpleTerrainInitializer());
-		
+
 		populators.add(new SimpleTreePopulator());
 		populators.add(new NaturalSurfacePopulator());
 	}

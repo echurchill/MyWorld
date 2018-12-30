@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Commands;
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
@@ -12,10 +11,9 @@ import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
 public class XWorldCommand extends AbstractCommand {
 
-	public XWorldCommand(XWorld plugin)
-    {
-    	super(plugin);
-    }
+	public XWorldCommand(XWorld plugin) {
+		super(plugin);
+	}
 
 	@Override
 	public String getKeyword() {
@@ -23,16 +21,16 @@ public class XWorldCommand extends AbstractCommand {
 	}
 
 	public final static String worldPrime_Name = "XWorld";
-	
+
 	private static String NetherId1 = "Nether";
 	private static String TheEndId1 = "The_End";
 	private static String TheEndId2 = "TheEnd";
 	private static String TheEndId3 = "End";
-	
+
 	public static boolean ifParam(String param) {
 		return ifMatch(param, NetherId1, TheEndId1, TheEndId2, TheEndId3);
 	}
-	
+
 	@Override
 	public boolean doCommand(Player player, Command command, String[] arguments) {
 
@@ -53,10 +51,10 @@ public class XWorldCommand extends AbstractCommand {
 				doIt = true;
 			}
 		}
-		
+
 		// let's do it?
 		if (doIt) {
-			
+
 			// figure out what we call it
 			String worldName = worldPrime_Name;
 			if (worldType.isEmpty())
@@ -65,23 +63,23 @@ public class XWorldCommand extends AbstractCommand {
 				worldName = worldName + "_" + worldType;
 			if (worldEnvironment != Environment.NORMAL)
 				worldName = worldName + "_" + worldEnvironment.name();
-			
+
 			// find it!
 			player.sendMessage("Loading/creating " + worldName + "... This might take a moment...");
 			World world = Bukkit.getServer().getWorld(worldName);
 			if (world == null) {
-				
+
 				// if not then create/build it!
 				WorldCreator creator = new WorldCreator(worldName);
 				creator.environment(worldEnvironment);
-				
+
 				CoreGenerator generator = getPlugin().getCoreGenerator(worldName, worldType);
-				assert(generator != null);
-				
+				assert (generator != null);
+
 				creator.generator(generator);
 				world = Bukkit.getServer().createWorld(creator);
 			}
-			
+
 			// found it! or not
 			if (world == null)
 				return false;

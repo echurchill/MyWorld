@@ -6,22 +6,22 @@ import me.daddychurchill.XWorld.Generators.CoreGenerator;
 
 public class Config {
 	private CoreGenerator generator;
-	
+
 	private int streetLevel;
 	private int seabedLevel;
-	
+
 	public final static int defaultStreetLevel = 64;
 	public final static int defaultSeabedLevel = 32;
-	
+
 	public Config(CoreGenerator generator) {
 		super();
-		
+
 		this.generator = generator;
-		
+
 		// remember the globals
 		int globalStreetLevel = defaultStreetLevel;
 		int globalSeabedLevel = defaultSeabedLevel;
-		
+
 		// global read yet?
 		FileConfiguration config = generator.getPlugin().getConfig();
 		config.options().header("XWorld Global Options");
@@ -29,16 +29,16 @@ public class Config {
 		config.addDefault("Global.SeabedLevel", defaultSeabedLevel);
 		config.options().copyDefaults(true);
 		generator.getPlugin().saveConfig();
-		
+
 		// now read out the bits for real
 		globalStreetLevel = config.getInt("Global.StreetLevel");
 		globalSeabedLevel = config.getInt("Global.SeabedLevel");
-		
+
 		// grab the world specific values else use the globals
 		streetLevel = getWorldInt(config, "StreetLevel", globalStreetLevel);
 		seabedLevel = getWorldInt(config, "SeabedLevel", globalSeabedLevel);
 	}
-	
+
 	private int getWorldInt(FileConfiguration config, String option, int global) {
 		int result = global;
 		String path = generator.getName() + "." + option;
@@ -46,7 +46,7 @@ public class Config {
 			result = config.getInt(path);
 		return result;
 	}
-	
+
 //	private double getWorldDouble(FileConfiguration config, String option, double global) {
 //		double result = global;
 //		String path = worldname + "." + option;
@@ -62,7 +62,7 @@ public class Config {
 //			result = config.getBoolean(path);
 //		return result;
 //	}
-	
+
 	public int getStreetLevel() {
 		return streetLevel;
 	}
@@ -70,5 +70,5 @@ public class Config {
 	public int getSeabedLevel() {
 		return seabedLevel;
 	}
-	
+
 }

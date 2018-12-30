@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld;
 
-
 import java.util.logging.Logger;
 
 import org.bukkit.command.PluginCommand;
@@ -18,13 +17,13 @@ import me.daddychurchill.XWorld.Worlds.RingWorld.RingWorldFactory;
 import me.daddychurchill.XWorld.Worlds.SimpleNature.SimpleNatureFactory;
 import me.daddychurchill.XWorld.Worlds.TreesAndSuch.TreesAndSuchFactory;
 
-public class XWorld extends JavaPlugin{
-	
+public class XWorld extends JavaPlugin {
+
 	public static final Logger log = Logger.getLogger("Minecraft.XWorld");
-   	
-    public XWorld() {
+
+	public XWorld() {
 		super();
-		
+
 		CoreGenerator.addWorldType(new TreesAndSuchFactory());
 		CoreGenerator.addWorldType(new SimpleNatureFactory());
 		CoreGenerator.addWorldType(new DebugNatureFactory());
@@ -34,34 +33,34 @@ public class XWorld extends JavaPlugin{
 		CoreGenerator.addWorldType(new DiscWorldFactory());
 	}
 
-	public CoreGenerator getCoreGenerator(String name, String style){
+	public CoreGenerator getCoreGenerator(String name, String style) {
 		return CoreGenerator.getCoreGeneratorFor(this, name, style);
 	}
-    
-    @Override
-	public ChunkGenerator getDefaultWorldGenerator(String name, String style){
-    	return getCoreGenerator(name, style);
+
+	@Override
+	public ChunkGenerator getDefaultWorldGenerator(String name, String style) {
+		return getCoreGenerator(name, style);
 	}
-	
+
 	@Override
 	public void onDisable() {
 		// remember for the next time
 		saveConfig();
-		
+
 		// tell the world we are out of here
-		//reportMessage("Disabled");
+		// reportMessage("Disabled");
 	}
 
 	@Override
 	public void onEnable() {
-		
+
 		// figure out permissions and associated commands
 		addCommand(new XWorldCommand(this));
 
 		// configFile can be retrieved via getConfig()
-		//reportMessage("Enabled" );
+		// reportMessage("Enabled" );
 	}
-	
+
 	private void addCommand(AbstractCommand exec) {
 		if (exec != null) {
 			PluginCommand cmd = getCommand(exec.getKeyword());
@@ -73,15 +72,15 @@ public class XWorld extends JavaPlugin{
 		} else
 			reportMessage("!!!! Cannot create command for NULL");
 	}
-	
+
 	public String getPluginName() {
 		return getDescription().getName();
 	}
-	
+
 	private String getQuotedPluginName() {
 		return "[" + getPluginName() + "]";
 	}
-	
+
 	public void reportMessage(String message) {
 		if (!message.startsWith("["))
 			message = " " + message;
@@ -97,6 +96,5 @@ public class XWorld extends JavaPlugin{
 		reportMessage(message, "Exception: " + e.getMessage());
 		e.printStackTrace();
 	}
-	
-}
 
+}

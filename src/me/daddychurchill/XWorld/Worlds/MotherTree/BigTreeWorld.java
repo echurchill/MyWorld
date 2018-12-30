@@ -15,13 +15,13 @@ public class BigTreeWorld extends AbstractWorld {
 	@Override
 	public void renderHere(InitializeChunk chunk) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void renderHere(FinalizeChunk chunk) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

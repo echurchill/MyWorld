@@ -7,7 +7,7 @@ import me.daddychurchill.XWorld.Generators.CoreGenerator;
 import me.daddychurchill.XWorld.Support.Odds;
 
 public class PasteingInitializeChunk extends InitializeChunk {
-	
+
 //	private static class SchemaAt {
 ////		public PasteableBlocks schema;
 ////		public int x;
@@ -35,13 +35,13 @@ public class PasteingInitializeChunk extends InitializeChunk {
 //	
 //	private ArrayList<SchemaAt> schemas;
 
-	public PasteingInitializeChunk(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData, Odds odds,
-			int chunkX, int chunkZ) {
+	public PasteingInitializeChunk(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData,
+			Odds odds, int chunkX, int chunkZ) {
 		super(generator, bukkitChunkData, bukkitBiomeData, odds, chunkX, chunkZ);
 
 //		schemas = new ArrayList<SchemaAt>(0);
 	}
-	
+
 	protected void addSchema(PasteableBlocks schema, int x, int z) {
 //		schemas.add(new SchemaAt(schema, x, z));
 	}

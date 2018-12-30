@@ -10,10 +10,9 @@ public class DebugNatureWorld extends ShapedWorld {
 
 	public DebugNatureWorld(CoreGenerator generator) {
 		super(generator, new NaturalGroundShape(generator));
-		
+
 		initializers.add(new SimpleTerrainInitializer());
-		
-		
+
 		populators.add(new DebugTreePopulator());
 	}
 

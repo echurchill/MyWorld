@@ -12,10 +12,11 @@ import me.daddychurchill.XWorld.Blocks.InitializeChunk;
 public abstract class AbstractWorld {
 
 	public abstract void renderHere(InitializeChunk chunk);
+
 	public abstract void renderHere(FinalizeChunk chunk);
-	
+
 	public abstract int getSurfaceY(AbstractedChunk chunk, int x, int z);
-	
+
 	public Location fixSpawnLocation(World world, Random random, Location location) {
 		return location;
 	}

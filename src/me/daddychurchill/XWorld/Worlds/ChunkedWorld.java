@@ -12,9 +12,9 @@ public abstract class ChunkedWorld extends AbstractWorld {
 
 	protected List<AbstractInitializer> initializers;
 	protected List<AbstractPopulator> populators;
-	
+
 	public ChunkedWorld() {
-		
+
 		initializers = new ArrayList<>();
 		populators = new ArrayList<>();
 	}

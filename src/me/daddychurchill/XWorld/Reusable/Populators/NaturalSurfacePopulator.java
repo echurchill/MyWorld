@@ -10,7 +10,7 @@ import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 public class NaturalSurfacePopulator extends AbstractPopulator {
 
 	private double oddsOfSpawn;
-	
+
 	public NaturalSurfacePopulator() {
 		this.oddsOfSpawn = Odds.oddsEven;
 	}
@@ -25,7 +25,8 @@ public class NaturalSurfacePopulator extends AbstractPopulator {
 		for (int x = 0; x < 16; x++) {
 			for (int z = 0; z < 16; z++) {
 				int y = world.getSurfaceY(chunk, x, z);
-				if (odds.playOdds(oddsOfSpawn) && chunk.isEmpty(x, y, z) && chunk.isType(x, y - 1, z, Material.GRASS_BLOCK)) {
+				if (odds.playOdds(oddsOfSpawn) && chunk.isEmpty(x, y, z)
+						&& chunk.isType(x, y - 1, z, Material.GRASS_BLOCK)) {
 					if (odds.playOdds(Odds.oddsLikely))
 						chunk.setBlock(x, y, z, Material.TALL_GRASS);
 					else {

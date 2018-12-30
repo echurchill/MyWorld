@@ -7,11 +7,11 @@ import me.daddychurchill.XWorld.Worlds.AbstractWorld;
 public class SimpleTreePopulator extends AbstractTreePopulator {
 
 	private double oddsOfSpawn;
-	
+
 	public SimpleTreePopulator() {
 		this.oddsOfSpawn = Odds.oddsLikely;
 	}
-	
+
 	public SimpleTreePopulator(double oddsOfSpawn) {
 		this.oddsOfSpawn = oddsOfSpawn;
 	}
@@ -27,7 +27,7 @@ public class SimpleTreePopulator extends AbstractTreePopulator {
 				plantTree(world, chunk, odds.nextBetween(6, 15), odds.nextBetween(6, 15));
 			}
 	}
-	
+
 	@Override
 	public boolean isHere(AbstractWorld world, FinalizeChunk chunk) {
 		return chunk.getOdds().playOdds(oddsOfSpawn);

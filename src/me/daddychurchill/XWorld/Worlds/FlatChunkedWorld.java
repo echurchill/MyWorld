@@ -14,12 +14,11 @@ public abstract class FlatChunkedWorld extends ChunkedWorld {
 	}
 
 	protected abstract int getTopY();
-	
+
 	@Override
 	public int getSurfaceY(AbstractedChunk chunk, int x, int z) {
 		return getTopY();
 	}
-
 
 	@Override
 	public Location fixSpawnLocation(World world, Random random, Location location) {

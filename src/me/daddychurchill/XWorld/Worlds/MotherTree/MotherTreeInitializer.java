@@ -9,10 +9,10 @@ import me.daddychurchill.XWorld.Support.Odds;
 
 public class MotherTreeInitializer extends PasteingInitializeChunk {
 
-	public MotherTreeInitializer(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData, Odds odds,
-			int chunkX, int chunkZ) {
+	public MotherTreeInitializer(CoreGenerator generator, ChunkData bukkitChunkData, BiomeGrid bukkitBiomeData,
+			Odds odds, int chunkX, int chunkZ) {
 		super(generator, bukkitChunkData, bukkitBiomeData, odds, chunkX, chunkZ);
-		
+
 		addSchema(new MotherTreeSchema(generator), 0, 0);
 	}
 

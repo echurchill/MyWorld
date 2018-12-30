@@ -9,9 +9,9 @@ public class RingWorld extends ShapedWorld {
 
 	public RingWorld(CoreGenerator generator) {
 		super(generator, new RingWorldShape(generator, 200, 120));
-		
-		initializers.add(new RingWorldTerrainInitializer((RingWorldShape)getWorldShape()));
-		
+
+		initializers.add(new RingWorldTerrainInitializer((RingWorldShape) getWorldShape()));
+
 		populators.add(new SimpleTreePopulator());
 		populators.add(new NaturalSurfacePopulator());
 	}

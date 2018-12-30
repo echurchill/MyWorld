@@ -9,13 +9,13 @@ public class DiscWorldShape extends NaturalGroundShape {
 
 	public DiscWorldShape(CoreGenerator generator, int outerWidth, int outerHeight, int innerWidth, int innerHeight) {
 		super(generator);
-		
+
 //		discThickness = 16.0;
 //		discBase = discThickness * 2;
-		
+
 		discRange = outerWidth;
 		discInner = innerWidth;
-		
+
 		discRange2 = discRange * discRange;
 
 		discHeight = innerHeight;
@@ -24,27 +24,27 @@ public class DiscWorldShape extends NaturalGroundShape {
 //		discTop = discHeight + discBase;
 		discTop = discHeight;// + 16;
 	}
-	
+
 //	private double discThickness;
 //	private double discBase;
-	
+
 	private double discRange;
 	private double discInner;
-	
+
 	private double discRange2;
 
 	private double discHeight;
 	private double discHeight2;
 	private double discTop;
-	
+
 	private static double rangeScale = 5;
-	
+
 	@Override
 	public double getSurfaceYOnWorld(double x, double z) {
 		double r = Math.sqrt(x * x + z * z);
 		if (r > discRange)
 			return 0;
-		else if (r < discInner) 
+		else if (r < discInner)
 			return discTop + getSurfaceNoiseOnWorld(x, z);
 		else {
 			double defaultY = super.getSurfaceYOnWorld(x, z);
@@ -52,7 +52,7 @@ public class DiscWorldShape extends NaturalGroundShape {
 			double radiusFactor = ((flipR * flipR) / discRange2);
 			double heightScale = 1.0 - radiusFactor;
 			double noiseScale = rangeScale * radiusFactor;
-			double radiusToY = Math.min(discTop,  
+			double radiusToY = Math.min(discTop,
 					discTop - Math.sqrt(discHeight2 * heightScale) + getSurfaceNoiseOnWorld(x, z) * noiseScale);
 			if (radiusToY > defaultY)
 				return Math.min(radiusToY, discHeight);
@@ -60,11 +60,11 @@ public class DiscWorldShape extends NaturalGroundShape {
 				return defaultY;
 		}
 	}
-	
+
 	public int getDiscTop() {
 		return NoiseGenerator.floor(discTop);
 	}
-	
+
 	public int getDiscVoidValue() {
 		return -1;
 	}

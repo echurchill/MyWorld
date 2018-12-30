@@ -9,7 +9,7 @@ public class MinecraftSchema extends PasteableBlocks {
 
 	public MinecraftSchema(CoreGenerator generator, String URI) {
 		super(generator);
-		assert(false); //TODO: I need to actually implement this!
+		assert (false); // TODO: I need to actually implement this!
 	}
 
 	@Override
@@ -39,13 +39,13 @@ public class MinecraftSchema extends PasteableBlocks {
 	@Override
 	public void setBlock(int x, int y, int z, Material data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setBlocks(int x1, int x2, int y1, int y2, int z1, int z2, Material data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -57,12 +57,12 @@ public class MinecraftSchema extends PasteableBlocks {
 	@Override
 	public void setBlocks(int y, Material data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setBlocks(int y1, int y2, Material data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

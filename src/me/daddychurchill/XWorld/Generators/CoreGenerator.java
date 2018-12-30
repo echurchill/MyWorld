@@ -1,6 +1,5 @@
 package me.daddychurchill.XWorld.Generators;
 
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -29,7 +28,7 @@ public class CoreGenerator extends ChunkGenerator {
 	// all the registered world factories
 	private static Map<String, AbstractedWorldFactory> worldFactories = new HashMap<String, AbstractedWorldFactory>();
 	private static AbstractedWorldFactory defaultFactory = null;
-	
+
 	private XWorld worldPlugin;
 	private String worldName;
 	private String worldStyle;
@@ -38,45 +37,45 @@ public class CoreGenerator extends ChunkGenerator {
 	private World worldMinecraft;
 	private BlockCallback blockCallback;
 
-	public CoreGenerator(XWorld plugin, String name, String style){
+	public CoreGenerator(XWorld plugin, String name, String style) {
 		super();
-		
+
 		worldPlugin = plugin;
 		worldConfig = new Config(this);
 		worldName = name;
 		worldStyle = style;
 	}
-	
+
 	public static CoreGenerator getCoreGeneratorFor(XWorld plugin, String name, String style) {
 		return new CoreGenerator(plugin, name, style);
 	}
-	
+
 	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
 		worldMinecraft = world;
-		
+
 		AbstractedWorldFactory factory = findWorldFactory(worldStyle);
-		assert(factory != null);
-		
+		assert (factory != null);
+
 		worldMaker = factory.getWorld(this);
 		worldStyle = factory.getStyle(); // reset this to what it ends up as
-		
+
 //		worldPlugin.reportMessage("Style = " + worldStyle);
 //		worldPlugin.reportMessage("Maker = " + worldMaker.toString());
 
 		this.blockCallback = new BlockCallback(this);
 		return Arrays.asList((BlockPopulator) blockCallback);
 	}
-	
+
 	@Override
 	public Location getFixedSpawnLocation(World world, Random random) {
 		Location result = super.getFixedSpawnLocation(world, random);
 		if (result == null)
 			result = new Location(world, random.nextInt(64) - 32, world.getSeaLevel(), random.nextInt(64) - 32);
-		
+
 		return worldMaker.fixSpawnLocation(world, random, result);
 	}
-	
+
 	public XWorld getPlugin() {
 		return worldPlugin;
 	}
@@ -86,7 +85,7 @@ public class CoreGenerator extends ChunkGenerator {
 	}
 
 	public long getWorldSeed() {
-		assert(worldMinecraft != null);
+		assert (worldMinecraft != null);
 		return worldMinecraft.getSeed();
 	}
 
@@ -101,11 +100,11 @@ public class CoreGenerator extends ChunkGenerator {
 	public String getStyle() {
 		return worldStyle;
 	}
-	
+
 	public Config getConfig() {
 		return worldConfig;
 	}
-	
+
 	public void reportMessage(String message) {
 		worldPlugin.reportMessage(message);
 	}
@@ -113,61 +112,61 @@ public class CoreGenerator extends ChunkGenerator {
 	public void reportMessage(String message1, String message2) {
 		worldPlugin.reportMessage(message1, message2);
 	}
-	
-	public void reportFormatted(String format, Object ... objects) {
+
+	public void reportFormatted(String format, Object... objects) {
 		worldPlugin.reportMessage(String.format(format, objects));
 	}
 
 	public void reportException(String message, Exception e) {
 		worldPlugin.reportException(message, e);
 	}
-	
+
 	@Override
 	public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid biome) {
 		try {
 
 			// place to work
-			InitializeChunk chunk = new InitializeChunk(this, this.createChunkData(world), biome, new Odds(random), x, z);
-			
+			InitializeChunk chunk = new InitializeChunk(this, this.createChunkData(world), biome, new Odds(random), x,
+					z);
+
 			// let the world maker do its thing
 			worldMaker.renderHere(chunk);
-		
+
 			// all done!
 			return chunk.getRawData();
-			
+
 		} catch (Exception e) {
 			reportException("Generator FAILED", e);
 			return null;
-		} 
+		}
 	}
-	
+
 	public void populate(World world, Random random, Chunk source) {
 		try {
 
-		
 			// where are we?
 			int chunkX = source.getX();
 			int chunkZ = source.getZ();
-			
+
 			// place to work
 			FinalizeChunk chunk = new FinalizeChunk(this, new Odds(random), source, chunkX, chunkZ);
-			
+
 			// let the world maker do its thing
 			worldMaker.renderHere(chunk);
-		
+
 		} catch (Exception e) {
 			reportException("Populator FAILED", e);
-		} 
+		}
 	}
 
 	private static class BlockCallback extends BlockPopulator {
 
 		private CoreGenerator chunkGen;
-		
-		public BlockCallback(CoreGenerator chunkGen){
+
+		public BlockCallback(CoreGenerator chunkGen) {
 			this.chunkGen = chunkGen;
 		}
-		
+
 		@Override
 		public void populate(World world, Random random, Chunk source) {
 			chunkGen.populate(world, random, source);
@@ -178,28 +177,28 @@ public class CoreGenerator extends ChunkGenerator {
 //		addWorldType(factory);
 //		defaultFactory = factory;
 //	}
-	
+
 	public static void addWorldType(AbstractedWorldFactory factory) {
 		if (defaultFactory == null)
 			defaultFactory = factory;
-		
+
 		// this style shouldn't be already here!
 		String style = factory.getStyle().toUpperCase();
-		assert(!XWorldCommand.ifParam(style));
-		assert(!worldFactories.containsKey(style));
+		assert (!XWorldCommand.ifParam(style));
+		assert (!worldFactories.containsKey(style));
 		worldFactories.put(style, factory);
 	}
-	
+
 	public static boolean supportsWorldType(String id) {
 		return worldFactories.containsKey(id.toUpperCase());
 	}
-	
+
 	public static String getDefaultWorldType() {
 		return defaultFactory.getStyle();
 	}
-	
+
 	public static String[] getWorldTypes() {
-		assert(worldFactories != null);
+		assert (worldFactories != null);
 		int index = 0;
 		String[] results = new String[worldFactories.size()];
 		Collection<AbstractedWorldFactory> factories = worldFactories.values();
@@ -211,16 +210,16 @@ public class CoreGenerator extends ChunkGenerator {
 		}
 		return results;
 	}
-	
+
 	private AbstractedWorldFactory findWorldFactory(String id) {
 		AbstractedWorldFactory worldFactory = null;
 		if (worldFactories != null)
 			worldFactory = worldFactories.get(id.toUpperCase());
 		if (worldFactory == null)
 			worldFactory = defaultFactory;
-		
+
 		// better have found something!
 		return worldFactory;
 	}
-	
+
 }
